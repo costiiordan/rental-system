@@ -15,6 +15,19 @@ return new class extends Migration
             $table->id();
             $table->string('name');
         });
+
+        Schema::create('attribute_values', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('attribute_id')
+                ->constrained('attributes')
+                ->cascadeOnDelete();
+            $table->string('value');
+        });
+
+        Schema::create('item_attribute_value', function (Blueprint $table) {
+            $table->foreignId('item_id')->constrained('items')->cascadeOnDelete();
+            $table->foreignId('attribute_value_id')->constrained('attribute_values')->cascadeOnDelete();
+        });
     }
 
     /**
@@ -22,6 +35,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::drop('attributes');
+        Schema::dropIfExists('item_attribute_value');
+        Schema::dropIfExists('attribute_values');
+        Schema::dropIfExists('attributes');
     }
 };

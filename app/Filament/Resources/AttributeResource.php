@@ -24,6 +24,17 @@ class AttributeResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->name('Nume'),
+                Forms\Components\Repeater::make('values')
+                    ->relationship('values')
+                    ->schema([
+                        Forms\Components\TextInput::make('value')
+                            ->required()
+                            ->maxLength(255)
+                            ->label('Valoare'),
+                    ])
+                    ->label('Attribute Values')
+                    ->defaultItems(1)
+                    ->addActionLabel('Add Value'),
             ]);
     }
 
