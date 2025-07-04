@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('attributes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('reference')->unique()->nullable();
         });
 
         Schema::create('attribute_values', function (Blueprint $table) {
@@ -22,6 +23,8 @@ return new class extends Migration
                 ->constrained('attributes')
                 ->cascadeOnDelete();
             $table->string('value');
+            $table->string('reference')->nullable();
+            $table->unique(['attribute_id', 'reference']);
         });
 
         Schema::create('item_attribute_value', function (Blueprint $table) {
