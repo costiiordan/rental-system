@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Constants\ItemStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +17,8 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('sku')->nullable()->unique();
-            $table->string('status')->index()->default('active');
+            $table->string('image_path');
+            $table->string('status')->index()->default(ItemStatus::ACTIVE);
             $table->timestamps();
         });
     }

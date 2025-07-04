@@ -25,8 +25,9 @@ return new class extends Migration
         });
 
         Schema::create('item_attribute_value', function (Blueprint $table) {
-            $table->foreignId('item_id')->constrained('items')->cascadeOnDelete();
-            $table->foreignId('attribute_value_id')->constrained('attribute_values')->cascadeOnDelete();
+            $table->id();
+            $table->foreignId('item_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('attribute_value_id')->constrained()->cascadeOnDelete();
         });
     }
 

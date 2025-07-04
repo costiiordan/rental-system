@@ -120,6 +120,8 @@ CMD ["php-fpm"]
 # Stage 3: Development image
 FROM production AS development
 
+COPY ./docker/development/php-fpm/php.ini "$PHP_INI_DIR/conf.d/development-php.ini"
+
 # Use ARG to define environment variables passed from the Docker build command or Docker Compose.
 ARG XDEBUG_ENABLED=true
 ARG XDEBUG_MODE=develop,coverage,debug,profile
