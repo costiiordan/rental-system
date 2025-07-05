@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('item_id')->constrained()->cascadeOnDelete();
             $table->foreignId('order_id')->constrained()->cascadeOnDelete();
-            $table->dateTime('start');
-            $table->dateTime('end');
+            $table->dateTime('from_date');
+            $table->dateTime('to_date');
         });
     }
 

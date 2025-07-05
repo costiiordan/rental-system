@@ -1,3 +1,7 @@
+:root {
+    --selected-items-bk-color: #81C784;
+}
+
 /*! HTML5 Boilerplate v9.0.1 | MIT License | https://html5boilerplate.com/ */
 
 /* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
@@ -101,4 +105,30 @@ header {
     height: auto;
     object-fit: contain;
     aspect-ratio: 4 / 3;
+}
+
+.selected-items-preview {
+    background-color: var(--selected-items-bk-color);
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: calc(100% - 60px);
+    z-index: 10;
+}
+
+.selected-items-preview-header {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    flex-direction: row;
+    padding: 1rem;
+
+    div {
+        flex-grow: 1;
+    }
+
+    button {
+        flex-grow: 0;
+    }
 }

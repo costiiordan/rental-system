@@ -18,13 +18,13 @@ class ItemRepository
         return $items;
     }
 
-    public function calculatePriceForItem(Item $item, string $from, string $to): int
+    public function calculatePriceForItem(Item $item, Carbon $from, Carbon $to): int
     {
         $durationUnit = PriceDurationType::DAY;
-        $duration = Carbon::create($from)->diffInDays(Carbon::create($to));
+        $duration = $from->diffInDays($to);
 
         if ($duration < 1) {
-            $duration = Carbon::create($from)->diffInHours(Carbon::create($to));
+            $duration = $from->diffInHours($to);
             $durationUnit = PriceDurationType::HOUR;
         }
 
@@ -73,7 +73,7 @@ class ItemRepository
         return min($prices);
     }
 
-    public function getPricesForItems(Collection $items, string $from, string $to): array
+    public function getPricesForItems(Collection $items, Carbon $from, Carbon $to): array
     {
         $prices = [];
 
