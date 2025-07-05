@@ -14,7 +14,24 @@ class Attribute extends Seeder
      */
     public function run(): void
     {
-        $data = [
+        $data = $this->getData();
+
+        foreach ($data as $attribute) {
+            $attributeId = DB::table('attributes')->insertGetId(['name' => $attribute['name'], 'reference' => $attribute['reference'] ?? null]);
+
+            foreach ($attribute['values'] as $value) {
+                DB::table('attribute_values')->insert([
+                    'attribute_id' => $attributeId,
+                    'value' => $value['name'],
+                    'reference' => $value['reference'] ?? null,
+                ]);
+            }
+        }
+    }
+
+    private function getData(): array
+    {
+        return [
             'Categorie' => [
                 'name' => 'Categorie',
                 'reference' => AttributeReference::CATEGORY,
@@ -81,18 +98,16 @@ class Attribute extends Seeder
                     ['name' => 'peste 185cm']
                 ],
             ],
+            [
+                'name' => 'Marime',
+                'values' => [
+                    ['name' => 'Small'],
+                    ['name' => 'Medium'],
+                    ['name' => 'Large'],
+                    ['name' => 'X-Large'],
+                    ['name' => 'XX-Large'],
+                ],
+            ],
         ];
-
-        foreach ($data as $attribute) {
-            $attributeId = DB::table('attributes')->insertGetId(['name' => $attribute['name'], 'reference' => $attribute['reference'] ?? null]);
-
-            foreach ($attribute['values'] as $value) {
-                DB::table('attribute_values')->insert([
-                    'attribute_id' => $attributeId,
-                    'value' => $value['name'],
-                    'reference' => $value['reference'] ?? null,
-                ]);
-            }
-        }
     }
 }
