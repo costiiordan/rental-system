@@ -3,9 +3,11 @@
 namespace App\Repository;
 
 use App\Exceptions\NoItemsSelectedException;
+use App\Exceptions\UnavailableItemsInSelectionException;
 use App\Models\ItemBooking;
 use App\Models\Order;
 use App\Models\OrderItem;
+use Illuminate\Support\Collection;
 
 class OrderRepository
 {
@@ -16,6 +18,8 @@ class OrderRepository
     public function saveOrder(array $orderData): Order
     {
         $selectedItems = $this->selectedItemsRepository->getSelectedItems();
+
+        $this->checkForUnavailableItems($selectedItems);
 
         if ($selectedItems->isEmpty()) {
             throw new NoItemsSelectedException();
@@ -57,5 +61,18 @@ class OrderRepository
         $this->selectedItemsRepository->clearSelectedItems();
 
         return $order;
+    }
+
+    public function checkForUnavailableItems(Collection $selectedItems): void
+    {
+        $unavailableItems = $this->selectedItemsRepository->getUnavailableItems($selectedItems);
+
+        if ($unavailableItems->isNotEmpty()) {
+            $itemList = $unavailableItems->map(function($item) {
+                return $item['item']->name. ' (SKU: '.$item['item']->sku.')';
+            })->implode(', ');
+
+            throw new UnavailableItemsInSelectionException($itemList);
+        }
     }
 }

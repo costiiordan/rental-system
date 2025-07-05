@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
 class Item extends Model
 {
@@ -18,5 +19,18 @@ class Item extends Model
     public function prices(): HasMany
     {
         return $this->hasMany(ItemPrices::class);
+    }
+
+    public function bookings(): HasMany
+    {
+        return $this->hasMany(ItemBooking::class);
+    }
+
+    public function isAvailableInInterval(Carbon $fromDate, Carbon $toDate): bool
+    {
+        return !$this->bookings()
+            ->where('from_date', '<', $toDate)
+            ->where('to_date', '>', $fromDate)
+            ->exists();
     }
 }

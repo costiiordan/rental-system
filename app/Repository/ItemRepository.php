@@ -11,11 +11,19 @@ class ItemRepository
 {
     private const DAY_IN_HOURS = 8;
 
-    public function getAvailableItems(): Collection
+    public function getAvailableItems(?Carbon $fromDate, ?Carbon $toDate): Collection
     {
-        $items = Item::with(['attributeValues.attribute', 'prices'])->get();
+        $items = Item::with(['attributeValues.attribute', 'prices']);
 
-        return $items;
+        if ($fromDate && $toDate) {
+            $items->whereDoesntHave('bookings', function ($query) use ($fromDate, $toDate) {
+                $query
+                    ->where('from_date', '<=', $toDate)
+                    ->where('to_date', '>=', $fromDate);
+            });
+        }
+
+        return $items->get();
     }
 
     public function calculatePriceForItem(Item $item, Carbon $from, Carbon $to): int

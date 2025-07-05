@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\NoItemsSelectedException;
+use App\Exceptions\UnavailableItemsInSelectionException;
 use App\Http\Requests\SaveOrderRequest;
 use App\Models\Constants\PaymentMethods;
 use App\Models\Order;
@@ -34,6 +35,8 @@ class CheckoutController extends Controller
             $order = $orderRepository->saveOrder($orderData);
         } catch (NoItemsSelectedException) {
             return $this->returnToHomeWithError('No items selected for checkout.');
+        } catch (UnavailableItemsInSelectionException $exception) {
+            return  $this->returnToHomeWithError("Urmatoarele produse nu sunt disponibile in intervalul selectat: ".$exception->getMessage());
         }
 
         return redirect()->route('checkout.success', [

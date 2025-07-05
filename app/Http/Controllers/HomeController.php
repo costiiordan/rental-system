@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         $interval = $this->getInterval($request);
 
-        $bikes = $itemRepository->getAvailableItems();
+        $bikes = $itemRepository->getAvailableItems($interval['from'] ?? null, $interval['to'] ?? null);
 
         $prices = [];
 

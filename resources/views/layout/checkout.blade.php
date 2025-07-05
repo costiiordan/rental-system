@@ -4,6 +4,4 @@
     @include('layout.header')
 
     @yield('content')
-
-    @vite(['resources/js/main.js'])
 @endsection
