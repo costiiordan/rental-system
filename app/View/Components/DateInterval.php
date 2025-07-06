@@ -22,6 +22,6 @@ class DateInterval extends Component
             return $this->from->format('d.m.Y H:i') . ' - ' . $this->to->format('H:i');
         }
 
-        return $this->from->format('Y.m.d H:i') . ' - ' . $this->to->format('Y.m.d H:i');
+        return $this->from->format('d.m.Y H:i') . ' - ' . $this->to->format('d.m.Y H:i');
     }
 }

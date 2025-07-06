@@ -2,14 +2,13 @@
 
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\SelectItemsController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
 
-Route::post('/select-item', [SelectItemsController::class, 'addItem'])->name('select-item');
-Route::get('/get-selected-items', [SelectItemsController::class, 'getSelectedItems'])->name('get-selected-items');
-Route::post('/remove-selected-item', [SelectItemsController::class, 'removeItem'])->name('remove-selected-item');
+Route::post('/add-to-cart', [CartController::class, 'addItem'])->name('add-to-cart');
+Route::post('/remove-from-cart', [CartController::class, 'removeItem'])->name('remove-from-cart');
 
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::post('/checkout/save-order', [CheckoutController::class, 'saveOrder'])->name('checkout.save-order');

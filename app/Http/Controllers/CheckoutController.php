@@ -8,15 +8,15 @@ use App\Http\Requests\SaveOrderRequest;
 use App\Models\Constants\PaymentMethods;
 use App\Models\Order;
 use App\Repository\OrderRepository;
-use App\Repository\SelectedItemsRepository;
+use App\Repository\CartRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class CheckoutController extends Controller
 {
-    public function index(SelectedItemsRepository $selectedItemsRepository)
+    public function index(CartRepository $selectedItemsRepository)
     {
-        $selectedItems = $selectedItemsRepository->getSelectedItems();
+        $selectedItems = $selectedItemsRepository->getCart();
 
         if ($selectedItems->isEmpty()) {
             return $this->returnToHomeWithError('No items selected for checkout.');
