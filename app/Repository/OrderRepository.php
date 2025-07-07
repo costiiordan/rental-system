@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use App\Dto\CartDto;
+use App\Dto\CartItemDto;
 use App\Exceptions\NoItemsSelectedException;
 use App\Exceptions\UnavailableItemsInSelectionException;
-use App\Models\Constants\SelectedItemType;
 use App\Models\ItemBooking;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -12,44 +13,45 @@ use Illuminate\Support\Collection;
 
 class OrderRepository
 {
-    public function __construct(private CartRepository $selectedItemsRepository)
+    public function __construct(private CartRepository $cartRepository)
     { }
 
     public function saveOrder(array $orderData): Order
     {
-        $selectedItems = $this->selectedItemsRepository->getCart();
+        $cart = $this->cartRepository->getCart();
 
-        $this->checkForUnavailableItems($selectedItems);
+        $this->checkForUnavailableItems($cart);
 
-        if ($selectedItems->isEmpty()) {
+        if ($cart->items->isEmpty()) {
             throw new NoItemsSelectedException();
         }
 
-        $order = $this->createOrder($orderData, $selectedItems);
+        $order = $this->createOrder($orderData, $cart);
 
-        $this->saveSelectedItemsToOrder($order, $selectedItems);
+        $this->saveCartItemsToOrder($order, $cart->items);
+        $this->saveDiscountsToOrder($order, $cart->discounts);
 
-        $this->selectedItemsRepository->clearSelectedItems();
+        $this->cartRepository->emptyCart();
 
         return $order;
     }
 
-    private function checkForUnavailableItems(Collection $selectedItems): void
+    private function checkForUnavailableItems(CartDto $cart): void
     {
-        $unavailableItems = $this->selectedItemsRepository->getUnavailableItems($selectedItems);
+        $unavailableCartItems = $this->cartRepository->getUnavailableItems($cart->items);
 
-        if ($unavailableItems->isNotEmpty()) {
-            $itemList = $unavailableItems->map(function($item) {
-                return $item['item']->name. ' (SKU: '.$item['item']->sku.')';
+        if ($unavailableCartItems->isNotEmpty()) {
+            $itemList = $unavailableCartItems->map(function($cartItem) {
+                return $cartItem->item->name. ' (SKU: '.$cartItem->item->sku.')';
             })->implode(', ');
 
             throw new UnavailableItemsInSelectionException($itemList);
         }
     }
 
-    private function createOrder(array $orderData, Collection $selectedItems): Order
+    private function createOrder(array $orderData, CartDto $cart): Order
     {
-        $orderData['total'] = $this->calculateOrderTotal($selectedItems);
+        $orderData['total'] = $cart->total;
         $orderData['hash'] = $this->getOrderHash();
 
         $order = new Order($orderData);
@@ -59,69 +61,49 @@ class OrderRepository
         return $order;
     }
 
-    private function calculateOrderTotal(Collection $selectedItems): int
-    {
-        $total = 0;
-
-        foreach ($selectedItems as $selectedItem) {
-            if ($selectedItem['type'] === SelectedItemType::ITEM) {
-                $total += $selectedItem['price'];
-
-                continue;
-            }
-
-            if ($selectedItem['type'] === SelectedItemType::DISCOUNT) {
-                $total -= $selectedItem['value'];
-            }
-        }
-
-        return $total;
-    }
-
     private function getOrderHash(): string
     {
         return md5(uniqid(rand(), true));
     }
 
-    private function saveSelectedItemsToOrder(Order $order, Collection $selectedItems): void
+    private function saveCartItemsToOrder(Order $order, Collection $cartItems): void
     {
-        foreach ($selectedItems as $selectedItem) {
-            if ($selectedItem['type'] === SelectedItemType::ITEM) {
-                $orderItem = new OrderItem([
-                    'order_id' => $order->id,
-                    'item_id' => $selectedItem['itemId'],
-                    'name' => $this->getOrderItemName($selectedItem),
-                    'price' => $selectedItem['price'],
-                ]);
+        foreach ($cartItems as $cartItem) {
+            $orderItem = new OrderItem([
+                'order_id' => $order->id,
+                'item_id' => $cartItem->item->id,
+                'name' => $this->getOrderItemName($cartItem),
+                'price' => $cartItem->price,
+            ]);
 
-                $orderItem->save();
+            $orderItem->save();
 
-                $itemBooking = new ItemBooking([
-                    'item_id' => $selectedItem['itemId'],
-                    'order_id' => $order->id,
-                    'from_date' => $selectedItem['bookingFromDate'],
-                    'to_date' => $selectedItem['bookingToDate'],
-                ]);
+            $itemBooking = new ItemBooking([
+                'item_id' => $cartItem->item->id,
+                'order_id' => $order->id,
+                'from_date' => $cartItem->fromDate,
+                'to_date' => $cartItem->toDate,
+            ]);
 
-                $itemBooking->save();
-
-                continue;
-            }
-
-            if ($selectedItem['type'] === SelectedItemType::DISCOUNT) {
-                $orderItem = new OrderItem([
-                    'order_id' => $order->id,
-                    'name' => $selectedItem['name'],
-                    'price' => -$selectedItem['value'],
-                ]);
-
-                $orderItem->save();
-            }
+            $itemBooking->save();
         }
     }
 
-    private function getOrderItemName(array $selectedItem): string
+    private function saveDiscountsToOrder(Order $order, Collection $discounts): void
     {
-        return 'Inchieriere ' . $selectedItem['item']->name . ' (' . $selectedItem['bookingFromDate']->format('d.m.Y H:i') . ' - ' . $selectedItem['bookingToDate']->format('d.m.Y H:i') . ')';
+        foreach ($discounts as $discount) {
+            $orderItem = new OrderItem([
+                'order_id' => $order->id,
+                'name' => $discount->name,
+                'price' => $discount->value,
+            ]);
+
+            $orderItem->save();
+        }
+    }
+
+    private function getOrderItemName(CartItemDto $cartItem): string
+    {
+        return 'Inchieriere ' . $cartItem->item->name . ' (' . $cartItem->fromDate->format('d.m.Y H:i') . ' - ' . $cartItem->toDate->format('d.m.Y H:i') . ')';
     }
 }

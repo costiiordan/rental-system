@@ -10,7 +10,7 @@
             @include('checkout.form')
         </div>
         <div class="checkout-preview">
-            @include('checkout.selected_items')
+            @include('checkout.cart')
         </div>
     </div>
 @endsection

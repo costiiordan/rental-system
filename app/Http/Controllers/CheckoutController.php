@@ -14,16 +14,16 @@ use Illuminate\View\View;
 
 class CheckoutController extends Controller
 {
-    public function index(CartRepository $selectedItemsRepository)
+    public function index(CartRepository $cartRepository)
     {
-        $selectedItems = $selectedItemsRepository->getCart();
+        $cart = $cartRepository->getCart();
 
-        if ($selectedItems->isEmpty()) {
+        if ($cart->items->isEmpty()) {
             return $this->returnToHomeWithError('No items selected for checkout.');
         }
 
         return view('checkout.index', [
-            'selectedItems' => $selectedItems,
+            'cart' => $cart,
         ]);
     }
 

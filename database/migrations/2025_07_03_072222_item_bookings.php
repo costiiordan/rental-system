@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('item_bookings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('item_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('order_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('order_id')->nullable()->constrained()->cascadeOnDelete();
             $table->dateTime('from_date');
             $table->dateTime('to_date');
         });

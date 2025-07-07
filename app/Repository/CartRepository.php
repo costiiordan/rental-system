@@ -62,14 +62,14 @@ class CartRepository
         return $cartDto;
     }
 
-    public function getUnavailableItems(Collection $selectedItems): Collection
+    public function getUnavailableItems(Collection $cartItems): Collection
     {
-        return $selectedItems->filter(function ($selectedItem) {
-            return !$selectedItem['item']->isAvailableInInterval($selectedItem['bookingFromDate'], $selectedItem['bookingToDate']);
+        return $cartItems->filter(function ($cartItem) {
+            return !$cartItem->item->isAvailableInInterval($cartItem->fromDate, $cartItem->toDate);
         });
     }
 
-    public function clearSelectedItems(): void
+    public function emptyCart(): void
     {
         session()->forget(self::CART_ITEMS_SESSION_KEY);
     }

@@ -76,7 +76,7 @@ function updateCartPreview(cart) {
 
     let listItems = '';
 
-    cart.items.forEach(item => {console.log(item);
+    cart.items.forEach(item => {
         const itemTemplate = document.getElementById('cart-preview-item-template').innerHTML;
         listItems += itemTemplate
             .replaceAll('{id}', item.id)
