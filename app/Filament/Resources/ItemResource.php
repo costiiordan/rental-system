@@ -115,6 +115,10 @@ class ItemResource extends Resource
                     ->default(ItemStatus::ACTIVE)
                     ->required()
                     ->selectablePlaceholder(false),
+
+                TextInput::make('order')
+                    ->numeric()
+                    ->name('Ordine (0-primul, 99-ultimul)'),
             ]);
 
         return $form;

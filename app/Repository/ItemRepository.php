@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Models\Constants\ItemStatus;
 use App\Models\Constants\PriceDurationType;
 use App\Models\Item;
 use Illuminate\Database\Eloquent\Collection;
@@ -13,7 +14,9 @@ class ItemRepository
 
     public function getAvailableItems(?Carbon $fromDate, ?Carbon $toDate): Collection
     {
-        $items = Item::with(['attributeValues.attribute', 'prices']);
+        $items = Item::with(['attributeValues.attribute', 'prices'])
+            ->whereIn('status', [ItemStatus::ACTIVE, ItemStatus::INACTIVE])
+            ->orderBy('order', 'asc');
 
         if ($fromDate && $toDate) {
             $items->whereDoesntHave('bookings', function ($query) use ($fromDate, $toDate) {

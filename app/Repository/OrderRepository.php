@@ -6,6 +6,8 @@ use App\Dto\CartDto;
 use App\Dto\CartItemDto;
 use App\Exceptions\NoItemsSelectedException;
 use App\Exceptions\UnavailableItemsInSelectionException;
+use App\Models\Constants\OrderStatus;
+use App\Models\Constants\PaymentMethods;
 use App\Models\ItemBooking;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -54,6 +56,12 @@ class OrderRepository
         $orderData['total'] = $cart->total;
         $orderData['hash'] = $this->getOrderHash();
 
+        if (in_array($orderData['payment_method'], [PaymentMethods::CASH, PaymentMethods::BANK_TRANSFER])) {
+            $orderData['status'] = OrderStatus::PAYMENT_PENDING;
+        } else {
+            $orderData['status'] = OrderStatus::WAITING_PICKUP;
+        }
+
         $order = new Order($orderData);
 
         $order->save();
@@ -69,23 +77,23 @@ class OrderRepository
     private function saveCartItemsToOrder(Order $order, Collection $cartItems): void
     {
         foreach ($cartItems as $cartItem) {
-            $orderItem = new OrderItem([
-                'order_id' => $order->id,
-                'item_id' => $cartItem->item->id,
-                'name' => $this->getOrderItemName($cartItem),
-                'price' => $cartItem->price,
-            ]);
-
-            $orderItem->save();
-
             $itemBooking = new ItemBooking([
                 'item_id' => $cartItem->item->id,
-                'order_id' => $order->id,
                 'from_date' => $cartItem->fromDate,
                 'to_date' => $cartItem->toDate,
             ]);
 
             $itemBooking->save();
+
+            $orderItem = new OrderItem([
+                'order_id' => $order->id,
+                'item_id' => $cartItem->item->id,
+                'item_booking_id' => $itemBooking->id,
+                'name' => $this->getOrderItemName($cartItem),
+                'price' => $cartItem->price,
+            ]);
+
+            $orderItem->save();
         }
     }
 

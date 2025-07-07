@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Dto\CartItemDto;
 use App\Dto\CartDto;
+use App\Models\Constants\ItemStatus;
 use App\Models\Item;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -97,7 +98,9 @@ class CartRepository
     private function getCartItems(): Collection
     {
         return collect(session(self::CART_ITEMS_SESSION_KEY, []))->map(function ($cartItem) {
-            $item = Item::with(['prices','attributeValues.attribute'])->find($cartItem['itemId']);
+            $item = Item::with(['prices','attributeValues.attribute'])
+                ->where('status', ItemStatus::ACTIVE)
+                ->find($cartItem['itemId']);
 
             if (!$item) {
                 return null;
@@ -115,6 +118,6 @@ class CartRepository
                 'toDate' => $toDate,
                 'price' => $price,
             ]);
-        });
+        })->filter(fn ($item) => $item !== null);
     }
 }

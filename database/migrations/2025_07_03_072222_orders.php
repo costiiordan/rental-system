@@ -25,9 +25,11 @@ return new class extends Migration
             $table->string('billing_country');
             $table->string('billing_vat_number')->nullable();
             $table->string('payment_method')->default(PaymentMethods::CASH);
-            $table->string('status')->default(OrderStatus::NEW);
+            $table->string('status')->default(OrderStatus::WAITING_PICKUP);
             $table->integer('total');
             $table->string('hash')->nullable();
+            $table->text('customer_note')->nullable();
+            $table->text('internal_note')->nullable();
             $table->timestamps();
         });
 
@@ -35,6 +37,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained()->cascadeOnDelete();
             $table->foreignId('item_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('item_booking_id')->nullable()->constrained()->nullOnDelete();
             $table->string('name');
             $table->integer('price');
         });

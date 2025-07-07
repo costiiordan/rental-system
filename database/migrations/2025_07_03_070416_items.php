@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('sku')->nullable()->unique();
             $table->string('image_path');
             $table->string('status')->index()->default(ItemStatus::ACTIVE);
+            $table->smallInteger('order')->default(0)->index();
             $table->timestamps();
         });
     }

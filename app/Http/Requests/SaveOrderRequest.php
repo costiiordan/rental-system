@@ -25,6 +25,7 @@ class SaveOrderRequest extends FormRequest
                 'string',
                 Rule::in(PaymentMethods::CASH, PaymentMethods::CARD, PaymentMethods::BANK_TRANSFER),
             ],
+            'customer_note' => 'nullable|string|max:32000',
         ];
     }
 }

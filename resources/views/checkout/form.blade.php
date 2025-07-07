@@ -72,6 +72,11 @@
             <span>Transfer bancar</span>
         </label>
         @error('payment_method')<div>{{$message}}</div>@enderror
+        <div>
+            <label for="customer_note_input">Comentariu</label>
+            <textarea id="customer_note_input" name="customer_note">{{ old('customer_note') }}</textarea>
+            @error('customer_note')<div>{{$message}}</div>@enderror
+        </div>
     </div>
 
     @csrf
