@@ -9,7 +9,6 @@ class ItemBooking extends Model
 {
     protected $fillable = [
         'item_id',
-        'order_id',
         'from_date',
         'to_date',
     ];

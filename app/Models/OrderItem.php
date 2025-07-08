@@ -10,6 +10,7 @@ class OrderItem extends Model
     protected $fillable = [
         'order_id',
         'item_id',
+        'item_booking_id',
         'name',
         'price',
     ];
@@ -17,7 +18,7 @@ class OrderItem extends Model
 
     public function itemBooking(): HasOne
     {
-        return $this->hasOne(ItemBooking::class, 'item_id', 'item_id');
+        return $this->hasOne(ItemBooking::class, 'id', 'item_booking_id');
     }
 
     public function item(): HasOne

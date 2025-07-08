@@ -120,6 +120,11 @@
             </div>
         </div>
 
+        <div class="flex justify-end gap-3">
+            {{ $this->addOrderItemAction() }}
+            {{ $this->addDiscountAction() }}
+        </div>
+
         {{ $this->table }}
 
         @if ($order->customer_note)
