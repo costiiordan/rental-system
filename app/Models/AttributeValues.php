@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class AttributeValues extends Model
 {
-    protected $fillable = ['attribute_id', 'value'];
+    protected $fillable = ['attribute_id', 'value', 'reference'];
     public $timestamps = false;
 
     public function attribute(): BelongsTo

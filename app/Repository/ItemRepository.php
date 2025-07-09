@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Models\Constants\ItemStatus;
 use App\Models\Constants\PriceDurationType;
 use App\Models\Item;
+use App\Models\LockedDay;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
 
@@ -14,6 +15,14 @@ class ItemRepository
 
     public function getAvailableItems(?Carbon $fromDate, ?Carbon $toDate): Collection
     {
+        $isIntervalInLockedDays = LockedDay::where('date', '=', $fromDate)
+            ->orWhere('date', '=', $toDate)
+            ->exists();
+
+        if ($isIntervalInLockedDays) {
+            return new Collection([]);
+        }
+
         $items = Item::with(['attributeValues.attribute', 'prices'])
             ->whereIn('status', [ItemStatus::ACTIVE, ItemStatus::INACTIVE])
             ->orderBy('order', 'asc');

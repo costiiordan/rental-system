@@ -28,6 +28,14 @@ class Item extends Model
 
     public function isAvailableInInterval(Carbon $fromDate, Carbon $toDate): bool
     {
+        $isIntervalInLockedDays = LockedDay::where('date', '=', $fromDate)
+            ->orWhere('date', '=', $toDate)
+            ->exists();
+
+        if ($isIntervalInLockedDays) {
+            return false;
+        }
+
         return !$this->bookings()
             ->where('from_date', '<', $toDate)
             ->where('to_date', '>', $fromDate)

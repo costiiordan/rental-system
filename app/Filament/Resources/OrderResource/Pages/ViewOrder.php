@@ -8,6 +8,7 @@ use App\Models\Constants\OrderStatus;
 use App\Models\Constants\PaymentMethods;
 use App\Models\Item;
 use App\Models\ItemBooking;
+use App\Models\LockedDay;
 use App\Models\OrderItem;
 use Closure;
 use Filament\Actions\Action;
@@ -62,6 +63,7 @@ class ViewOrder extends ViewRecord implements HasTable
                     ->hiddenLabel()
                     ->icon('heroicon-o-pencil-square')
                     ->button()
+                    ->color('secondary')
                     ->size(ActionSize::Small)
                     ->modalHeading(fn (OrderItem $record): string => $record->item_id ? 'Editeaza rezervarea' : 'Editeaza discount')
                     ->modalSubmitActionLabel('Salveaza')
@@ -73,7 +75,7 @@ class ViewOrder extends ViewRecord implements HasTable
                     ->icon('heroicon-o-trash')
                     ->button()
                     ->size(ActionSize::Small)
-                    ->color('danger')
+                    ->color('secondary')
                     ->requiresConfirmation()
                     ->action(function (OrderItem $record) {
                         if ($record->item_booking_id) {
@@ -102,6 +104,7 @@ class ViewOrder extends ViewRecord implements HasTable
             ->icon('heroicon-o-pencil-square')
             ->hiddenLabel()
             ->button()
+            ->color('secondary')
             ->size(ActionSize::Small)
             ->modalHeading('Editeaza comanda')
             ->modalSubmitActionLabel('Salveaza')
@@ -166,6 +169,7 @@ class ViewOrder extends ViewRecord implements HasTable
             ->icon('heroicon-o-pencil-square')
             ->hiddenLabel()
             ->button()
+            ->color('secondary')
             ->size(ActionSize::Small)
             ->modalHeading('Nota interna')
             ->form([
@@ -188,6 +192,7 @@ class ViewOrder extends ViewRecord implements HasTable
             ->icon('heroicon-o-pencil-square')
             ->hiddenLabel()
             ->button()
+            ->color('secondary')
             ->size(ActionSize::Small)
             ->modalHeading('Editeaza informatii client')
             ->form([
@@ -224,6 +229,7 @@ class ViewOrder extends ViewRecord implements HasTable
             ->icon('heroicon-o-pencil-square')
             ->hiddenLabel()
             ->button()
+            ->color('secondary')
             ->size(ActionSize::Small)
             ->modalHeading('Editeaza date facturare client')
             ->form([
@@ -274,6 +280,7 @@ class ViewOrder extends ViewRecord implements HasTable
             ->icon('heroicon-o-plus')
             ->label('Adauga produs')
             ->button()
+            ->color('secondary')
             ->size(ActionSize::Small)
             ->modalHeading('Adauga produs la comanda')
             ->modalSubmitActionLabel('Salveaza')
@@ -295,22 +302,6 @@ class ViewOrder extends ViewRecord implements HasTable
                             }
                         }
                     ]),
-                DateTimePicker::make('from_date')
-                    ->label('Data ridicare')->displayFormat('d.m.Y H:i')
-                    ->native(false)
-                    ->seconds(false)
-                    ->minutesStep(60)
-                    ->required()
-                    ->beforeOrEqual('to_date')
-                    ->default(Carbon::now()),
-                DateTimePicker::make('to_date')
-                    ->label('Data predare')
-                    ->native(false)
-                    ->seconds(false)
-                    ->minutesStep(60)
-                    ->required()
-                    ->afterOrEqual('from_date')
-                    ->default(Carbon::now()->addHours(2)),
                 TextInput::make('price')
                     ->label('Pret')
                     ->numeric()
@@ -353,6 +344,7 @@ class ViewOrder extends ViewRecord implements HasTable
             ->icon('heroicon-o-plus')
             ->label('Adauga discount')
             ->button()
+            ->color('secondary')
             ->size(ActionSize::Small)
             ->modalHeading('Adauga discount')
             ->modalSubmitActionLabel('Salveaza')
@@ -586,7 +578,11 @@ class ViewOrder extends ViewRecord implements HasTable
             ->where('to_date', '>', $fromDate)
             ->exists();
 
-        return !$hasBookingsInInterval;
+        $overlapsLockedLays = LockedDay::where('date', '=', $fromDate->startOfDay())
+            ->orWhere('date', '=', $toDate->endOfDay())
+            ->exists();
+
+        return !$hasBookingsInInterval && !$overlapsLockedLays;
     }
 
     private function getItemSelectOptions()

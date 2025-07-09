@@ -2,7 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ItemResource\Pages;
+use App\Filament\Resources\ItemResource\Pages\CreateItem;
+use App\Filament\Resources\ItemResource\Pages\EditItem;
+use App\Filament\Resources\ItemResource\Pages\ListItems;
 use App\Models\Attribute;
 use App\Models\Constants\ItemStatus;
 use App\Models\Item;
@@ -15,7 +17,8 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class ItemResource extends Resource
@@ -23,6 +26,8 @@ class ItemResource extends Resource
     protected static ?string $model = Item::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?int $navigationSort = 3;
 
     protected static ?string $modelLabel = 'Produs';
 
@@ -128,20 +133,13 @@ class ItemResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('sku'),
-                Tables\Columns\TextColumn::make('name'),
-            ])
-            ->filters([
-                //
+                TextColumn::make('sku'),
+                TextColumn::make('name'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+            ->paginated(false);
     }
 
     public static function getRelations(): array
@@ -152,14 +150,9 @@ class ItemResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListItems::route('/'),
-            'create' => Pages\CreateItem::route('/create'),
-            'edit' => Pages\EditItem::route('/{record}/edit'),
+            'index' => ListItems::route('/'),
+            'create' => CreateItem::route('/create'),
+            'edit' => EditItem::route('/{record}/edit'),
         ];
-    }
-
-    protected function afterCreate(): void
-    {
-        dd('afterSave called');
     }
 }

@@ -3,11 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\AttributeResource\Pages;
+use App\Filament\Resources\AttributeResource\Pages\ListAttributes;
 use App\Models\Attribute;
-use Filament\Forms;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class AttributeResource extends Resource
@@ -16,21 +19,36 @@ class AttributeResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?int $navigationSort = 4;
+
+    protected static ?string $modelLabel = 'Atribut';
+
+    protected static ?string $pluralModelLabel = 'Atribute';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                TextInput::make('name')
                     ->required()
                     ->maxLength(255)
                     ->name('Nume'),
-                Forms\Components\Repeater::make('values')
+                TextInput::make('reference')
+                    ->maxLength(255)
+                    ->name('Referinta'),
+                Repeater::make('values')
                     ->relationship('values')
+                    ->columnSpanFull()
+                    ->columns(2)
                     ->schema([
-                        Forms\Components\TextInput::make('value')
+                        TextInput::make('value')
                             ->required()
                             ->maxLength(255)
                             ->label('Valoare'),
+                        TextInput::make('reference')
+                            ->maxLength(255)
+                            ->name('Referinta'),
+
                     ])
                     ->label('Attribute Values')
                     ->defaultItems(1)
@@ -42,19 +60,12 @@ class AttributeResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-            ])
-            ->filters([
-                //
+                TextColumn::make('name'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+            ->paginated(false);
     }
 
     public static function getRelations(): array
@@ -67,7 +78,7 @@ class AttributeResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAttributes::route('/'),
+            'index' => ListAttributes::route('/'),
             'create' => Pages\CreateAttribute::route('/create'),
             'edit' => Pages\EditAttribute::route('/{record}/edit'),
         ];

@@ -19,8 +19,8 @@ class ItemBooking extends Model
         return $this->hasOne(Item::class, 'id', 'item_id');
     }
 
-    public function order(): HasOne
+    public function orderItem(): HasOne
     {
-        return $this->hasOne(Order::class, 'id', 'order_id');
+        return $this->hasOne(OrderItem::class, 'item_booking_id', 'id');
     }
 }
