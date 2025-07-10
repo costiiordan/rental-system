@@ -35,6 +35,8 @@ class ItemRepository
             });
         }
 
+        $items->orderBy('order', 'asc');
+
         return $items->get();
     }
 

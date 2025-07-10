@@ -135,11 +135,14 @@ class ItemResource extends Resource
             ->columns([
                 TextColumn::make('sku'),
                 TextColumn::make('name'),
+                TextColumn::make('order')
+                    ->label('Ordine'),
             ])
             ->actions([
                 EditAction::make(),
             ])
-            ->paginated(false);
+            ->paginated(false)
+            ->defaultSort('order', 'asc');
     }
 
     public static function getRelations(): array

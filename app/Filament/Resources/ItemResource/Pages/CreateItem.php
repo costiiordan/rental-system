@@ -27,4 +27,9 @@ class CreateItem extends CreateRecord
 
         $itemModel->attributeValues()->sync($selectedValueIds);
     }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }

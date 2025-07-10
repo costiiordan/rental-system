@@ -3,7 +3,11 @@
 @section('body')
     @include('layout.header')
 
-    @yield('content')
+    <div class="page-wrapper">
+        @yield('content')
+    </div>
+
+    @include('layout.footer')
 
     @vite(['resources/js/main.js'])
 @endsection

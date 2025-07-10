@@ -35,4 +35,9 @@ class EditItem extends EditRecord
 
         $itemModel->attributeValues()->sync($selectedValueIds);
     }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }

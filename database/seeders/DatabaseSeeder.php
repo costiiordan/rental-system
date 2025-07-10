@@ -19,9 +19,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory()->create([
-            'name' => 'Admin User',
+            'name' => 'Costi Iordan',
             'email' => 'costi.iordan@gmail.com',
             'password' => Hash::make('pass123')
+        ]);
+
+        User::factory()->create([
+            'name' => 'PlayBike Office',
+            'email' => 'office@playbike.ro',
+            'password' => Hash::make('PlayBike!@#')
         ]);
     }
 }

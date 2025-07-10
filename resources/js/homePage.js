@@ -8,6 +8,11 @@ export function initHomePage() {
     });
 
     initCartPreview();
+
+    const addToCartConfirmationDialog = document.querySelector('[data-role="add-to-cart-dialog"]');
+    addToCartConfirmationDialog.querySelector('[data-action="close-dialog"]').addEventListener('click', function() {
+        addToCartConfirmationDialog.close();
+    });
 }
 
 function handleAddToCartButtonClick(event) {

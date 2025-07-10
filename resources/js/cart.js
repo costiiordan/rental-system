@@ -1,4 +1,5 @@
 import { getCsrfToken } from './common.js';
+import moment from 'moment';
 
 export function initCartPreview() {
     const cartPreviewContainer = document.querySelector('[data-role="cart-preview"]');
@@ -36,7 +37,11 @@ export function addToCart(itemId, fromDate, toDate) {
     });
 
     fetch(request)
-        .then(resp => resp.json().then(data => updateCartPreview(data.cart)))
+        .then(resp => resp.json().then(data => {
+            updateCartPreview(data.cart);
+
+            document.querySelector('#add-to-cart-dialog').showModal();
+        }))
         .catch(error => console.log('Error:', error));
 }
 
@@ -78,12 +83,14 @@ function updateCartPreview(cart) {
 
     cart.items.forEach(item => {
         const itemTemplate = document.getElementById('cart-preview-item-template').innerHTML;
+        const fromDate = moment(item.fromDate).format('DD.MM HH:mm');
+        const toDate = moment(item.toDate).format('DD.MM HH:mm');
         listItems += itemTemplate
             .replaceAll('{id}', item.id)
             .replaceAll('{name}', item.item.name)
             .replaceAll('{imagePath}', item.item.image_path)
-            .replaceAll('{fromDate}', new Date(item.fromDate).toLocaleString('ro-Ro'))
-            .replaceAll('{toDate}', new Date(item.toDate).toLocaleString('ro-Ro'))
+            .replaceAll('{fromDate}', fromDate)
+            .replaceAll('{toDate}', toDate)
             .replaceAll('{price}', item.price);
     });
 
@@ -99,7 +106,7 @@ function updateCartPreview(cart) {
     counter.innerHTML = cart.items.length;
     listContainer.innerHTML = listItems;
     discountsContainer.innerHTML = discounts;
-    total.innerHTML = `${cart.total} RON`;
+    total.innerHTML = `${cart.total}`;
 
     cartPreviewContainer.style.display = 'block';
 }

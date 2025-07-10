@@ -7,6 +7,7 @@
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/main.css'])
     @endif
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=search,stat_1" rel="stylesheet" />
     <meta name="description" content="{{trans('website.description')}}">
 
     <meta property="og:title" content="{{trans('website.title')}}">

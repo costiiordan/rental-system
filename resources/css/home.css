@@ -1,12 +1,319 @@
-.bike-item {
+.interval-select-text {
+    @media (min-width: 600px) {
+        font-size: 1.1rem;
+    }
+
+    @media (min-width: 1250px) {
+        margin-top: 0;
+    }
+}
+
+.bike-list {
+    padding: 0;
+    margin: 1.5rem 0 0 0;
+    list-style: none;
+}
+
+.bike-list-item {
     display: flex;
     flex-wrap: nowrap;
-    flex-direction: row;
+    flex-direction: column;
+    gap: .5rem;
+
+    @media (min-width: 460px) {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    &:not(:first-child) {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: .0625rem solid var(--divider-color);
+    }
 }
 
 .bike-item-image {
-    max-width: 40%;
+    width: 100%;
     height: auto;
     object-fit: contain;
     aspect-ratio: 4 / 3;
+
+    @media (min-width: 460px) {
+        width: clamp(175px, 40%, 400px);
+    }
 }
+
+.bike-item-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    container-type: inline-size;
+
+    h2 {
+        margin: 0;
+        font-size: 1.2em;
+        line-height: 1.15rem;
+        font-weight: normal;
+    }
+}
+
+.bike-attributes {
+    margin: 1rem 0 0 0;
+    padding: 0;
+    list-style: none;
+
+    @container (width > 500px) {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+            flex-grow: 1;
+            flex-basis: calc(50% - .5rem);
+            padding-right: 1rem;
+        }
+    }
+
+    li {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        gap: .5rem;
+        padding: .3rem 0;
+        line-height: 1.1rem;
+
+        &:not(:first-child) {
+            border-top: 1px solid var(--color-gray-300);
+        }
+
+        &:nth-child(2) {
+            @container (width > 500px) {
+                border-top: none;
+            }
+        }
+    }
+}
+
+.bike-attribute-label {
+    width: 6rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+    color: var(--color-gray-500);
+    font-size: .9rem;
+}
+
+.bike-description {
+    margin: .5rem 0 0 0;
+    padding: .3rem 0;
+    color: var(--color-gray-700);
+    font-size: .9em;
+}
+
+.bike-prices {
+    margin: .7rem 0 0 0;
+    padding: .4rem 1rem;
+    list-style: none;
+    background-color: var(--color-gray-200);
+    border-radius: var(--border-radius-sm);
+    width: 10rem;
+
+    li {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.bike-price-duration {
+    flex-grow: 0;
+    width: 3rem;
+    color: var(--color-gray-500);
+}
+
+.bike-price-amount {
+    font-size: 1.2rem;
+}
+
+.bike-price-currency {
+    font-size: .8rem;
+}
+
+.select-interval-text,
+.bike-select-interval-notice {
+    margin: .5rem 0 0 0;
+    padding: .4rem 1rem;
+    background-color: var(--color-gray-200);
+    line-height: 1.1rem;
+    border-radius: var(--border-radius-sm);
+}
+.bike-select-interval-notice {
+    font-size: .9em;
+}
+
+.interval-form {
+    padding: .6rem;
+    background-color: var(--color-blue-300);
+    border-radius: var(--border-radius-md);
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    flex-wrap: wrap;
+
+    @media (min-width: 420px) {
+        flex-wrap: nowrap;
+    }
+}
+
+.interval-form-date {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    flex-grow: 1;
+
+    input, select {
+        border-radius: var(--border-radius-sm);
+        border: 1px solid var(--color-blue-500);
+        background-color: #FFF;
+        padding: .25rem .5rem;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
+        @media (min-width: 600px) {
+            height: 2.6rem;
+        }
+    }
+
+    @media (min-width: 600px) {
+        input {
+            width: clamp(10rem, 50%, 30rem);
+        }
+
+        select {
+            width: clamp(5rem, 30%, 15rem);
+        }
+    }
+}
+
+.interval-form-date-fields {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+
+    @media (min-width: 600px) {
+        flex-direction: row;
+    }
+}
+
+.interval-form-date-label {
+    color: #FFF;
+}
+
+.interval-form-submit {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+
+    @media (min-width: 420px) {
+        padding-top: 1.8rem;
+        flex-grow: 0;
+        max-width: 5rem;
+    }
+
+    button {
+        background-color: var(--color-blue-700);
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        border: none;
+        border-radius: var(--border-radius-sm);
+        color: #FFF;
+        flex-grow: 1;
+
+        &:hover {
+            background-color: var(--color-blue-800);
+        }
+
+        span {
+            font-size: 2rem;
+        }
+    }
+}
+
+.add-to-cart-container {
+    margin-top: 1rem;
+
+    button {
+        background-color: var(--color-blue-700);
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        border: none;
+        border-radius: var(--border-radius-sm);
+        color: #FFF;
+        padding: .4rem 1rem;
+        font-size: 1.1rem;
+        display: block;
+        width: 100%;
+
+        &:hover {
+            background-color: var(--color-blue-800);
+        }
+
+        @media (min-width: 460px) {
+            width: 100%;
+            max-width: 20rem;
+        }
+    }
+}
+
+.add-to-cart-dialog {
+    border-radius: var(--border-radius-lg);
+    border: 0.0625rem solid var(--color-gray-300);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 1rem;
+    width: clamp(300px, 90%, 600px);
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    p {
+        padding: 1rem 0;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+
+    .add-to-cart-dialog-actions {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+
+        @media (min-width: 480px) {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    .add-to-cart-dialog-checkout-btn {
+        border-radius: var(--border-radius-sm);
+        background-color: var(--color-orange-400);
+        color: var(--color-gray-900);
+        padding: .4rem 1rem;
+        text-decoration: none;
+        text-align: center;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        font-size: 1.1rem;
+    }
+
+    .add-to-cart-dialog-continue-btn {
+        border: none;
+        border-radius: var(--border-radius-sm);
+        background-color: var(--color-gray-300);
+        color: var(--color-gray-900);
+        padding: .6rem 1rem;
+        text-decoration: none;
+        text-align: center;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    }
+}
+
+.error-message {
+    border-radius: var(--border-radius-md);
+}
+
