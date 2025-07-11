@@ -1,10 +1,25 @@
 'use strict';
 
-import { initHomePage } from './homePage.js';
-import 'zoom-vanilla.js/dist/zoom-vanilla.min.js';
-
 (function() {
-     initHomePage();
+    const pageContainer = document.querySelector('[data-role="page-container"]');
+
+    if (!pageContainer) {
+        return;
+    }
+
+    const route = pageContainer.dataset.route;
+
+    if (route === 'home') {
+        import('./homePage.js').then(module => {
+            module.initHomePage();
+        });
+    }
+
+    if (route === 'checkout.index') {
+        import('./checkout.js').then(module => {
+            module.initCheckoutPage();
+        });
+    }
 })();
 
 

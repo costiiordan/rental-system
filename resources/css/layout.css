@@ -1,12 +1,26 @@
+html {
+    height: 100%;
+}
+
 body {
     font-family: Helvetica, Arial, sans-serif;
     padding: 0;
     margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 
     @media (min-width: 1250px) {
         background-image: url('/resources/images/background.jpg');
         background-size: 3000px;
     }
+}
+
+input,
+select,
+textarea
+{
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 header {
@@ -32,6 +46,10 @@ header {
     }
 }
 
+main {
+    flex-grow: 1;
+}
+
 footer {
     background-color: var(--color-gray-800);
     color: var(--color-gray-50);
@@ -45,6 +63,7 @@ footer {
 
     @media (min-width: 1250px) {
         margin-top: 2rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
 }
 

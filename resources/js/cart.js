@@ -3,7 +3,6 @@ import moment from 'moment';
 
 export function initCartPreview() {
     const cartPreviewContainer = document.querySelector('[data-role="cart-preview"]');
-
     const toggleCartPreviewButton = cartPreviewContainer.querySelector('[data-action="toggle-cart-preview"]');
     const listContainer = cartPreviewContainer.querySelector('[data-role="cart-items-list-container"]');
 

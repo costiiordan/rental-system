@@ -3,9 +3,11 @@
 @section('body')
     @include('layout.header')
 
-    <div class="page-wrapper">
-        @yield('content')
-    </div>
+    <main>
+        <div class="page-wrapper" data-role="page-container" data-route="{{request()->route()->getName()}}">
+            @yield('content')
+        </div>
+    </main>
 
     @include('layout.footer')
 

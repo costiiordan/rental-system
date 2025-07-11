@@ -62,11 +62,11 @@
         </div>
     </form>
 
+    <x-cart-preview/>
+
     @if(!$interval)
         <p class="select-interval-text">{{trans('website.all_bikes_text')}}</p>
     @endif
-
-    <x-cart-preview/>
 
     @if (session('error'))
         <div class="error-message">
