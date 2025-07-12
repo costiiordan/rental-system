@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RemoveSelectedItemRequest;
+use App\Http\Requests\RemoveCartItemRequest;
 use App\Http\Requests\AddToCartRequest;
 use App\Repository\CartRepository;
 use Illuminate\Http\JsonResponse;
@@ -20,7 +20,7 @@ class CartController extends Controller
         ]);
     }
 
-    public function removeItem(RemoveSelectedItemRequest $request, CartRepository $cartRepository): JsonResponse
+    public function removeItem(RemoveCartItemRequest $request, CartRepository $cartRepository): JsonResponse
     {
         $cartRepository->removeItem($request->post('id'));
 

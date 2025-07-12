@@ -1,5 +1,5 @@
-import { getCsrfToken } from './common.js';
 import moment from 'moment';
+import { getCsrfToken } from './common.js';
 
 export function initCartPreview() {
     const cartPreviewContainer = document.querySelector('[data-role="cart-preview"]');
@@ -8,7 +8,7 @@ export function initCartPreview() {
 
     toggleCartPreviewButton.addEventListener('click', toggleCartPreview);
 
-    listContainer.addEventListener('click', function(event) {
+    listContainer.addEventListener('click', function (event) {
         if (event.target.matches('[data-action="remove-cart-item"]')) {
             const id = event.target.getAttribute('data-id');
             removeFromCart(id);
@@ -25,23 +25,25 @@ export function addToCart(itemId, fromDate, toDate) {
         method: 'POST',
         headers: new Headers({
             'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'X-CSRF-Token': getCsrfToken()
+            Accept: 'application/json',
+            'X-CSRF-Token': getCsrfToken(),
         }),
         body: JSON.stringify({
             itemId,
             fromDate,
-            toDate
-        })
+            toDate,
+        }),
     });
 
     fetch(request)
-        .then(resp => resp.json().then(data => {
-            updateCartPreview(data.cart);
+        .then((resp) =>
+            resp.json().then((data) => {
+                updateCartPreview(data.cart);
 
-            document.querySelector('[data-role="add-to-cart-dialog"]').showModal();
-        }))
-        .catch(error => console.log('Error:', error));
+                document.querySelector('[data-role="add-to-cart-dialog"]').showModal();
+            }),
+        )
+        .catch((error) => console.log('Error:', error));
 }
 
 function removeFromCart(id) {
@@ -49,15 +51,15 @@ function removeFromCart(id) {
         method: 'POST',
         headers: new Headers({
             'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'X-CSRF-Token': getCsrfToken()
+            Accept: 'application/json',
+            'X-CSRF-Token': getCsrfToken(),
         }),
-        body: JSON.stringify({ id })
+        body: JSON.stringify({ id }),
     });
 
     fetch(request)
-        .then(resp => resp.json().then(data => updateCartPreview(data.cart)))
-        .catch(error => console.log('Error:', error));
+        .then((resp) => resp.json().then((data) => updateCartPreview(data.cart)))
+        .catch((error) => console.log('Error:', error));
 }
 
 function updateCartPreview(cart) {
@@ -80,7 +82,7 @@ function updateCartPreview(cart) {
 
     let listItems = '';
 
-    cart.items.forEach(item => {
+    cart.items.forEach((item) => {
         const itemTemplate = document.getElementById('cart-preview-item-template').innerHTML;
         const fromDate = moment(item.fromDate).format('DD.MM HH:mm');
         const toDate = moment(item.toDate).format('DD.MM HH:mm');
@@ -95,11 +97,9 @@ function updateCartPreview(cart) {
 
     let discounts = '';
 
-    cart.discounts.forEach(discount => {
+    cart.discounts.forEach((discount) => {
         const discountTemplate = document.getElementById('cart-preview-discount-template').innerHTML;
-        discounts += discountTemplate
-            .replaceAll('{name}', discount.name)
-            .replaceAll('{value}', discount.value);
+        discounts += discountTemplate.replaceAll('{name}', discount.name).replaceAll('{value}', discount.value);
     });
 
     counter.innerHTML = cart.items.length === 1 ? counter.dataset.singularText : counter.dataset.pluralText.replace('{count}', cart.items.length);

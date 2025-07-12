@@ -1,33 +1,33 @@
 :root {
-    --primary-color: #FFA726; /*orange 400*/
+    --primary-color: #ffa726; /*orange 400*/
 
-    --divider-color: #E0E0E0; /*gray 300*/
+    --divider-color: #e0e0e0; /*gray 300*/
 
     --text-color: #212121; /*gray 900*/
-    --text-color-inverse: #FAFAFA; /*gray 50*/
-    --text-color-gray-light: #9E9E9E; /*gray 500*/
+    --text-color-inverse: #fafafa; /*gray 50*/
+    --text-color-gray-light: #9e9e9e; /*gray 500*/
     --text-color-gray-dark: #616161; /*gray 700*/
 
     --background-color-footer: #424242; /*gray 900*/
 
-    --button-primary-background-color: #FFA726; /*orange 400*/
-    --button-primary-hover-background-color: #FF9800; /*orange 500*/
+    --button-primary-background-color: #ffa726; /*orange 400*/
+    --button-primary-hover-background-color: #ff9800; /*orange 500*/
 
-    --button-accent-background-color: #1976D2; /*blue 700*/
-    --button-accent-hover-background-color: #1565C0; /*blue 800*/
+    --button-accent-background-color: #1976d2; /*blue 700*/
+    --button-accent-hover-background-color: #1565c0; /*blue 800*/
 
-    --button-secondary-background-color: #EEEEEE; /*gray 200*/
-    --button-secondary-hover-background-color: #E0E0E0; /*gray 300*/
+    --button-secondary-background-color: #eeeeee; /*gray 200*/
+    --button-secondary-hover-background-color: #e0e0e0; /*gray 300*/
 
-    --input-border-color: #E0E0E0; /*gray 300*/
+    --input-border-color: #e0e0e0; /*gray 300*/
 
-    --background-color-section: #EEEEEE; /*gray 200*/
-    --background-color-section-darker: #E0E0E0; /*gray 300*/
+    --background-color-section: #eeeeee; /*gray 200*/
+    --background-color-section-darker: #e0e0e0; /*gray 300*/
 
-    --error-color: #E53935; /*red 600*/
+    --error-color: #e53935; /*red 600*/
 
-    --border-radius-sm: .4rem;
-    --border-radius-md: .7rem;
+    --border-radius-sm: 0.4rem;
+    --border-radius-md: 0.7rem;
     --border-radius-lg: 1rem;
 
     --button-box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;

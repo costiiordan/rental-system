@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RemoveSelectedItemRequest extends FormRequest
+class RemoveCartItemRequest extends FormRequest
 {
     public function rules(): array
     {

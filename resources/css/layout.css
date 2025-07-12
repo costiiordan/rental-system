@@ -18,12 +18,12 @@ body {
 
 input,
 select,
-textarea
-{
+textarea {
     font-family: Helvetica, Arial, sans-serif;
 }
 
-a, button {
+a,
+button {
     transition: background-color 0.3s ease-in-out;
 }
 
@@ -33,8 +33,8 @@ header {
     justify-content: center;
     background-color: var(--primary-color);
     text-align: center;
-    padding-top: .6rem;
-    padding-bottom: .6rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
 
     @media (min-width: 1250px) {
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -57,7 +57,7 @@ main {
 footer {
     background-color: var(--background-color-footer);
     color: var(--text-color-inverse);
-    padding: 1.5rem .5rem;
+    padding: 1.5rem 0.5rem;
 
     p {
         margin: 0 auto;
@@ -72,7 +72,7 @@ footer {
 }
 
 .page-wrapper {
-    padding: 0 .5rem 1rem .5rem;
+    padding: 0 0.5rem 1rem 0.5rem;
     width: clamp(320px, 100%, 1200px);
     margin: 0 auto;
 
@@ -91,18 +91,18 @@ footer {
 }
 
 .language-switcher {
-    font-size: .9rem;
+    font-size: 0.9rem;
     width: clamp(320px, 100%, 1200px);
-    margin: .5rem auto 0 auto;
+    margin: 0.5rem auto 0 auto;
     position: relative;
 
     ul {
         list-style: none;
-        padding: 0 .5rem;
+        padding: 0 0.5rem;
         margin: 0;
         display: flex;
         justify-content: flex-end;
-        gap: .5rem;
+        gap: 0.5rem;
 
         @media (min-width: 450px) {
             position: absolute;
@@ -117,18 +117,16 @@ footer {
     a {
         text-decoration: none;
         color: var(--text-color);
-        padding: .1rem .6rem;
+        padding: 0.1rem 0.6rem;
         border-radius: var(--border-radius-sm);
         background-color: var(--button-secondary-background-color);
         box-shadow: var(--button-box-shadow);
         display: inline-flex;
         align-items: center;
-        gap: .3rem;
+        gap: 0.3rem;
 
         &:hover {
             background-color: var(--button-secondary-hover-background-color);
         }
     }
 }
-
-
