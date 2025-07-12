@@ -63,7 +63,6 @@ class ViewOrder extends ViewRecord implements HasTable
                     ->hiddenLabel()
                     ->icon('heroicon-o-pencil-square')
                     ->button()
-                    ->color('secondary')
                     ->size(ActionSize::Small)
                     ->modalHeading(fn (OrderItem $record): string => $record->item_id ? 'Editeaza rezervarea' : 'Editeaza discount')
                     ->modalSubmitActionLabel('Salveaza')
@@ -75,7 +74,7 @@ class ViewOrder extends ViewRecord implements HasTable
                     ->icon('heroicon-o-trash')
                     ->button()
                     ->size(ActionSize::Small)
-                    ->color('secondary')
+                    ->color('danger')
                     ->requiresConfirmation()
                     ->action(function (OrderItem $record) {
                         if ($record->item_booking_id) {
@@ -104,7 +103,6 @@ class ViewOrder extends ViewRecord implements HasTable
             ->icon('heroicon-o-pencil-square')
             ->hiddenLabel()
             ->button()
-            ->color('secondary')
             ->size(ActionSize::Small)
             ->modalHeading('Editeaza comanda')
             ->modalSubmitActionLabel('Salveaza')
@@ -169,7 +167,6 @@ class ViewOrder extends ViewRecord implements HasTable
             ->icon('heroicon-o-pencil-square')
             ->hiddenLabel()
             ->button()
-            ->color('secondary')
             ->size(ActionSize::Small)
             ->modalHeading('Nota interna')
             ->form([
@@ -192,7 +189,6 @@ class ViewOrder extends ViewRecord implements HasTable
             ->icon('heroicon-o-pencil-square')
             ->hiddenLabel()
             ->button()
-            ->color('secondary')
             ->size(ActionSize::Small)
             ->modalHeading('Editeaza informatii client')
             ->form([
@@ -229,7 +225,6 @@ class ViewOrder extends ViewRecord implements HasTable
             ->icon('heroicon-o-pencil-square')
             ->hiddenLabel()
             ->button()
-            ->color('secondary')
             ->size(ActionSize::Small)
             ->modalHeading('Editeaza date facturare client')
             ->form([
@@ -280,7 +275,6 @@ class ViewOrder extends ViewRecord implements HasTable
             ->icon('heroicon-o-plus')
             ->label('Adauga produs')
             ->button()
-            ->color('secondary')
             ->size(ActionSize::Small)
             ->modalHeading('Adauga produs la comanda')
             ->modalSubmitActionLabel('Salveaza')
@@ -344,7 +338,6 @@ class ViewOrder extends ViewRecord implements HasTable
             ->icon('heroicon-o-plus')
             ->label('Adauga discount')
             ->button()
-            ->color('secondary')
             ->size(ActionSize::Small)
             ->modalHeading('Adauga discount')
             ->modalSubmitActionLabel('Salveaza')
@@ -423,14 +416,6 @@ class ViewOrder extends ViewRecord implements HasTable
         if ($item->status !== ItemStatus::ACTIVE) {
             Notification::make()
                 ->title('Produsul nu este activ')
-                ->danger()
-                ->send();
-            return;
-        }
-
-        if (!$item->isAvailableInInterval($fromDate, $toDate)) {
-            Notification::make()
-                ->title('Produsul nu este disponibil in intervalul selectat')
                 ->danger()
                 ->send();
             return;
