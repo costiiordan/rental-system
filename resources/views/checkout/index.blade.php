@@ -13,10 +13,6 @@
         </button>
     </div>
 
-    <div class="checkout-page-title">
-        <h2>@lang('Finalizează comanda')</h2>
-    </div>
-
     <div class="checkout-container">
         <div class="checkout-preview">
             @include('checkout.cart')

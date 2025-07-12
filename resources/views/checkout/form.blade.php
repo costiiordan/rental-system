@@ -1,4 +1,5 @@
 <form action="{{ LaravelLocalization::localizeUrl(route('checkout.save-order')) }}" method="POST">
+    <h2 class="checkout-section-title">@lang('Finalizează comanda')</h2>
     <h3>@lang('Date client')</h3>
     <div class="form-control">
         <label for="name_input">@lang('Nume')*</label>

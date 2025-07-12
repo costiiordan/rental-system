@@ -86,7 +86,7 @@
         line-height: 1.1rem;
 
         &:not(:first-child) {
-            border-top: 1px solid var(--color-gray-300);
+            border-top: 1px solid var(--divider-color);
         }
 
         &:nth-child(2) {
@@ -101,14 +101,14 @@
     width: 6rem;
     flex-grow: 0;
     flex-shrink: 0;
-    color: var(--color-gray-500);
+    color: var(--text-color-gray-light);
     font-size: .9rem;
 }
 
 .bike-description {
     margin: .5rem 0 0 0;
     padding: .3rem 0;
-    color: var(--color-gray-700);
+    color: var(--text-color-gray-dark);
     font-size: .9em;
 }
 
@@ -116,7 +116,7 @@
     margin: .7rem 0 0 0;
     padding: .4rem 1rem;
     list-style: none;
-    background-color: var(--color-gray-200);
+    background-color: var(--background-color-section);
     border-radius: var(--border-radius-sm);
     width: 10rem;
 
@@ -132,7 +132,7 @@
 .bike-price-duration {
     flex-grow: 0;
     width: 3.5rem;
-    color: var(--color-gray-500);
+    color: var(--text-color-gray-light);
 }
 
 .bike-price-amount {
@@ -141,12 +141,13 @@
 
 .bike-price-currency {
     font-size: .8rem;
+    color: var(--text-color-gray-light);
 }
 
 .select-interval-text,
 .bike-select-interval-notice {
     padding: .7rem 1rem;
-    background-color: var(--color-gray-200);
+    background-color: var(--background-color-section);
     line-height: 1.1rem;
     border-radius: var(--border-radius-sm);
 }
@@ -160,7 +161,7 @@
 
 .interval-form {
     padding: .6rem;
-    background-color: var(--color-blue-300);
+    background-color: #64B5F6; /* blue 300 */
     border-radius: var(--border-radius-md);
     display: flex;
     flex-direction: row;
@@ -229,15 +230,15 @@
     }
 
     button {
-        background-color: var(--color-blue-700);
-        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        background-color: var(--button-accent-background-color);
+        box-shadow: var(--button-box-shadow);
         border: none;
         border-radius: var(--border-radius-sm);
-        color: #FFF;
+        color: var(--text-color-inverse);
         flex-grow: 1;
 
         &:hover {
-            background-color: var(--color-blue-800);
+            background-color: var(--button-accent-hover-background-color);
         }
 
         span {
@@ -250,18 +251,18 @@
     margin-top: 1rem;
 
     button {
-        background-color: var(--color-blue-700);
-        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        background-color: var(--button-accent-background-color);
+        box-shadow: var(--button-box-shadow);
         border: none;
         border-radius: var(--border-radius-sm);
-        color: #FFF;
+        color: var(--text-color);
         padding: .4rem 1rem;
         font-size: 1.1rem;
         display: block;
         width: 100%;
 
         &:hover {
-            background-color: var(--color-blue-800);
+            background-color: var(--button-accent-hover-background-color);
         }
 
         @media (min-width: 460px) {
@@ -273,7 +274,7 @@
 
 .add-to-cart-dialog {
     border-radius: var(--border-radius-lg);
-    border: 0.0625rem solid var(--color-gray-300);
+    border: 0.0625rem solid var(--divider-color);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 1rem;
     width: clamp(300px, 90%, 600px);
@@ -301,31 +302,39 @@
 
     .add-to-cart-dialog-checkout-btn {
         border-radius: var(--border-radius-sm);
-        background-color: var(--color-orange-400);
-        color: var(--color-gray-900);
+        background-color: var(--button-primary-background-color);
+        color: var(--text-color);
         padding: .4rem 1rem;
         text-decoration: none;
         text-align: center;
-        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        box-shadow: var(--button-box-shadow);
         font-size: 1.1rem;
+
+        &:hover {
+            background-color: var(--button-primary-hover-background-color);
+        }
     }
 
     .add-to-cart-dialog-continue-btn {
         border: none;
         border-radius: var(--border-radius-sm);
-        background-color: var(--color-gray-300);
-        color: var(--color-gray-900);
+        background-color: var(--button-secondary-background-color);
+        color: var(--text-color);
         padding: .6rem 1rem;
         text-decoration: none;
         text-align: center;
-        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        box-shadow: var(--button-box-shadow);
+
+        &:hover {
+            background-color: var(--button-secondary-hover-background-color);
+        }
     }
 }
 
 .error-message {
     border-radius: var(--border-radius-md);
     background-color: var(--color-red-600);
-    color: #fff;
+    color: var(--text-color);
     font-size: 1.1rem;
     padding: .5rem 1rem;
     margin-top: 1rem;

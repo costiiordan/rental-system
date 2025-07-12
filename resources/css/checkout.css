@@ -14,8 +14,8 @@
     border-radius: var(--border-radius-sm);
     border: none;
     box-shadow: var(--button-box-shadow);
-    background-color: var(--color-gray-300);
-    color: var(--color-gray-900);
+    background-color: var(--button-secondary-background-color);
+    color: var(--text-color);
     text-decoration: none;
     padding: .2rem .8rem;
     display: inline-flex;
@@ -23,7 +23,7 @@
     font-size: .9rem;
 
     &:hover {
-        background-color: var(--color-gray-400);
+        background-color: var(--button-secondary-hover-background-color);
     }
 }
 
@@ -44,15 +44,11 @@
     }
 }
 
-.checkout-page-title {
-    margin-top: 1rem;
-
-    h2 {
-        font-size: 1.5rem;
-        font-weight: normal;
-        margin: 0;
-        padding: 0;
-    }
+.checkout-section-title {
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin: 1rem 0 1rem 0;
+    padding: 0;
 }
 
 .checkout-container {
@@ -127,10 +123,11 @@
     input, select, textarea {
         padding: .4rem .6rem;
         border-radius: var(--border-radius-sm);
-        border: 1px solid var(--color-gray-300);
+        border: 1px solid var(--input-border-color);
         font-size: 1rem;
         width: 100%;
         box-sizing: border-box;
+        box-shadow: var(--input-box-shadow);
 
         &:focus {
             border-color: var(--color-blue-500);
@@ -148,15 +145,15 @@
 .form-control-note-example {
     margin-top: .2rem;
     font-size: .9rem;
-    color: var(--color-gray-700);
+    color: var(--text-color-gray-dark);
 }
 
 .checkout-submit-button {
     border-radius: var(--border-radius-sm);
     border: none;
     box-shadow: var(--button-box-shadow);
-    background-color: var(--color-orange-400);
-    color: var(--color-gray-900);
+    background-color: var(--button-primary-background-color);
+    color: var(--text-color);
     text-decoration: none;
     padding: .6rem 1.3rem;
     display: inline-flex;
@@ -164,6 +161,6 @@
     font-size: 1.1rem;
 
     &:hover {
-        background-color: var(--color-orange-300);
+        background-color: var(--button-primary-hover-background-color);
     }
 }

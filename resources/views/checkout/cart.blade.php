@@ -1,4 +1,5 @@
 <div class="checkout-cart-container" data-role="checkout-cart-container">
+    <h2 class="checkout-section-title">@lang('Conținut coș')</h2>
     <ul class="cart-preview-item-list">
         @foreach($cart->items as $cartItem)
             <li class="cart-preview-item" data-id="{id}">
