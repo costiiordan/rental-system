@@ -18,6 +18,7 @@ class Order extends Model
         'billing_country',
         'billing_vat_number',
         'payment_method',
+        'customer_note',
         'status',
         'total',
         'hash',
