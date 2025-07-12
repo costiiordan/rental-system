@@ -13,8 +13,8 @@ class DurationUnit extends Component
     public function render(): string
     {
         return match ($this->durationUnit) {
-            PriceDurationType::DAY => $this->duration > 1 ? 'zile' : 'zi',
-            PriceDurationType::HOUR => $this->duration > 1 ? 'ore' : 'oră',
+            PriceDurationType::DAY => $this->duration > 1 ? __('zile') : __('zi'),
+            PriceDurationType::HOUR => $this->duration > 1 ? __('ore') : __('oră'),
         };
     }
 }

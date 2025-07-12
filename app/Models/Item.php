@@ -6,9 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use Spatie\Translatable\HasTranslations;
 
 class Item extends Model
 {
+    use HasTranslations;
+
+    public array $translatable = ['name', 'description'];
+
     protected $fillable = ['name', 'category_id', 'description', 'sku', 'status', 'image_path'];
 
     public function attributeValues(): BelongsToMany

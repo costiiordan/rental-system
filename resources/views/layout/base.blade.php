@@ -3,16 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{trans('website.title')}}</title>
+    <title>@lang('Închiriază biciclete în Poiana Brașov')</title>
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/main.css'])
     @endif
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=chevron_backward,search,stat_1" rel="stylesheet" />
-    <meta name="description" content="{{trans('website.description')}}">
+    <meta name="description" content="@lang('Închiriază biciclete în Poiana Brașov la cele mai bune prețuri. Descoperă frumusețea naturii pe două roți!')">
 
-    <meta property="og:title" content="{{trans('website.title')}}">
+    <meta property="og:title" content="@lang('Închiriază biciclete în Poiana Brașov')">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{config('app.url')}}">
+    <meta property="og:url" content="{{LaravelLocalization::localizeUrl(config('app.url'))}}">
     <meta property="og:image" content="">
     <meta property="og:image:alt" content="">
 

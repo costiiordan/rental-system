@@ -39,7 +39,7 @@ export function addToCart(itemId, fromDate, toDate) {
         .then(resp => resp.json().then(data => {
             updateCartPreview(data.cart);
 
-            document.querySelector('#add-to-cart-dialog').showModal();
+            document.querySelector('[data-role="add-to-cart-dialog"]').showModal();
         }))
         .catch(error => console.log('Error:', error));
 }
@@ -102,7 +102,7 @@ function updateCartPreview(cart) {
             .replaceAll('{value}', discount.value);
     });
 
-    counter.innerHTML = cart.items.length;
+    counter.innerHTML = cart.items.length === 1 ? counter.dataset.singularText : counter.dataset.pluralText.replace('{count}', cart.items.length);
     listContainer.innerHTML = listItems;
     discountsContainer.innerHTML = discounts;
     total.innerHTML = `${cart.total}`;

@@ -2,7 +2,8 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AttributeResource\Pages;
+use App\Filament\Resources\AttributeResource\Pages\CreateAttribute;
+use App\Filament\Resources\AttributeResource\Pages\EditAttribute;
 use App\Filament\Resources\AttributeResource\Pages\ListAttributes;
 use App\Models\Attribute;
 use Filament\Forms\Components\Repeater;
@@ -28,29 +29,38 @@ class AttributeResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
+            ->columns(3)
             ->schema([
-                TextInput::make('name')
+                TextInput::make('name.ro')
+                    ->label('Nume (RO)')
                     ->required()
-                    ->maxLength(255)
-                    ->name('Nume'),
+                    ->maxLength(255),
+                TextInput::make('name.en')
+                    ->label('Nume (EN)')
+                    ->required()
+                    ->maxLength(255),
                 TextInput::make('reference')
                     ->maxLength(255)
                     ->name('Referinta'),
                 Repeater::make('values')
                     ->relationship('values')
                     ->columnSpanFull()
-                    ->columns(2)
+                    ->columns(3)
                     ->schema([
-                        TextInput::make('value')
+                        TextInput::make('value.ro')
                             ->required()
                             ->maxLength(255)
-                            ->label('Valoare'),
+                            ->label('Valoare (RO)'),
+                        TextInput::make('value.en')
+                            ->required()
+                            ->maxLength(255)
+                            ->label('Valoare (EN)'),
                         TextInput::make('reference')
                             ->maxLength(255)
                             ->name('Referinta'),
 
                     ])
-                    ->label('Attribute Values')
+                    ->label('Valori atribut')
                     ->defaultItems(1)
                     ->addActionLabel('Add Value'),
             ]);
@@ -68,19 +78,12 @@ class AttributeResource extends Resource
             ->paginated(false);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
             'index' => ListAttributes::route('/'),
-            'create' => Pages\CreateAttribute::route('/create'),
-            'edit' => Pages\EditAttribute::route('/{record}/edit'),
+            'create' => CreateAttribute::route('/create'),
+            'edit' => EditAttribute::route('/{record}/edit'),
         ];
     }
 }

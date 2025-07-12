@@ -37,19 +37,28 @@ class ItemResource extends Resource
     {
         $form
             ->schema([
-                TextInput::make('name')
+                TextInput::make('name.ro')
+                    ->label('Nume (RO)')
                     ->required()
-                    ->maxLength(255)
-                    ->name('Nume'),
+                    ->maxLength(255),
+                TextInput::make('name.en')
+                    ->label('Nume (EN)')
+                    ->required()
+                    ->maxLength(255),
                 TextInput::make('sku')
                     ->required()
                     ->unique(ignoreRecord: true)
                     ->maxLength(255),
-                Textarea::make('description')
-                    ->label('Descriere')
+                Textarea::make('description.ro')
+                    ->label('Descriere (RO)')
                     ->required()
                     ->autosize()
-                    ->columnSpan(2),
+                    ->columnSpanFull(),
+                Textarea::make('description.en')
+                    ->label('Descriere (EN)')
+                    ->required()
+                    ->autosize()
+                    ->columnSpanFull(),
                 Section::make('Atribute')
                     ->columns(3)
                     ->schema(function () use ($form) {

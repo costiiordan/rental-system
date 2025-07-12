@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('attributes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->json('name');
             $table->string('reference')->unique()->nullable();
         });
 
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreignId('attribute_id')
                 ->constrained('attributes')
                 ->cascadeOnDelete();
-            $table->string('value');
+            $table->json('value');
             $table->string('reference')->nullable();
             $table->unique(['attribute_id', 'reference']);
         });

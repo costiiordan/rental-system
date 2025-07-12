@@ -52,9 +52,15 @@ class Item extends Seeder
 
         return [
             [
-                'name' => 'Mondraker Prime 29 L',
+                'name' => [
+                    'ro' => 'Mondraker Prime 29 L',
+                    'en' => 'Mondraker Prime 29 L',
+                ],
                 'sku' => 'mondraker-prime-29-l',
-                'description' => 'The Mondraker Prime 29 is a high-performance mountain bike designed for serious riders. It features a lightweight aluminum frame, 29-inch wheels for improved stability and speed, and a full suspension system for maximum comfort on rough terrain.',
+                'description' => [
+                    'ro' => 'The Mondraker Prime 29 is a high-performance mountain bike designed for serious riders. It features a lightweight aluminum frame, 29-inch wheels for improved stability and speed, and a full suspension system for maximum comfort on rough terrain.',
+                    'en' => 'The Mondraker Prime 29 is a high-performance mountain bike designed for serious riders. It features a lightweight aluminum frame, 29-inch wheels for improved stability and speed, and a full suspension system for maximum comfort on rough terrain.',
+                ],
                 'status' => ItemStatus::ACTIVE,
                 'image_path' => 'items/01JZCRTX3G1EWTDRQE7XJ7G5V5.jpg',
                 'price' => [
@@ -74,9 +80,15 @@ class Item extends Seeder
                 ],
             ],
             [
-                'name' => 'Mondraker Prime 29 M',
+                'name' => [
+                    'ro' => 'Mondraker Prime 29 M',
+                    'en' => 'Mondraker Prime 29 M',
+                ],
                 'sku' => 'mondraker-prime-29-m',
-                'description' => 'The Mondraker Prime 29 is a high-performance mountain bike designed for serious riders. It features a lightweight aluminum frame, 29-inch wheels for improved stability and speed, and a full suspension system for maximum comfort on rough terrain.',
+                'description' => [
+                    'ro' => 'The Mondraker Prime 29 is a high-performance mountain bike designed for serious riders. It features a lightweight aluminum frame, 29-inch wheels for improved stability and speed, and a full suspension system for maximum comfort on rough terrain.',
+                    'en' => 'The Mondraker Prime 29 is a high-performance mountain bike designed for serious riders. It features a lightweight aluminum frame, 29-inch wheels for improved stability and speed, and a full suspension system for maximum comfort on rough terrain.',
+                ],
                 'status' => ItemStatus::ACTIVE,
                 'image_path' => 'items/01JZCRTX3G1EWTDRQE7XJ7G5V5.jpg',
                 'price' => [
@@ -96,9 +108,15 @@ class Item extends Seeder
                 ],
             ],
             [
-                'name' => 'Mondraker Prime 29 S',
+                'name' => [
+                    'ro' => 'Mondraker Prime 29 S',
+                    'en' => 'Mondraker Prime 29 S',
+                ],
                 'sku' => 'mondraker-prime-29-s',
-                'description' => 'The Mondraker Prime 29 is a high-performance mountain bike designed for serious riders. It features a lightweight aluminum frame, 29-inch wheels for improved stability and speed, and a full suspension system for maximum comfort on rough terrain.',
+                'description' => [
+                    'ro' => 'The Mondraker Prime 29 is a high-performance mountain bike designed for serious riders. It features a lightweight aluminum frame, 29-inch wheels for improved stability and speed, and a full suspension system for maximum comfort on rough terrain.',
+                    'en' => 'The Mondraker Prime 29 is a high-performance mountain bike designed for serious riders. It features a lightweight aluminum frame, 29-inch wheels for improved stability and speed, and a full suspension system for maximum comfort on rough terrain.',
+                ],
                 'status' => ItemStatus::ACTIVE,
                 'image_path' => 'items/01JZCRTX3G1EWTDRQE7XJ7G5V5.jpg',
                 'price' => [

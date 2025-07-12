@@ -16,9 +16,9 @@ class Duration extends Component
         $durationInHours = $this->from->diffInHours($this->to);
 
         if ($durationInDays < 1 && $durationInHours < 8) {
-            return $durationInHours . ($durationInHours > 1 ? ' ore' : ' oră');
+            return $durationInHours . ($durationInHours > 1 ? ' '.__('ore') : ' '.__('oră'));
         }
 
-        return  $durationInDays > 1 ? ceil($durationInDays).' zile' : '1 zi';
+        return  $durationInDays > 1 ? ceil($durationInDays).' '.__('zile') : '1 '.__('zi');
     }
 }

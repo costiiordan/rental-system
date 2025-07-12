@@ -11,6 +11,7 @@ use App\Repository\OrderRepository;
 use App\Repository\CartRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class CheckoutController extends Controller
 {
@@ -39,10 +40,10 @@ class CheckoutController extends Controller
             return  $this->returnToHomeWithError("Urmatoarele produse nu sunt disponibile in intervalul selectat: ".$exception->getMessage());
         }
 
-        return redirect()->route('checkout.success', [
+        return redirect(LaravelLocalization::localizeUrl(route('checkout.success', [
             'orderId' => $order->id,
             'hash' => $order->hash,
-        ]);
+        ])));
     }
 
     public function success(string $orderId, string $hash): View
@@ -62,6 +63,6 @@ class CheckoutController extends Controller
 
     private function returnToHomeWithError(string $message): RedirectResponse
     {
-        return redirect()->route('home')->with('error', $message);
+        return redirect(LaravelLocalization::localizeUrl(route('home')))->with('error', $message);
     }
 }

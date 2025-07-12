@@ -16,11 +16,11 @@
 @endphp
 
 @section('content')
-    <p class="interval-select-text">{{trans('website.interval_select_text')}}</p>
+    <p class="interval-select-text">@lang('În ce perioadă vrei să închiriezi?')</p>
 
-    <form method="GET" action="{{route('home')}}" class="interval-form">
+    <form method="GET" action="{{LaravelLocalization::localizeUrl(route('home'))}}" class="interval-form">
         <div class="interval-form-date">
-            <span class="interval-form-date-label">{{trans('website.interval_select_from')}}</span>
+            <span class="interval-form-date-label">@lang('De la:')</span>
             <div class="interval-form-date-fields">
                 <input type="date" name="from_date" value="{{$fromDate}}" />
                 <select name="from_time">
@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="interval-form-date">
-            <span class="interval-form-date-label">{{trans('website.interval_select_to')}}</span>
+            <span class="interval-form-date-label">@lang('Până la:')</span>
             <div class="interval-form-date-fields">
                 <input type="date" name="to_date" value="{{$toDate}}" />
                 <select name="to_time">
@@ -65,7 +65,7 @@
     <x-cart-preview/>
 
     @if(!$interval)
-        <p class="select-interval-text">{{trans('website.all_bikes_text')}}</p>
+        <p class="select-interval-text">@lang('Acestea sunt toate bicicletele noastre. Selecteaza intervalul pentru a vedea ce avem disponibil.')</p>
     @endif
 
     @if (session('error'))
@@ -105,11 +105,11 @@
                 @if($interval)
                     <div class="add-to-cart-container">
                         <button data-from="{{$interval['from']->format('Y-m-d H:i')}}" data-to="{{$interval['to']->format('Y-m-d H:i')}}" data-item-id="{{$bike->id}}" data-action="add-to-cart" class="rent-bike-button">
-                            {{trans('website.add_to_cart_btn_label_1')}} <x-duration :from="$interval['from']" :to="$interval['to']"/> {{trans('website.add_to_cart_btn_label_2')}} {{$prices[$bike->id]}} RON
+                            @lang('Închiriază') <x-duration :from="$interval['from']" :to="$interval['to']"/> @lang('cu') {{$prices[$bike->id]}} RON
                         </button>
                     </div>
                 @else
-                    <p class="bike-select-interval-notice">{{trans('website.bike_select_interval_notice')}}</p>
+                    <p class="bike-select-interval-notice">@lang('Selecteaza intervalul pentru a vedea disponibilitatea.')</p>
                 @endif
             </div>
         </li>
@@ -118,11 +118,11 @@
     </ul>
 
     <dialog class="add-to-cart-dialog" data-role="add-to-cart-dialog">
-        <p>Produsul a fost adaugat in cos.</p>
+        <p>@lang('Produsul a fost adaugat in cos.')</p>
 
         <div class="add-to-cart-dialog-actions">
-            <button class="add-to-cart-dialog-continue-btn" data-action="close-dialog">Rezerva si alte produse</button>
-            <a href="{{route('checkout.index')}}" class="add-to-cart-dialog-checkout-btn">Finalizază comanda</a>
+            <button class="add-to-cart-dialog-continue-btn" data-action="close-dialog">@lang('Rezerva si alte produse')</button>
+            <a href="{{route('checkout.index')}}" class="add-to-cart-dialog-checkout-btn">@lang('Finalizează comanda')</a>
         </div>
     </dialog>
 @endsection

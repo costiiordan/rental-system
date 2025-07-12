@@ -131,7 +131,7 @@
 
 .bike-price-duration {
     flex-grow: 0;
-    width: 3rem;
+    width: 3.5rem;
     color: var(--color-gray-500);
 }
 

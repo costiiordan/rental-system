@@ -1,5 +1,5 @@
 <footer>
     <p class="text-center">
-        &copy; {{ date('Y') }} Rent a bike Brașov. All rights reserved.
+        &copy; {{ date('Y') }} @lang('Rent a bike Brașov. All rights reserved.')
     </p>
 </footer>

@@ -4,17 +4,17 @@
     <div class="checkout-top-bar">
         <a class="checkout-top-bar-btn checkout-back-button" href="{{route('home')}}">
             <span class="material-symbols-outlined">chevron_backward</span>
-            <span>Înapoi</span>
+            <span>@lang('Înapoi')</span>
         </a>
 
         <button class="checkout-top-bar-btn checkout-view-cart-button" data-action="toggle-cart-preview">
             <span class="material-symbols-outlined">stat_1</span>
-            <span>Vezi coșul</span>
+            <span>@lang('Vezi coșul')</span>
         </button>
     </div>
 
     <div class="checkout-page-title">
-        <h2>Finalizează comanda</h2>
+        <h2>@lang('Finalizează comanda')</h2>
     </div>
 
     <div class="checkout-container">
