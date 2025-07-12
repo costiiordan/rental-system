@@ -7,7 +7,7 @@
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/main.css'])
     @endif
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=chevron_backward,search,stat_1" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=check_circle,chevron_backward,search,stat_1" rel="stylesheet" />
     <meta name="description" content="@lang('Închiriază biciclete în Poiana Brașov la cele mai bune prețuri. Descoperă frumusețea naturii pe două roți!')">
 
     <meta property="og:title" content="@lang('Închiriază biciclete în Poiana Brașov')">

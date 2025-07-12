@@ -24,6 +24,7 @@
     --background-color-section: #eeeeee; /*gray 200*/
     --background-color-section-darker: #e0e0e0; /*gray 300*/
 
+    --success-color: #43a047; /*green 600*/
     --error-color: #e53935; /*red 600*/
 
     --border-radius-sm: 0.4rem;

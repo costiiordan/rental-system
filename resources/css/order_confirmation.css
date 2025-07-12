@@ -1,0 +1,61 @@
+.order-confirmation-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 2.5rem;
+    gap: 1rem;
+
+    @media (min-width: 480px) {
+        flex-direction: row;
+        margin-top: 4rem;
+        padding: 0 5rem;
+    }
+}
+
+.order-confirmation-icon {
+    color: var(--success-color);
+
+    &.order-confirmation-icon {
+        font-size: 4rem;
+    }
+}
+
+.order-confirmation-text {
+    line-height: 1.6rem;
+    padding: 0;
+    margin: 0;
+}
+
+.order-confirmation-bank-details {
+    display: inline-block;
+    background-color: var(--background-color-section);
+    border-radius: var(--border-radius-sm);
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+}
+
+.order-confirmation-back-to-homepage {
+    text-align: center;
+    margin-top: 1rem;
+
+    @media (min-width: 480px) {
+        margin-top: 2rem;
+    }
+
+    a {
+        display: inline-block;
+        border-radius: var(--border-radius-sm);
+        background-color: var(--button-secondary-background-color);
+        color: var(--text-color);
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        text-align: center;
+        box-shadow: var(--button-box-shadow);
+        font-size: 1.1rem;
+
+        &:hover {
+            background-color: var(--button-secondary-hover-background-color);
+        }
+    }
+}
