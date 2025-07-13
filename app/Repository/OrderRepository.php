@@ -6,6 +6,7 @@ use App\Dto\CartDto;
 use App\Dto\CartItemDto;
 use App\Exceptions\NoItemsSelectedException;
 use App\Exceptions\UnavailableItemsInSelectionException;
+use App\Mail\OrderConfirmation;
 use App\Models\Constants\OrderStatus;
 use App\Models\Constants\PaymentMethods;
 use App\Models\ItemBooking;
@@ -13,6 +14,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Mail;
 
 class OrderRepository
 {
@@ -35,6 +37,8 @@ class OrderRepository
         $this->saveDiscountsToOrder($order, $cart->discounts);
 
         $this->cartRepository->emptyCart();
+
+        Mail::to($order->email)->send(new OrderConfirmation($order));
 
         return $order;
     }
