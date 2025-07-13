@@ -11,6 +11,7 @@ use App\Models\Constants\PaymentMethods;
 use App\Models\ItemBooking;
 use App\Models\Order;
 use App\Models\OrderItem;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 class OrderRepository
@@ -36,6 +37,20 @@ class OrderRepository
         $this->cartRepository->emptyCart();
 
         return $order;
+    }
+
+    public function getOrderPickupDate(Order $order): Carbon
+    {
+        $date = null;
+
+        foreach ($order->orderItems as $item) {
+            $itemDate = Carbon::createFromFormat('Y-m-d H:i:s', $item->itemBooking->from_date);
+            if ($date ===null || $itemDate->isBefore($date)) {
+                $date = $itemDate;
+            }
+        }
+
+        return $date;
     }
 
     private function checkForUnavailableItems(CartDto $cart): void

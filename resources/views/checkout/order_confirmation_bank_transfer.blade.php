@@ -11,8 +11,8 @@
                 @lang('Beneficiar'): <strong>Burtan Ciprian Iulius Intreprindere Individuala</strong><br>
                 @lang('Banca'): <strong>Unicredit Bank S.A.</strong><br>
                 @lang('Detalii plată'): <strong>@lang('Plata rezervare nr :orderId', ['orderId' => $order->id])</strong>
-            </span><br>
-            @lang('Te așteptăm în data de <b>:date</b> pentru a ridica produsele.', ['date' => $date->format('d.m.Y H:i')])
+            </span><br><br>
+            @lang('Te așteptăm în data de <b>:date</b> pentru a ridica produsele.', ['date' => $pickupDate->format('d.m.Y H:i')])
         </p>
     </div>
 

@@ -7,11 +7,9 @@ use App\Exceptions\UnavailableItemsInSelectionException;
 use App\Http\Requests\SaveOrderRequest;
 use App\Models\Constants\PaymentMethods;
 use App\Models\Order;
-use App\Repository\OrderRepository;
 use App\Repository\CartRepository;
-use Carbon\Carbon;
+use App\Repository\OrderRepository;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class CheckoutController extends Controller
@@ -52,33 +50,26 @@ class CheckoutController extends Controller
         ])));
     }
 
-    public function success(string $orderId, string $hash): View
+    public function success(string $orderId, string $hash, OrderRepository $orderRepository)
     {
-        $order = Order::with('orderItems.itemBooking')
+        $order = Order::with(['orderItems.itemBooking', 'orderItems.item'])
             ->where('id', $orderId)
             ->where('hash', $hash)
             ->firstOrFail();
 
-        $date = Carbon::now();
-
-        foreach ($order->orderItems as $item) {
-            $itemDate = Carbon::createFromFormat('Y-m-d H:i:s', $item->itemBooking->from_date);
-            if ($itemDate->isAfter($date)) {
-                $date = $itemDate;
-            }
-        }
+        $pickupDate = $orderRepository->getOrderPickupDate($order);
 
         if ($order->payment_method === PaymentMethods::CASH) {
             return view('checkout.order_confirmation_cash', [
                 'order' => $order,
-                'date' => $date,
+                'pickupDate' => $pickupDate,
             ]);
         }
 
         if ($order->payment_method === PaymentMethods::BANK_TRANSFER) {
             return view('checkout.order_confirmation_bank_transfer', [
                 'order' => $order,
-                'date' => $date,
+                'pickupDate' => $pickupDate,
             ]);
         }
 
