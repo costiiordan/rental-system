@@ -27,5 +27,9 @@ Route::group(
         Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
         Route::post('/checkout/save-order', [CheckoutController::class, 'saveOrder'])->name('checkout.save-order');
         Route::get('/checkout/success/{orderId}/{hash}', [CheckoutController::class, 'success'])->name('checkout.success');
+
+        Route::get('/test/', function () {
+            dd(public_path());
+        });
     }
 );
