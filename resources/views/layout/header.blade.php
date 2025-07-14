@@ -5,21 +5,26 @@
     <h1>@lang('Închiriază biciclete în Poiana Brașov')</h1>
 </header>
 
-<div class="mobile-menu" data-role="mobile-menu">
+<div class="navigation-menu" data-role="mobile-menu">
     <ul>
-        <li>
+        <li class="close-menu-item">
             <a href="#" data-action="close-mobile-menu">
                 <span class="material-symbols-outlined">chevron_backward</span>
                 @lang('Închide meniul')
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{route('home')}}" title="@lang('Home')" class="{{ request()->routeIs(['home', 'category']) ? 'is-active' : '' }}">
+                @lang('Home')
+            </a>
+        </li>
+        <li>
+            <a  href="{{route('about')}}" title="@lang('Despre noi')" class="{{ request()->routeIs('about') ? 'is-active' : '' }}">
                 @lang('Despre noi')
             </a>
         </li>
         <li>
-            <a href="#">
+            <a  href="{{route('contact')}}" title="@lang('Contact')" class="{{ request()->routeIs('contact') ? 'is-active' : '' }}">
                 @lang('Contact')
             </a>
         </li>

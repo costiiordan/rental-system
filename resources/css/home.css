@@ -54,8 +54,8 @@
     container-type: inline-size;
 
     h2 {
-        margin: 0;
-        font-size: 1.2em;
+        margin: .5rem 0 0 0;
+        font-size: 1.3em;
         line-height: 1.15rem;
         font-weight: normal;
     }
@@ -156,7 +156,7 @@
     margin: 0.5rem 0 0 0;
 }
 .select-interval-text {
-    margin-top: 1rem;
+    margin: 1rem 0 0 0;
 }
 
 .interval-form {
@@ -182,7 +182,7 @@
     input,
     select {
         border-radius: var(--border-radius-sm);
-        border: 1px solid var(--color-blue-500);
+        border: 1px solid #fff;
         background-color: #fff;
         padding: 0.25rem 0.5rem;
         box-shadow: var(--button-box-shadow);
@@ -340,4 +340,126 @@
     font-size: 1.1rem;
     padding: 0.5rem 1rem;
     margin-top: 1rem;
+}
+
+.category-bk-kids {
+    background-color: #FFEB3B; /* yellow 500 */
+    color: var(--text-color);
+
+    &:is(a):hover {
+        background-color: #FDD835; /* yellow 600 */
+    }
+}
+.category-bk-enduro-kids {
+    background-color: #FF5722; /* deep orange 500 */
+    color: var(--text-color-inverse);
+
+    &:is(a):hover {
+        background-color: #F4511E; /* deep orange 600 */
+    }
+}
+.category-bk-super-enduro-bike-park {
+    background-color: #E91E63; /* pink 500 */
+    color: var(--text-color-inverse);
+
+    &:is(a):hover {
+        background-color: #D81B60; /* pink 600 */
+    }
+}
+.category-bk-downhill {
+    background-color: #616161; /* gray 700 */
+    color: var(--text-color-inverse);
+
+    &:is(a):hover {
+        background-color: #424242; /* gray 800 */
+    }
+}
+.category-bk-electric-mountain-bike {
+    background-color: #2196F3; /* blue 500 */
+    color: var(--text-color-inverse);
+
+    &:is(a):hover {
+        background-color: #1E88E5; /* blue 600 */
+    }
+}
+.category-bk-accessories {
+    background-color: #EEEEEE; /* gray 200 */
+    color: var(--text-color);
+
+    &:is(a):hover {
+        background-color: #E0E0E0; /* gray 300 */
+    }
+}
+.category-bk-electric-enduro {
+    background-color: #4CAF50; /* green 500 */
+    color: var(--text-color-inverse);
+
+    &:is(a):hover {
+        background-color: #43A047; /* green 600 */
+    }
+}
+.category-bk-electric-road-gravel {
+    background-color: #795548; /* brown 500 */
+    color: var(--text-color-inverse);
+
+    &:is(a):hover {
+        background-color: #6D4C41; /* brown 600 */
+    }
+}
+.category-bk-guide {
+    background-color: #F44336; /* red 500 */
+    color: var(--text-color-inverse);
+
+    &:is(a):hover {
+        background-color: #E53935; /* red 600 */
+    }
+}
+
+.category-badge {
+    span {
+        display: inline-block;
+        padding: 0.2rem 0.5rem;
+        font-size: 0.9rem;
+        border-radius: var(--border-radius-sm);
+        text-transform: uppercase;
+    }
+}
+
+.category-navigation {
+    margin-top: 1rem;
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: .5rem;
+    }
+
+    li {
+        width: calc(100%/3 - (0.4rem)*2/3);
+
+        @media (min-width: 600px) {
+            width: calc(100%/4 - (0.5rem)*3/4);
+        }
+
+        @media (min-width: 1250px) {
+            width: calc(100%/9 - (0.5rem)*8/9);
+        }
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 3rem;
+        line-height: 1rem;
+        text-align: center;
+        cursor: pointer;
+        padding: 0 0.5rem;
+        border-radius: var(--border-radius-sm);
+        box-shadow: var(--button-box-shadow);
+        text-decoration: none;
+    }
 }

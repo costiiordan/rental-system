@@ -13,6 +13,8 @@ body {
     @media (min-width: 1250px) {
         background-image: url('/resources/images/background.jpg');
         background-size: 3000px;
+        background-attachment: fixed;
+        background-position: center;
     }
 }
 
@@ -52,41 +54,6 @@ footer {
     }
 }
 
-.main-nav {
-    display: none;
-    justify-content: flex-end;
-    font-size: 1.1rem;
-    margin-right: -2rem;
-
-    @media (min-width: 1250px) {
-        display: flex;
-    }
-
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-    }
-
-    li {
-        &:not(:first-child) {
-            border-left: 0.0625rem solid var(--divider-color);
-        }
-    }
-
-    a {
-        display: block;
-        padding: 0.5rem 2rem;
-        text-decoration: none;
-        color: var(--text-color);
-
-        &:hover {
-            background-color: var(--button-secondary-hover-background-color);
-        }
-    }
-}
-
 .page-wrapper {
     padding: 0 0.5rem 1rem 0.5rem;
     width: clamp(320px, 100%, 1200px);
@@ -100,10 +67,9 @@ footer {
         border: 0.0625rem solid var(--divider-color);
         border-radius: 2rem;
         margin-top: 2rem;
-        padding: 0 2rem 2rem;
+        padding: 2rem;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         background-color: #fff;
-        overflow: hidden;
     }
 }
 
@@ -112,6 +78,10 @@ footer {
     width: clamp(320px, 100%, 1200px);
     margin: 0.5rem auto 0 auto;
     position: relative;
+
+    @media (min-width: 1250px) {
+        margin-top: 0;
+    }
 
     ul {
         list-style: none;
@@ -127,7 +97,7 @@ footer {
         }
 
         @media (min-width: 1250px) {
-            top: -3.5rem;
+            top: -2.2rem;
         }
     }
 
@@ -141,6 +111,13 @@ footer {
         display: inline-flex;
         align-items: center;
         gap: 0.3rem;
+
+        @media (min-width: 1250px) {
+            box-shadow: none;
+            background: none;
+            color: var(--text-color-inverse);
+        }
+
 
         &:hover {
             background-color: var(--button-secondary-hover-background-color);

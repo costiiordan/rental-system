@@ -2,10 +2,10 @@
 
 @php
     if ($interval) {
-        $fromDate = $interval['from']->format('Y-m-d');
-        $fromTime = $interval['from']->format('H:i');
-        $toDate = $interval['to']->format('Y-m-d');
-        $toTime = $interval['to']->format('H:i');
+        $fromDate = $interval->from->format('Y-m-d');
+        $fromTime = $interval->from->format('H:i');
+        $toDate = $interval->to->format('Y-m-d');
+        $toTime = $interval->to->format('H:i');
 
     } else {
         $fromDate = now()->format('Y-m-d');
@@ -17,8 +17,11 @@
 
 @section('content')
     <p class="interval-select-text">@lang('În ce perioadă vrei să închiriezi?')</p>
-
-    <form method="GET" action="{{LaravelLocalization::localizeUrl(route('home'))}}" class="interval-form">
+    @php
+    $formAction = $category ? route('category', ['category' => $category]) : route('home');
+    $formAction = LaravelLocalization::localizeUrl($formAction);
+    @endphp
+    <form method="GET" action="{{$formAction}}" class="interval-form">
         <div class="interval-form-date">
             <span class="interval-form-date-label">@lang('De la:')</span>
             <div class="interval-form-date-fields">
@@ -74,46 +77,11 @@
         </div>
     @endif
 
+    <x-category-navigation />
+
     <ul class="bike-list">
     @foreach($bikes as $bike)
-        <li class="bike-list-item">
-            <img src="{{asset('storage/'.$bike->image_path)}}" alt="{{$bike->name}}" class="bike-item-image" data-action="zoom" loading="lazy">
-            <div class="bike-item-details">
-                <h2>{{$bike->name}}</h2>
-                <ul class="bike-attributes">
-                    @foreach($bike->attributeValues as $attributeValue)
-                        <li>
-                            <span class="bike-attribute-label">{{$attributeValue->attribute->name}}</span>
-                            <span class="bike-attribute-value">{{$attributeValue->value}}</span>
-                        </li>
-
-                    @endforeach
-                </ul>
-                <p class="bike-description">{{$bike->description}}</p>
-                <ul class="bike-prices">
-                    @foreach($bike->prices as $price)
-                        <li>
-                            <span class="bike-price-duration">
-                                {{$price->duration}} <x-duration-unit :duration="$price->duration" :duration-unit="$price->duration_unit" />
-                            </span>
-                            <span class="bike-price-amount">
-                                {{$price->price}} <span class="bike-price-currency">RON</span>
-                            </span>
-                        </li>
-                    @endforeach
-                </ul>
-                @if($interval)
-                    <div class="add-to-cart-container">
-                        <button data-from="{{$interval['from']->format('Y-m-d H:i')}}" data-to="{{$interval['to']->format('Y-m-d H:i')}}" data-item-id="{{$bike->id}}" data-action="add-to-cart" class="rent-bike-button">
-                            @lang('Închiriază') <x-duration :from="$interval['from']" :to="$interval['to']"/> @lang('cu') {{$prices[$bike->id]}} RON
-                        </button>
-                    </div>
-                @else
-                    <p class="bike-select-interval-notice">@lang('Selecteaza intervalul pentru a vedea disponibilitatea.')</p>
-                @endif
-            </div>
-        </li>
-
+        <x-list-item :item="$bike" :interval="$interval" :price="$interval ? $prices[$bike->id] : null" />
     @endforeach
     </ul>
 

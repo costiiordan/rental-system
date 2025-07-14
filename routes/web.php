@@ -20,6 +20,7 @@ Route::group(
     ],
     function() {
         Route::get('/', HomeController::class)->name('home');
+        Route::get('/category/{category}', HomeController::class)->name('category');
 
         Route::post('/add-to-cart', [CartController::class, 'addItem'])->name('add-to-cart');
         Route::post('/remove-from-cart', [CartController::class, 'removeItem'])->name('remove-from-cart');
@@ -30,5 +31,10 @@ Route::group(
 
         Route::get('/about', fn () => view('about'))->name('about');
         Route::get('/contact', fn () => view('contact'))->name('contact');
+
+//        Route::get('test', function () {
+//            dd(Str::snake(\App\Models\Constants\CategoryReference::SUPER_ENDURO_BIKE_PARK, '_'));
+//            return view('test');
+//        })->name('test');
     }
 );
