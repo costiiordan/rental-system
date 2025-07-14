@@ -77,7 +77,7 @@
     <ul class="bike-list">
     @foreach($bikes as $bike)
         <li class="bike-list-item">
-            <img src="{{asset('storage/'.$bike->image_path)}}" alt="{{$bike->name}}" class="bike-item-image" data-action="zoom">
+            <img src="{{asset('storage/'.$bike->image_path)}}" alt="{{$bike->name}}" class="bike-item-image" data-action="zoom" loading="lazy">
             <div class="bike-item-details">
                 <h2>{{$bike->name}}</h2>
                 <ul class="bike-attributes">

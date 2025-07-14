@@ -108,6 +108,7 @@ class ViewOrder extends ViewRecord implements HasTable
             ->modalSubmitActionLabel('Salveaza')
             ->fillForm([
                 'status' => $this->record->status,
+                'payment_method' => $this->record->payment_method,
             ])
             ->form([
                 Select::make('status')

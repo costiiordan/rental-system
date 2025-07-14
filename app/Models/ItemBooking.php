@@ -11,6 +11,7 @@ class ItemBooking extends Model
         'item_id',
         'from_date',
         'to_date',
+        'note',
     ];
     public $timestamps = false;
 

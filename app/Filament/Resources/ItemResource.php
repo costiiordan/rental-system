@@ -112,7 +112,7 @@ class ItemResource extends Resource
                     ->defaultItems(1),
 
                 FileUpload::make('image_path')
-                    ->label('Imagine')
+                    ->label('Imagine (format 4:3, recomandat 1024x768px)')
                     ->required()
                     ->disk('public')
                     ->directory('items')

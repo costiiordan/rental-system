@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { getCsrfToken } from './common.js';
+import { getCsrfToken, getLang } from './common.js';
 
 export function initCartPreview() {
     const cartPreviewContainer = document.querySelector('[data-role="cart-preview"]');
@@ -81,6 +81,7 @@ function updateCartPreview(cart) {
     }
 
     let listItems = '';
+    const lang = getLang();
 
     cart.items.forEach((item) => {
         const itemTemplate = document.getElementById('cart-preview-item-template').innerHTML;
@@ -88,7 +89,7 @@ function updateCartPreview(cart) {
         const toDate = moment(item.toDate).format('DD.MM HH:mm');
         listItems += itemTemplate
             .replaceAll('{id}', item.id)
-            .replaceAll('{name}', item.item.name)
+            .replaceAll('{name}', item.item.name[lang])
             .replaceAll('{imagePath}', item.item.image_path)
             .replaceAll('{fromDate}', fromDate)
             .replaceAll('{toDate}', toDate)

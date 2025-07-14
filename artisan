@@ -1,6 +1,8 @@
 #!/usr/bin/env php
 <?php
 
+define('APP_HOST', $_SERVER['HOME'] === '/home/www' ? 'localhost' : 'shared');
+
 use Illuminate\Foundation\Application;
 use Symfony\Component\Console\Input\ArgvInput;
 
