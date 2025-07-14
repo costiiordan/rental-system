@@ -28,8 +28,7 @@ Route::group(
         Route::post('/checkout/save-order', [CheckoutController::class, 'saveOrder'])->name('checkout.save-order');
         Route::get('/checkout/success/{orderId}/{hash}', [CheckoutController::class, 'success'])->name('checkout.success');
 
-        Route::get('/test/', function () {
-            dd(public_path());
-        });
+        Route::get('/about', fn () => view('about'))->name('about');
+        Route::get('/contact', fn () => view('contact'))->name('contact');
     }
 );

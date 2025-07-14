@@ -16,6 +16,10 @@ body {
     }
 }
 
+h1 {
+    font-size: 1.6rem;
+}
+
 input,
 select,
 textarea {
@@ -25,29 +29,6 @@ textarea {
 a,
 button {
     transition: background-color 0.3s ease-in-out;
-}
-
-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--primary-color);
-    text-align: center;
-    padding-top: 0.6rem;
-    padding-bottom: 0.6rem;
-
-    @media (min-width: 1250px) {
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        padding-top: 1.2rem;
-        padding-bottom: 1.2rem;
-    }
-
-    h1 {
-        font-size: 1.4em;
-        margin: 0;
-        font-weight: normal;
-        line-height: 1.8rem;
-    }
 }
 
 main {
@@ -71,6 +52,41 @@ footer {
     }
 }
 
+.main-nav {
+    display: none;
+    justify-content: flex-end;
+    font-size: 1.1rem;
+    margin-right: -2rem;
+
+    @media (min-width: 1250px) {
+        display: flex;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+    }
+
+    li {
+        &:not(:first-child) {
+            border-left: 0.0625rem solid var(--divider-color);
+        }
+    }
+
+    a {
+        display: block;
+        padding: 0.5rem 2rem;
+        text-decoration: none;
+        color: var(--text-color);
+
+        &:hover {
+            background-color: var(--button-secondary-hover-background-color);
+        }
+    }
+}
+
 .page-wrapper {
     padding: 0 0.5rem 1rem 0.5rem;
     width: clamp(320px, 100%, 1200px);
@@ -84,9 +100,10 @@ footer {
         border: 0.0625rem solid var(--divider-color);
         border-radius: 2rem;
         margin-top: 2rem;
-        padding: 2rem;
+        padding: 0 2rem 2rem;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         background-color: #fff;
+        overflow: hidden;
     }
 }
 

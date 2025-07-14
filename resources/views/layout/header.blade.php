@@ -1,6 +1,31 @@
 <header class="header">
+    <button class="header-menu-button" data-action="toggle-mobile-menu">
+        <span class="material-symbols-outlined">menu</span>
+    </button>
     <h1>@lang('Închiriază biciclete în Poiana Brașov')</h1>
 </header>
+
+<div class="mobile-menu" data-role="mobile-menu">
+    <ul>
+        <li>
+            <a href="#" data-action="close-mobile-menu">
+                <span class="material-symbols-outlined">chevron_backward</span>
+                @lang('Închide meniul')
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                @lang('Despre noi')
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                @lang('Contact')
+            </a>
+        </li>
+    </ul>
+</div>
+
 <div class="language-switcher">
     <ul>
         @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
