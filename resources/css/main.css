@@ -2,6 +2,8 @@
 @import './reset.css';
 @import './layout.css';
 @import './header.css';
+@import './footer.css';
+@import './range-selector.css';
 @import './cart_preview.css';
 @import './cookie-consent.css';
 @import './home.css';

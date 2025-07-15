@@ -2,6 +2,7 @@
 
 import 'zoom-vanilla.js/dist/zoom-vanilla.min.js';
 import { addToCart, initCartPreview } from './cart.js';
+import { initRangeSelector } from './range-selector.js';
 
 export function initHomePage() {
     const addToCartButtons = document.querySelectorAll('[data-action="add-to-cart"]');
@@ -10,6 +11,7 @@ export function initHomePage() {
         button.addEventListener('click', handleAddToCartButtonClick);
     });
 
+    // initRangeSelector();
     initCartPreview();
 
     const addToCartConfirmationDialog = document.querySelector('[data-role="add-to-cart-dialog"]');

@@ -2,11 +2,13 @@
 
 import { initMobileMenu } from './mobile-menu.js';
 import { initCookieConsent } from './cookie-consent.js';
+import { initLanguageSwitcher } from './language-switcher.js';
 
 (function () {
     const pageContainer = document.querySelector('[data-role="page-container"]');
 
     initMobileMenu();
+    initLanguageSwitcher();
     initCookieConsent();
 
     if (!pageContainer) {

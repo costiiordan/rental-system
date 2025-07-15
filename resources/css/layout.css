@@ -11,10 +11,10 @@ body {
     flex-direction: column;
 
     @media (min-width: 1250px) {
-        background-image: url('/resources/images/background.jpg');
+        background-image: url('/resources/images/background.avif?v=1');
         background-size: 3000px;
         background-attachment: fixed;
-        background-position: center;
+        background-position: top center;
     }
 }
 
@@ -35,50 +35,11 @@ button {
 
 main {
     flex-grow: 1;
-}
-
-footer {
-    background-color: var(--background-color-footer);
-    color: var(--text-color-inverse);
-    padding: 1.5rem 0.5rem;
-
-    .footer-links {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    a {
-        color: var(--text-color-inverse);
-        text-decoration: none;
-        display: inline-block;
-        padding: .3rem 0;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-
-    .footer-copyright {
-        margin-top: 1rem
-    }
-
-    p {
-        margin: 0 auto;
-        width: 100%;
-        max-width: 1200px;
-    }
 
     @media (min-width: 1250px) {
-        margin-top: 2rem;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        background-color: rgba(0,0,0,0.7);
+        padding-bottom: 2rem;
     }
-}
-
-.footer-container {
-    padding: 0 0.5rem;
-    width: clamp(320px, 100%, 1200px);
-    margin: 0 auto;
 }
 
 .page-wrapper {
@@ -92,62 +53,10 @@ footer {
 
     @media (min-width: 1250px) {
         border: 0.0625rem solid var(--divider-color);
-        border-radius: 2rem;
+        border-radius: .5rem;
         margin-top: 2rem;
         padding: 2rem;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         background-color: #fff;
-    }
-}
-
-.language-switcher {
-    font-size: 0.9rem;
-    width: clamp(320px, 100%, 1200px);
-    margin: 0.5rem auto 0 auto;
-    position: relative;
-
-    @media (min-width: 1250px) {
-        margin-top: 0;
-    }
-
-    ul {
-        list-style: none;
-        padding: 0 0.5rem;
-        margin: 0;
-        display: flex;
-        justify-content: flex-end;
-        gap: 0.5rem;
-
-        @media (min-width: 450px) {
-            position: absolute;
-            right: 0;
-        }
-
-        @media (min-width: 1250px) {
-            top: -2.2rem;
-        }
-    }
-
-    a {
-        text-decoration: none;
-        color: var(--text-color);
-        padding: 0.1rem 0.6rem;
-        border-radius: var(--border-radius-sm);
-        background-color: var(--button-secondary-background-color);
-        box-shadow: var(--button-box-shadow);
-        display: inline-flex;
-        align-items: center;
-        gap: 0.3rem;
-
-        @media (min-width: 1250px) {
-            box-shadow: none;
-            background: none;
-            color: var(--text-color-inverse);
-        }
-
-
-        &:hover {
-            background-color: var(--button-secondary-hover-background-color);
-        }
     }
 }

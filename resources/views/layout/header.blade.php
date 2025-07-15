@@ -1,8 +1,101 @@
 <header class="header">
-    <button class="header-menu-button" data-action="toggle-mobile-menu">
-        <span class="material-symbols-outlined">menu</span>
-    </button>
-    <h1>@lang('Închiriază biciclete în Poiana Brașov')</h1>
+    <div class="top-bar-container">
+        <div class="top-bar">
+            <div class="social-media-links">
+                <span class="social-media-text">@lang('Social media:')</span>
+                <a href="" class="social-media-icon" title="@lang('Facebook')">
+                    @include('layout.svg.facebook-icon')
+                </a>
+                <a href="" title="@lang('Instagram')" class="social-media-icon">
+                    @include('layout.svg.instagram-icon')
+                </a>
+                <a href="" title="@lang('Youtube')" class="social-media-icon">
+                    @include('layout.svg.youtube-icon')
+                </a>
+                <a href="" title="@lang('TickTok')" class="social-media-icon">
+                    @include('layout.svg.ticktock-icon')
+                </a>
+            </div>
+            <div class="contact-info">
+                <a href="tel:0723123456" class="contact-phone" title="@lang('Contactați-ne')">
+                    <span class="material-symbols-outlined">phone_enabled</span>
+                    0723.123.456
+                </a>
+                <a href="mailto:contact@rentabikebrasov.ro" class="contact-email">
+                    <span class="material-symbols-outlined">mail</span>
+                    contact@rentabikebrasov.ro
+                </a>
+                <a href="" class="contact-location">
+                    <span class="material-symbols-outlined">location_on</span>
+                    Teleferic Grand Hotel, Poiana Brașov
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="header-container">
+        <div>
+            <button class="header-menu-button" data-action="toggle-mobile-menu">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <h1 class="site-title">@lang('Rent a bike Brașov')</h1>
+            <div class="header-menu">
+                <ul>
+                    <li>
+                        <a href="{{route('home')}}" title="@lang('Home')"
+                           class="{{ request()->routeIs(['home', 'category']) ? 'is-active' : '' }}">
+                            @lang('Home')
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('about')}}" title="@lang('Despre noi')"
+                           class="{{ request()->routeIs('about') ? 'is-active' : '' }}">
+                            @lang('Despre noi')
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('contact')}}" title="@lang('Contact')"
+                           class="{{ request()->routeIs('contact') ? 'is-active' : '' }}">
+                            @lang('Contact')
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <button class="cart-preview-button" data-action="toggle-cart-preview">
+                <span class="material-symbols-outlined">shopping_cart</span>
+                <span class="cart-preview-count" data-role="cart-items-count"></span>
+            </button>
+            <button class="language-switcher-button" data-action="toggle-language-switcher">
+                <span class="material-symbols-outlined">language</span>
+                <span class="current-language-flag">
+                    @if (LaravelLocalization::getCurrentLocale() === 'ro')
+                        @include('layout.svg.ro-flag')
+                    @endif
+                    @if (LaravelLocalization::getCurrentLocale() === 'en')
+                        @include('layout.svg.en-flag')
+                    @endif
+                </span>
+            </button>
+            <div class="language-switcher-dropdown" data-role="language-switcher-dropdown">
+                <ul>
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <li>
+                            <a rel="alternate" hreflang="{{ $localeCode }}"
+                               href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                @if($properties['regional'] === 'en_GB')
+                                    @include('layout.svg.en-flag')
+                                @endif
+                                @if($properties['regional'] === 'ro_RO')
+                                    @include('layout.svg.ro-flag')
+                                @endif
+                                {{$properties['native']}}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+            <x-cart-preview />
+        </div>
+    </div>
 </header>
 
 <div class="navigation-menu" data-role="mobile-menu">
@@ -14,37 +107,20 @@
             </a>
         </li>
         <li>
-            <a href="{{route('home')}}" title="@lang('Home')" class="{{ request()->routeIs(['home', 'category']) ? 'is-active' : '' }}">
+            <a href="{{route('home')}}" title="@lang('Home')">
                 @lang('Home')
             </a>
         </li>
         <li>
-            <a  href="{{route('about')}}" title="@lang('Despre noi')" class="{{ request()->routeIs('about') ? 'is-active' : '' }}">
+            <a href="{{route('about')}}" title="@lang('Despre noi')">
                 @lang('Despre noi')
             </a>
         </li>
         <li>
-            <a  href="{{route('contact')}}" title="@lang('Contact')" class="{{ request()->routeIs('contact') ? 'is-active' : '' }}">
+            <a href="{{route('contact')}}" title="@lang('Contact')">
                 @lang('Contact')
             </a>
         </li>
     </ul>
 </div>
 
-<div class="language-switcher">
-    <ul>
-        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-            <li>
-                <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                    @if($properties['regional'] === 'en_GB')
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"><rect x="1" y="4" width="30" height="24" rx="4" ry="4" fill="#071b65"></rect><path d="M5.101,4h-.101c-1.981,0-3.615,1.444-3.933,3.334L26.899,28h.101c1.981,0,3.615-1.444,3.933-3.334L5.101,4Z" fill="#fff"></path><path d="M22.25,19h-2.5l9.934,7.947c.387-.353,.704-.777,.929-1.257l-8.363-6.691Z" fill="#b92932"></path><path d="M1.387,6.309l8.363,6.691h2.5L2.316,5.053c-.387,.353-.704,.777-.929,1.257Z" fill="#b92932"></path><path d="M5,28h.101L30.933,7.334c-.318-1.891-1.952-3.334-3.933-3.334h-.101L1.067,24.666c.318,1.891,1.952,3.334,3.933,3.334Z" fill="#fff"></path><rect x="13" y="4" width="6" height="24" fill="#fff"></rect><rect x="1" y="13" width="30" height="6" fill="#fff"></rect><rect x="14" y="4" width="4" height="24" fill="#b92932"></rect><rect x="14" y="1" width="4" height="30" transform="translate(32) rotate(90)" fill="#b92932"></rect><path d="M28.222,4.21l-9.222,7.376v1.414h.75l9.943-7.94c-.419-.384-.918-.671-1.471-.85Z" fill="#b92932"></path><path d="M2.328,26.957c.414,.374,.904,.656,1.447,.832l9.225-7.38v-1.408h-.75L2.328,26.957Z" fill="#b92932"></path><path d="M27,4H5c-2.209,0-4,1.791-4,4V24c0,2.209,1.791,4,4,4H27c2.209,0,4-1.791,4-4V8c0-2.209-1.791-4-4-4Zm3,20c0,1.654-1.346,3-3,3H5c-1.654,0-3-1.346-3-3V8c0-1.654,1.346-3,3-3H27c1.654,0,3,1.346,3,3V24Z" opacity=".15"></path><path d="M27,5H5c-1.657,0-3,1.343-3,3v1c0-1.657,1.343-3,3-3H27c1.657,0,3,1.343,3,3v-1c0-1.657-1.343-3-3-3Z" fill="#fff" opacity=".2"></path></svg>
-                    @endif
-                    @if($properties['regional'] === 'ro_RO')
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32"><path fill="#f6d44a" d="M10 4H22V28H10z"></path><path d="M5,4h6V28H5c-2.208,0-4-1.792-4-4V8c0-2.208,1.792-4,4-4Z" fill="#0c267b"></path><path d="M25,4h6V28h-6c-2.208,0-4-1.792-4-4V8c0-2.208,1.792-4,4-4Z" transform="rotate(180 26 16)" fill="#be2a2c"></path><path d="M27,4H5c-2.209,0-4,1.791-4,4V24c0,2.209,1.791,4,4,4H27c2.209,0,4-1.791,4-4V8c0-2.209-1.791-4-4-4Zm3,20c0,1.654-1.346,3-3,3H5c-1.654,0-3-1.346-3-3V8c0-1.654,1.346-3,3-3H27c1.654,0,3,1.346,3,3V24Z" opacity=".15"></path><path d="M27,5H5c-1.657,0-3,1.343-3,3v1c0-1.657,1.343-3,3-3H27c1.657,0,3,1.343,3,3v-1c0-1.657-1.343-3-3-3Z" fill="#fff" opacity=".2"></path></svg>
-                    @endif
-                    {{ $properties['native'] }}
-                </a>
-            </li>
-        @endforeach
-    </ul>
-</div>

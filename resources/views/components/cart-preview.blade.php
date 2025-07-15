@@ -1,15 +1,4 @@
 <div class="cart-preview" data-role="cart-preview" data-cart="{{json_encode($cart->toArray())}}">
-    <div class="cart-preview-header">
-        <div class="cart-preview-summary">
-            <button class="open-cart-preview-button" data-action="toggle-cart-preview">
-                <span class="material-symbols-outlined">stat_1</span>
-            </button>
-            <div class="cart-preview-text" data-role="cart-item-count" data-singular-text="@lang('Ai un produs selectat')" data-plural-text="@lang('Ai {count} produse selectate')"></div>
-        </div>
-        <a href="{{ LaravelLocalization::localizeUrl(route('checkout.index')) }}" class="go-to-checkout-button">
-            @lang('Finalizează comanda')
-        </a>
-    </div>
     <div class="cart-preview-body" data-role="cart-preview-body">
         <ul class="cart-preview-item-list" data-role="cart-items-list-container"></ul>
         <div class="cart-preview-discounts" data-role="cart-discounts"></div>
@@ -20,6 +9,14 @@
                 <span class="cart-preview-totals-value-currency">RON</span>
             </div>
         </div>
+    </div>
+    <div class="cart-preview-footer" data-role="cart-preview-footer">
+        <a href="{{ LaravelLocalization::localizeUrl(route('checkout.index')) }}" class="go-to-checkout-button">
+            @lang('Finalizează comanda')
+        </a>
+    </div>
+    <div class="empty-cart-message" data-role="empty-cart-message">
+        @lang('Coșul tău este gol.')
     </div>
 </div>
 

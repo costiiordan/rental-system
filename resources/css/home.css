@@ -159,95 +159,6 @@
     margin: 1rem 0 0 0;
 }
 
-.interval-form {
-    padding: 0.6rem;
-    background-color: #64b5f6; /* blue 300 */
-    border-radius: var(--border-radius-md);
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-
-    @media (min-width: 420px) {
-        flex-wrap: nowrap;
-    }
-}
-
-.interval-form-date {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    flex-grow: 1;
-
-    input,
-    select {
-        border-radius: var(--border-radius-sm);
-        border: 1px solid #fff;
-        background-color: #fff;
-        padding: 0.25rem 0.5rem;
-        box-shadow: var(--button-box-shadow);
-        font-size: 0.9rem;
-
-        @media (min-width: 600px) {
-            height: 2.6rem;
-            font-size: 1rem;
-        }
-    }
-
-    @media (min-width: 600px) {
-        input {
-            width: clamp(10rem, 50%, 30rem);
-        }
-
-        select {
-            width: clamp(5rem, 30%, 15rem);
-        }
-    }
-}
-
-.interval-form-date-fields {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-
-    @media (min-width: 600px) {
-        flex-direction: row;
-    }
-}
-
-.interval-form-date-label {
-    color: #fff;
-}
-
-.interval-form-submit {
-    display: flex;
-    flex-grow: 1;
-    width: 100%;
-
-    @media (min-width: 420px) {
-        padding-top: 1.8rem;
-        flex-grow: 0;
-        max-width: 5rem;
-    }
-
-    button {
-        background-color: var(--button-accent-background-color);
-        box-shadow: var(--button-box-shadow);
-        border: none;
-        border-radius: var(--border-radius-sm);
-        color: var(--text-color-inverse);
-        flex-grow: 1;
-
-        &:hover {
-            background-color: var(--button-accent-hover-background-color);
-        }
-
-        span {
-            font-size: 2rem;
-        }
-    }
-}
-
 .add-to-cart-container {
     margin-top: 1rem;
 
@@ -438,7 +349,7 @@
     }
 
     li {
-        width: calc(100%/3 - (0.4rem)*2/3);
+        width: calc(100%/3 - (0.5rem)*2/3);
 
         @media (min-width: 600px) {
             width: calc(100%/4 - (0.5rem)*3/4);

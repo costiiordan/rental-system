@@ -1,67 +1,17 @@
 .cart-preview {
+    position: absolute;
+    top: 4.5rem;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: var(--border-radius-sm);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px;
+    z-index: 3;
     display: none;
-    background-color: var(--background-color-section-darker);
-    padding: 0.6rem;
-    margin-top: 1rem;
-    border-radius: var(--border-radius-md);
-    position: sticky;
-}
+    padding: 1rem;
 
-.cart-preview-header {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 0.6rem;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-
-    div {
-        flex-grow: 0;
+    &.is-open {
+        display: block;
     }
-
-    button {
-        flex-grow: 0;
-    }
-}
-
-.cart-preview-summary {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.6rem;
-}
-
-.open-cart-preview-button {
-    transform: rotate(180deg);
-    transition:
-        transform 0.3s ease-in-out,
-        background-color 0.3s ease-in-out;
-    width: 2rem;
-    height: 2rem;
-    border: none;
-    background: #757575; /* color-gray-600 */
-    border-radius: 50%;
-    margin: 0;
-    padding: 0.3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--button-box-shadow);
-    color: var(--text-color-inverse);
-
-    &:hover {
-        background: #616161; /* color-gray-700 */
-    }
-}
-
-.expanded .open-cart-preview-button {
-    transform: rotate(0deg);
-}
-
-.cart-preview-text {
-    line-height: 1rem;
 }
 
 .go-to-checkout-button {
@@ -85,17 +35,8 @@
 
 .cart-preview-body {
     margin-top: 0;
-    background: #fff;
-    overflow: hidden;
-    height: 0;
     transition: all 0.3s ease-in-out;
     border-radius: var(--border-radius-sm);
-}
-
-.expanded .cart-preview-body {
-    height: auto;
-    height: calc-size(auto, size);
-    margin-top: 1rem;
 }
 
 .cart-preview-item-list {
@@ -135,7 +76,7 @@
 
 .remove-selected-item-button {
     border: none;
-    border-radius: var(--border-radius-sm);
+    border-radius: .2rem;
     background-color: var(--button-secondary-background-color);
     color: var(--text-color);
     padding: 0.4rem 0.6rem;

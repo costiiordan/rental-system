@@ -3,16 +3,19 @@ import { getCsrfToken, getLang } from './common.js';
 
 export function initCartPreview() {
     const cartPreviewContainer = document.querySelector('[data-role="cart-preview"]');
-    const toggleCartPreviewButton = cartPreviewContainer.querySelector('[data-action="toggle-cart-preview"]');
     const listContainer = cartPreviewContainer.querySelector('[data-role="cart-items-list-container"]');
-
-    toggleCartPreviewButton.addEventListener('click', toggleCartPreview);
+    const toggleCartPreviewButton = document.querySelector('[data-action="toggle-cart-preview"]');
 
     listContainer.addEventListener('click', function (event) {
         if (event.target.matches('[data-action="remove-cart-item"]')) {
             const id = event.target.getAttribute('data-id');
             removeFromCart(id);
         }
+    });
+
+    toggleCartPreviewButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        cartPreviewContainer.classList.toggle('is-open')
     });
 
     const cart = JSON.parse(cartPreviewContainer.dataset.cart);
@@ -66,16 +69,22 @@ function updateCartPreview(cart) {
     const cartPreviewContainer = document.querySelector('[data-role="cart-preview"]');
     const listContainer = cartPreviewContainer.querySelector('[data-role="cart-items-list-container"]');
     const discountsContainer = cartPreviewContainer.querySelector('[data-role="cart-discounts"]');
-    const counter = cartPreviewContainer.querySelector('[data-role="cart-item-count"]');
     const total = cartPreviewContainer.querySelector('[data-role="cart-total"]');
+    const emptyCartMessage = cartPreviewContainer.querySelector('[data-role="empty-cart-message"]');
+    const cartPreviewBody = cartPreviewContainer.querySelector('[data-role="cart-preview-body"]');
+    const cartPreviewFooter = cartPreviewContainer.querySelector('[data-role="cart-preview-footer"]');
+
+    const cartItemsCount = document.querySelector('[data-role="cart-items-count"]');
 
     if (cart.items.length === 0) {
         listContainer.innerHTML = '';
         discountsContainer.innerHTML = '';
-        cartPreviewContainer.classList.remove('expanded');
+        cartItemsCount.innerHTML = '';
+        total.innerHTML = `${cart.total}`;
 
-        cartPreviewContainer.style.removeProperty('display');
-        counter.innerHTML = '0';
+        emptyCartMessage.style.display = 'block';
+        cartPreviewBody.style.display = 'none';
+        cartPreviewFooter.style.display = 'none';
 
         return;
     }
@@ -103,18 +112,12 @@ function updateCartPreview(cart) {
         discounts += discountTemplate.replaceAll('{name}', discount.name).replaceAll('{value}', discount.value);
     });
 
-    counter.innerHTML = cart.items.length === 1 ? counter.dataset.singularText : counter.dataset.pluralText.replace('{count}', cart.items.length);
+    cartItemsCount.innerHTML = cart.items.length;
     listContainer.innerHTML = listItems;
     discountsContainer.innerHTML = discounts;
     total.innerHTML = `${cart.total}`;
 
-    cartPreviewContainer.style.display = 'block';
-}
-
-function toggleCartPreview(event) {
-    event.preventDefault();
-
-    const cartPreviewContainer = document.querySelector('[data-role="cart-preview"]');
-
-    cartPreviewContainer.classList.toggle('expanded');
+    emptyCartMessage.style.display = 'none';
+    cartPreviewBody.style.display = 'block';
+    cartPreviewFooter.style.display = 'block';
 }
