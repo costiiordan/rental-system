@@ -13,7 +13,7 @@ import { initMobileMenu } from './mobile-menu.js';
 
     const route = pageContainer.dataset.route;
 
-    if (route === 'home') {
+    if (route === 'home' || route === 'category') {
         import('./home-page.js').then((module) => {
             module.initHomePage();
         });

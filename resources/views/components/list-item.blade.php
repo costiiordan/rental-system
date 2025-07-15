@@ -1,9 +1,11 @@
 <li class="bike-list-item">
     <img src="{{asset('storage/'.$bike->image_path)}}" alt="{{$bike->name}}" class="bike-item-image" data-action="zoom" loading="lazy">
     <div class="bike-item-details">
-        <div class="category-badge">
-            <span class="category-bk-{{$category->reference}}">{{$category->value}}</span>
-        </div>
+        @if($category)
+            <div class="category-badge">
+                <span class="category-bk-{{$category->reference}}">{{$category->value}}</span>
+            </div>
+        @endif
         <h2>{{$bike->name}}</h2>
         <ul class="bike-attributes">
             @foreach($attributeValues as $attributeValue)
