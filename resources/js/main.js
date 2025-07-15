@@ -1,11 +1,13 @@
 'use strict';
 
 import { initMobileMenu } from './mobile-menu.js';
+import { initCookieConsent } from './cookie-consent.js';
 
 (function () {
     const pageContainer = document.querySelector('[data-role="page-container"]');
 
     initMobileMenu();
+    initCookieConsent();
 
     if (!pageContainer) {
         return;

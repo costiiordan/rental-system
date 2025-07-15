@@ -9,6 +9,13 @@ use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter;
 use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath;
 use Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect;
 
+function localizedView(string $roTemplate, string $enTemplate): string
+{
+    $template = app()->getLocale() === 'ro' ? $roTemplate : $enTemplate;
+
+    return view($template);
+}
+
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
@@ -31,6 +38,7 @@ Route::group(
 
         Route::get('/about', fn () => view('about'))->name('about');
         Route::get('/contact', fn () => view('contact'))->name('contact');
+        Route::get('/cookie-policy', fn () => localizedView('cookie-policy-ro', 'cookie-policy-en'))->name('cookie-policy');
 
 //        Route::get('test', function () {
 //            dd(Str::snake(\App\Models\Constants\CategoryReference::SUPER_ENDURO_BIKE_PARK, '_'));

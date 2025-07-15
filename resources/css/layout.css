@@ -42,6 +42,27 @@ footer {
     color: var(--text-color-inverse);
     padding: 1.5rem 0.5rem;
 
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    a {
+        color: var(--text-color-inverse);
+        text-decoration: none;
+        display: inline-block;
+        padding: .3rem 0;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .footer-copyright {
+        margin-top: 1rem
+    }
+
     p {
         margin: 0 auto;
         width: 100%;
@@ -52,6 +73,12 @@ footer {
         margin-top: 2rem;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
+}
+
+.footer-container {
+    padding: 0 0.5rem;
+    width: clamp(320px, 100%, 1200px);
+    margin: 0 auto;
 }
 
 .page-wrapper {
