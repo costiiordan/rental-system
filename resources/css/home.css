@@ -104,6 +104,10 @@
     flex-shrink: 0;
     color: var(--text-color-gray-light);
     font-size: 0.9rem;
+
+    @media (min-width: 1250px) {
+        width: 10rem;
+    }
 }
 
 .bike-description {

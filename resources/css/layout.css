@@ -58,7 +58,7 @@ main {
 
 .page-wrapper {
     padding: 0 0.5rem 1rem 0.5rem;
-    width: clamp(320px, 100%, 1200px);
+    width: clamp(320px, 100%, 1400px);
     margin: 0 auto;
 
     @media (min-width: 460px) {

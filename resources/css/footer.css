@@ -27,7 +27,7 @@ footer {
     p {
         margin: 0 auto;
         width: 100%;
-        max-width: 1200px;
+        max-width: 1400px;
     }
 
     @media (min-width: 1250px) {
@@ -38,7 +38,7 @@ footer {
 
 .footer-container {
     padding: 0 0.5rem;
-    width: clamp(320px, 100%, 1200px);
+    width: clamp(320px, 100%, 1400px);
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;

@@ -19,7 +19,7 @@
     flex-wrap: wrap;
     padding: 0 0.5rem;
     justify-content: space-between;
-    width: clamp(320px, 100%, 1200px);
+    width: clamp(320px, 100%, 1400px);
     margin: 0 auto;
 
     @media (min-width: 1000px) {
@@ -97,7 +97,7 @@
     background-color: rgba(255, 167, 38, 0.85);
 
     &>div {
-        width: clamp(320px, 100%, 1200px);
+        width: clamp(320px, 100%, 1400px);
         margin: 0 auto;
         display: flex;
         flex-direction: row;
