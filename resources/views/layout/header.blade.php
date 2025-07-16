@@ -34,66 +34,70 @@
     </div>
     <div class="header-container">
         <div>
-            <button class="header-menu-button" data-action="toggle-mobile-menu">
-                <span class="material-symbols-outlined">menu</span>
-            </button>
-            <h1 class="site-title">@lang('Rent a bike Brașov')</h1>
-            <div class="header-menu">
-                <ul>
-                    <li>
-                        <a href="{{route('home')}}" title="@lang('Home')"
-                           class="{{ request()->routeIs(['home', 'category']) ? 'is-active' : '' }}">
-                            @lang('Home')
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('about')}}" title="@lang('Despre noi')"
-                           class="{{ request()->routeIs('about') ? 'is-active' : '' }}">
-                            @lang('Despre noi')
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('contact')}}" title="@lang('Contact')"
-                           class="{{ request()->routeIs('contact') ? 'is-active' : '' }}">
-                            @lang('Contact')
-                        </a>
-                    </li>
-                </ul>
+            <div class="header-content">
+                <button class="header-menu-button" data-action="toggle-mobile-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <img src="{{Vite::asset('resources/images/rent-bike-brasov-logo.svg')}}" alt="Rent a bike Brasov" class="header-logo">
             </div>
-            <button class="cart-preview-button" data-action="toggle-cart-preview">
-                <span class="material-symbols-outlined">shopping_cart</span>
-                <span class="cart-preview-count" data-role="cart-items-count"></span>
-            </button>
-            <button class="language-switcher-button" data-action="toggle-language-switcher">
-                <span class="material-symbols-outlined">language</span>
-                <span class="current-language-flag">
-                    @if (LaravelLocalization::getCurrentLocale() === 'ro')
-                        @include('layout.svg.ro-flag')
-                    @endif
-                    @if (LaravelLocalization::getCurrentLocale() === 'en')
-                        @include('layout.svg.en-flag')
-                    @endif
-                </span>
-            </button>
-            <div class="language-switcher-dropdown" data-role="language-switcher-dropdown">
-                <ul>
-                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+            <div class="header-content">
+                <div class="header-menu">
+                    <ul>
                         <li>
-                            <a rel="alternate" hreflang="{{ $localeCode }}"
-                               href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                @if($properties['regional'] === 'en_GB')
-                                    @include('layout.svg.en-flag')
-                                @endif
-                                @if($properties['regional'] === 'ro_RO')
-                                    @include('layout.svg.ro-flag')
-                                @endif
-                                {{$properties['native']}}
+                            <a href="{{route('home')}}" title="@lang('Home')"
+                               class="{{ request()->routeIs(['home', 'category']) ? 'is-active' : '' }}">
+                                @lang('Home')
                             </a>
                         </li>
-                    @endforeach
-                </ul>
+                        <li>
+                            <a href="{{route('about')}}" title="@lang('Despre noi')"
+                               class="{{ request()->routeIs('about') ? 'is-active' : '' }}">
+                                @lang('Despre noi')
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('contact')}}" title="@lang('Contact')"
+                               class="{{ request()->routeIs('contact') ? 'is-active' : '' }}">
+                                @lang('Contact')
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <button class="cart-preview-button" data-action="toggle-cart-preview">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <span class="cart-preview-count" data-role="cart-items-count"></span>
+                </button>
+                <button class="language-switcher-button" data-action="toggle-language-switcher">
+                    <span class="material-symbols-outlined">language</span>
+                    <span class="current-language-flag">
+                        @if (LaravelLocalization::getCurrentLocale() === 'ro')
+                            @include('layout.svg.ro-flag')
+                        @endif
+                        @if (LaravelLocalization::getCurrentLocale() === 'en')
+                            @include('layout.svg.en-flag')
+                        @endif
+                    </span>
+                </button>
+                <div class="language-switcher-dropdown" data-role="language-switcher-dropdown">
+                    <ul>
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <li>
+                                <a rel="alternate" hreflang="{{ $localeCode }}"
+                                   href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                    @if($properties['regional'] === 'en_GB')
+                                        @include('layout.svg.en-flag')
+                                    @endif
+                                    @if($properties['regional'] === 'ro_RO')
+                                        @include('layout.svg.ro-flag')
+                                    @endif
+                                    {{$properties['native']}}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+                <x-cart-preview />
             </div>
-            <x-cart-preview />
         </div>
     </div>
 </header>

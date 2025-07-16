@@ -93,35 +93,55 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 1rem;
         position: relative;
+        justify-content: space-between;
     }
 }
 
+.header-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
 .header-menu-button {
-    all: unset;
-    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    height: 4rem;
+    width: 3rem;
+
+    @media (min-width: 600px) {
+        width: 4rem;
+        height: 5rem;
+    }
 
     @media (min-width: 1250px) {
         display: none;
     }
 
     .material-symbols-outlined {
-        font-size: 1.75rem;
+        font-size: 2rem;
         color: var(--text-color);
     }
 }
 
-h1.site-title {
-    font-size: 1.4rem;
-    font-weight: normal;
-    line-height: 1.2rem;
-    text-align: center;
-    padding: 0.5rem 0;
+.header-logo {
+    width: 10rem;
+
+    @media (min-width: 400px) {
+        width: 12rem;
+    }
+
+    @media (min-width: 600px) {
+        width: 15rem;
+    }
 
     @media (min-width: 1250px) {
-        text-align: left;
-        padding-left: .5rem;
+        width: 20rem;
     }
 }
 
@@ -158,12 +178,19 @@ h1.site-title {
 }
 
 .cart-preview-button {
-    all: unset;
     display: flex;
     align-items: center;
-    cursor: pointer;
+    justify-content: center;
+    border: none;
+    background: none;
+    height: 4rem;
+    width: 3rem;
     position: relative;
-    padding: 1.5rem 1rem;
+
+    @media (min-width: 600px) {
+        width: 4rem;
+        height: 5rem;
+    }
 
     &:hover {
         .material-symbols-outlined {
@@ -174,6 +201,10 @@ h1.site-title {
     .material-symbols-outlined {
         font-size: 1.75rem;
         color: var(--text-color);
+
+        @media (min-width: 1250px) {
+            font-size: 2rem;
+        }
     }
 
     .cart-preview-count {
@@ -197,16 +228,32 @@ h1.site-title {
 }
 
 .language-switcher-button {
-    all: unset;
     display: flex;
     align-items: center;
-    cursor: pointer;
+    justify-content: center;
+    border: none;
+    background: none;
+    height: 4rem;
+    width: 3rem;
     position: relative;
-    padding: 1.5rem 1rem;
+
+    @media (min-width: 600px) {
+        width: 4rem;
+        height: 5rem;
+    }
 
     &:hover {
         .material-symbols-outlined {
             color: var(--text-color-inverse);
+        }
+    }
+
+    .material-symbols-outlined {
+        font-size: 1.75rem;
+        color: var(--text-color);
+
+        @media (min-width: 1250px) {
+            font-size: 2rem;
         }
     }
 
@@ -221,7 +268,7 @@ h1.site-title {
 
 .language-switcher-dropdown {
     position: absolute;
-    top: 4.5rem;
+    top: 4rem;
     right: 0;
     background-color: #fff;
     border-radius: var(--border-radius-sm);

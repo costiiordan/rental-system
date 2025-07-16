@@ -1,0 +1,28 @@
+.about-partners-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    border-bottom: 0.0625rem solid #9E9E9E;
+
+    @media (min-width: 600px) {
+        flex-wrap: nowrap;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    a {
+        width: calc(50% - 0.5rem);
+        text-decoration: none;
+
+        @media (min-width: 600px) {
+            width: auto;
+        }
+    }
+}
