@@ -4,13 +4,13 @@
     display: flex;
     flex-direction: row;
     gap: 1rem;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .list-filter-item {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     gap: .3rem;
 }
 

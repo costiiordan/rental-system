@@ -151,6 +151,17 @@ class ViewOrder extends ViewRecord implements HasTable
             ->color('danger')
             ->requiresConfirmation()
             ->action(function () {
+                $orderItems = OrderItem::query()->where('order_id', $this->record->id)->get();
+
+                foreach ($orderItems as $orderItem) {
+                    if ($orderItem->item_booking_id) {
+                        $itemBooking = ItemBooking::query()->where('id', $orderItem->item_booking_id)->first();
+                        if ($itemBooking) {
+                            $itemBooking->delete();
+                        }
+                    }
+                }
+
                 $this->record->delete();
 
                 Notification::make()
@@ -158,7 +169,7 @@ class ViewOrder extends ViewRecord implements HasTable
                     ->success()
                     ->send();
 
-                return redirect()->route('filament.resources.orders.index');
+                return redirect()->route('filament.admin.resources.orders.index');
             });
     }
 

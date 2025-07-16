@@ -22,7 +22,7 @@ class NewReservation extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('contact@rentabikebrasov.ro', 'Rent a Bike Brasov'),
+            from: new Address('contact@rentabikebrasov.ro', 'Rent a bike Brasov'),
             subject: __('Rezervare noua'),
         );
     }

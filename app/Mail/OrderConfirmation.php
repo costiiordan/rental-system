@@ -5,7 +5,6 @@ namespace App\Mail;
 use App\Models\Order;
 use App\Repository\OrderRepository;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
@@ -29,7 +28,7 @@ class OrderConfirmation extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('office@playbike.ro', 'Rent a Bike Brasov'),
+            from: new Address('contact@rentabikebrasov.ro', 'Rent a bike Brasov'),
             subject: __('Confirmare rezervare #:order_id', ['order_id' => $this->order->id]),
         );
     }
