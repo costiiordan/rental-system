@@ -9,11 +9,13 @@ use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter;
 use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath;
 use Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect;
 
-function localizedView(string $view): string
-{
-    $template = app()->getLocale() === 'ro' ? $view.'-ro' : $view.'-en';
+if (!function_exists('localizedView')) {
+    function localizedView(string $view): string
+    {
+        $template = app()->getLocale() === 'ro' ? $view.'-ro' : $view.'-en';
 
-    return view($template);
+        return view($template);
+    }
 }
 
 Route::group(

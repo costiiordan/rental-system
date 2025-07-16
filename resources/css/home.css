@@ -254,6 +254,10 @@
     background-color: #FFEB3B; /* yellow 500 */
     color: var(--text-color);
 
+    &:hover {
+        color: var(--text-color);
+    }
+
     &:is(a):hover {
         background-color: #FDD835; /* yellow 600 */
     }
@@ -261,6 +265,10 @@
 .category-bk-enduro-kids {
     background-color: #FF5722; /* deep orange 500 */
     color: var(--text-color-inverse);
+
+    &:hover {
+        color: var(--text-color-inverse);
+    }
 
     &:is(a):hover {
         background-color: #F4511E; /* deep orange 600 */
@@ -270,6 +278,10 @@
     background-color: #E91E63; /* pink 500 */
     color: var(--text-color-inverse);
 
+    &:hover {
+        color: var(--text-color-inverse);
+    }
+
     &:is(a):hover {
         background-color: #D81B60; /* pink 600 */
     }
@@ -277,6 +289,10 @@
 .category-bk-downhill {
     background-color: #616161; /* gray 700 */
     color: var(--text-color-inverse);
+
+    &:hover {
+        color: var(--text-color-inverse);
+    }
 
     &:is(a):hover {
         background-color: #424242; /* gray 800 */
@@ -286,6 +302,10 @@
     background-color: #2196F3; /* blue 500 */
     color: var(--text-color-inverse);
 
+    &:hover {
+        color: var(--text-color-inverse);
+    }
+
     &:is(a):hover {
         background-color: #1E88E5; /* blue 600 */
     }
@@ -293,6 +313,10 @@
 .category-bk-accessories {
     background-color: #EEEEEE; /* gray 200 */
     color: var(--text-color);
+
+    &:hover {
+        color: var(--text-color);
+    }
 
     &:is(a):hover {
         background-color: #E0E0E0; /* gray 300 */
@@ -302,6 +326,10 @@
     background-color: #4CAF50; /* green 500 */
     color: var(--text-color-inverse);
 
+    &:hover {
+        color: var(--text-color-inverse);
+    }
+
     &:is(a):hover {
         background-color: #43A047; /* green 600 */
     }
@@ -310,6 +338,10 @@
     background-color: #795548; /* brown 500 */
     color: var(--text-color-inverse);
 
+    &:hover {
+        color: var(--text-color-inverse);
+    }
+
     &:is(a):hover {
         background-color: #6D4C41; /* brown 600 */
     }
@@ -317,6 +349,10 @@
 .category-bk-guide {
     background-color: #F44336; /* red 500 */
     color: var(--text-color-inverse);
+
+    &:hover {
+        color: var(--text-color-inverse);
+    }
 
     &:is(a):hover {
         background-color: #E53935; /* red 600 */

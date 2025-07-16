@@ -38,7 +38,9 @@
                 <button class="header-menu-button" data-action="toggle-mobile-menu">
                     <span class="material-symbols-outlined">menu</span>
                 </button>
-                <img src="{{Vite::asset('resources/images/rent-bike-brasov-logo.svg')}}" alt="Rent a bike Brasov" class="header-logo">
+                <a href="{{config('app.url')}}" class="header-logo-link" title="@lang('Rent a bike Brașov')">
+                    <img src="{{Vite::asset('resources/images/rent-bike-brasov-logo.svg')}}" alt="Rent a bike Brasov" class="header-logo">
+                </a>
             </div>
             <div class="header-content">
                 <div class="header-menu">
