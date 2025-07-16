@@ -60,10 +60,10 @@
             $cardChecked = $paymentMethodValue === \App\Models\Constants\PaymentMethods::CARD;
         @endphp
         <label>@lang('Metodă de plată')*</label>
-        <label>
-            <input type="radio" name="payment_method" value="{{\App\Models\Constants\PaymentMethods::CARD}}" @checked($cardChecked)>
-            <span>@lang('Card prin Netopia')</span>
-        </label>
+{{--        <label>--}}
+{{--            <input type="radio" name="payment_method" value="{{\App\Models\Constants\PaymentMethods::CARD}}" @checked($cardChecked)>--}}
+{{--            <span>@lang('Card prin Netopia')</span>--}}
+{{--        </label>--}}
         <label>
             <input type="radio" name="payment_method" value="{{\App\Models\Constants\PaymentMethods::CASH}}" @checked($cashChecked)>
             <span>@lang('Cash la ridicare')</span>

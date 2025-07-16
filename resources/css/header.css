@@ -82,6 +82,11 @@
 }
 .contact-email {
     width: 15rem;
+
+    &:hover {
+        text-decoration: none;
+        color: var(--text-color);
+    }
 }
 
 .contact-location {

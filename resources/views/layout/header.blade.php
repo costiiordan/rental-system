@@ -3,32 +3,32 @@
         <div class="top-bar">
             <div class="social-media-links">
                 <span class="social-media-text">@lang('Social media:')</span>
-                <a href="" class="social-media-icon" title="@lang('Facebook')">
+                <a href="https://www.facebook.com/PlayBikeGo" class="social-media-icon" title="@lang('Facebook')">
                     @include('layout.svg.facebook-icon')
                 </a>
-                <a href="" title="@lang('Instagram')" class="social-media-icon">
+                <a href="https://www.instagram.com/playbike.ro" title="@lang('Instagram')" class="social-media-icon">
                     @include('layout.svg.instagram-icon')
                 </a>
-                <a href="" title="@lang('Youtube')" class="social-media-icon">
+                <a href="https://www.youtube.com/channel/UCbk602a0YNap-HZITm6LzjQ" title="@lang('Youtube')" class="social-media-icon">
                     @include('layout.svg.youtube-icon')
                 </a>
-                <a href="" title="@lang('TickTok')" class="social-media-icon">
+                <a href="https://www.tiktok.com/@playbike.ro" title="@lang('TickTok')" class="social-media-icon">
                     @include('layout.svg.ticktock-icon')
                 </a>
             </div>
             <div class="contact-info">
-                <a href="tel:0723123456" class="contact-phone" title="@lang('Contactați-ne')">
-                    <span class="material-symbols-outlined">phone_enabled</span>
-                    0723.123.456
-                </a>
+{{--                <a href="tel:0723123456" class="contact-phone" title="@lang('Contactați-ne')">--}}
+{{--                    <span class="material-symbols-outlined">phone_enabled</span>--}}
+{{--                    0723.123.456--}}
+{{--                </a>--}}
                 <a href="mailto:contact@rentabikebrasov.ro" class="contact-email">
                     <span class="material-symbols-outlined">mail</span>
                     contact@rentabikebrasov.ro
                 </a>
-                <a href="" class="contact-location">
+                <span class="contact-location">
                     <span class="material-symbols-outlined">location_on</span>
-                    Teleferic Grand Hotel, Poiana Brașov
-                </a>
+                    Drumul Sulinar nr 1, Poiana Brașov
+                </span>
             </div>
         </div>
     </div>

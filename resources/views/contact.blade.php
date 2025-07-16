@@ -5,10 +5,10 @@
 
     <div class="contact-page">
         <div class="contact-details">
-            <div class="contact-row">
-                <span class="contact-label">@lang('Telefon'):</span>
-                <span class="contact-value">@lang('0723.123.456')</span>
-            </div>
+{{--            <div class="contact-row">--}}
+{{--                <span class="contact-label">@lang('Telefon'):</span>--}}
+{{--                <span class="contact-value">@lang('0723.123.456')</span>--}}
+{{--            </div>--}}
             <div class="contact-row">
                 <span class="contact-label">@lang('Email'):</span>
                 <span class="contact-value">
@@ -18,13 +18,19 @@
             <div class="contact-row">
                 <span class="contact-label">@lang('Adresă'):</span>
                 <span class="contact-value">
-                    @lang('Drumul Sulinarului nr 1, Poiana Brasov, Romanaia')
+                    @lang('Drumul Sulinar nr 1, Poiana Brasov, Romanaia')
                 </span>
             </div>
             <div class="contact-row">
                 <span class="contact-label">@lang('Program de lucru'):</span>
                 <span class="contact-value">
-                    @lang('Luni - Duminică: 10:00 - 18:00')
+                    @lang('Luni: 09:00 - 17:00')<br>
+                    @lang('Marți: ÎNCHIS')<br>
+                    @lang('Miercuri: ÎNCHIS')<br>
+                    @lang('Joi: 09:00 - 17:00')<br>
+                    @lang('Vineri: 09:00 - 17:00')<br>
+                    @lang('Sâmbătă: 09:00 - 17:00')<br>
+                    @lang('Duminică: 09:00 - 17:00')
                 </span>
             </div>
         </div>

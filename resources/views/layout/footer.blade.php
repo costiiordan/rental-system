@@ -1,12 +1,12 @@
 <footer>
     <div class="footer-container">
         <ul class="footer-contact-info">
-            <li>
-                <a href="tel:0723123456" title="@lang('Contactați-ne')">
-                    <span class="material-symbols-outlined">phone_enabled</span>
-                    0723.123.456
-                </a>
-            </li>
+{{--            <li>--}}
+{{--                <a href="tel:0723123456" title="@lang('Contactați-ne')">--}}
+{{--                    <span class="material-symbols-outlined">phone_enabled</span>--}}
+{{--                    0723.123.456--}}
+{{--                </a>--}}
+{{--            </li>--}}
             <li>
                 <a href="mailto:contact@rentabikebrasov.ro">
                     <span class="material-symbols-outlined">mail</span>
@@ -16,31 +16,31 @@
             <li>
                 <a href="" >
                     <span class="material-symbols-outlined">location_on</span>
-                    Teleferic Grand Hotel, Poiana Brașov
+                    Drumul Sulinar nr 1, Poiana Brașov
                 </a>
             </li>
         </ul>
         <ul class="footer-social-media">
             <li>
-                <a href="" title="@lang('Facebook')">
+                <a href="https://www.facebook.com/PlayBikeGo" title="@lang('Facebook')">
                     @include('layout.svg.facebook-icon')
                     Facebook
                 </a>
             </li>
             <li>
-                <a href="" title="@lang('Instagram')">
+                <a href="https://www.instagram.com/playbike.ro" title="@lang('Instagram')">
                     @include('layout.svg.instagram-icon')
                     Instagram
                 </a>
             </li>
             <li>
-                <a href="" title="@lang('Youtube')">
+                <a href="https://www.youtube.com/channel/UCbk602a0YNap-HZITm6LzjQ" title="@lang('Youtube')">
                     @include('layout.svg.youtube-icon')
                     Youtube
                 </a>
             </li>
             <li>
-                <a href="" title="@lang('TickTok')">
+                <a href="https://www.tiktok.com/@playbike.ro" title="@lang('TickTok')">
                     @include('layout.svg.ticktock-icon')
                     TickTok
                 </a>

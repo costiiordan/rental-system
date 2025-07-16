@@ -42,8 +42,10 @@ Route::group(
         Route::get('/cookie-policy', fn () => localizedView('cookie-policy'))->name('cookie-policy');
 
 //        Route::get('test', function () {
-//            dd(Str::snake(\App\Models\Constants\CategoryReference::SUPER_ENDURO_BIKE_PARK, '_'));
-//            return view('test');
+//            $order = \App\Models\Order::where('id', 1)->firstOrFail();
+//            $mail = new \App\Mail\NewReservation($order);
+//            return $mail->render();
+//            Mail::to($order->email)->send(new OrderConfirmation($order));
 //        })->name('test');
     }
 );

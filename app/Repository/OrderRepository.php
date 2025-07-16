@@ -6,6 +6,7 @@ use App\Dto\CartDto;
 use App\Dto\CartItemDto;
 use App\Exceptions\NoItemsSelectedException;
 use App\Exceptions\UnavailableItemsInSelectionException;
+use App\Mail\NewReservation;
 use App\Mail\OrderConfirmation;
 use App\Models\Constants\OrderStatus;
 use App\Models\Constants\PaymentMethods;
@@ -39,6 +40,7 @@ class OrderRepository
         $this->cartRepository->emptyCart();
 
         Mail::to($order->email)->send(new OrderConfirmation($order));
+        Mail::to('office@playbike.ro')->send(new NewReservation($order));
 
         return $order;
     }
