@@ -2,14 +2,17 @@
 
 namespace App\View\Components;
 
+use App\Services\CategoryFilterService;
 use App\Services\DateIntervalService;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class RangeSelector extends Component
 {
-    public function __construct(private DateIntervalService $dateIntervalRepository)
-    { }
+    public function __construct(
+        private DateIntervalService $dateIntervalRepository,
+        private CategoryFilterService $categoryFilterService,
+    ) { }
 
     public function render(): View
     {
@@ -32,7 +35,7 @@ class RangeSelector extends Component
             'fromTime' => $fromTime,
             'toDate' => $toDate,
             'toTime' => $toTime,
-            'category' => request()->get('category'),
+            'category' => $this->categoryFilterService->getCategory(),
         ]);
     }
 }

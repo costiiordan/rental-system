@@ -14,7 +14,7 @@ class ItemRepository
 {
     private const DAY_IN_HOURS = 8;
 
-    public function getAvailableItems(?Carbon $fromDate, ?Carbon $toDate, ?string $category): Collection
+    public function getAvailableItems(?Carbon $fromDate, ?Carbon $toDate, ?string $categoryReference): Collection
     {
         $isIntervalInLockedDays = LockedDay::where('date', '=', $fromDate)
             ->orWhere('date', '=', $toDate)
@@ -36,12 +36,12 @@ class ItemRepository
             });
         }
 
-        if ($category) {
+        if ($categoryReference) {
             $items->whereHas('attributeValues.attribute', function ($query) {
                 $query->where('reference', '=', AttributeReference::CATEGORY);
             });
-            $items->whereHas('attributeValues', function ($query) use ($category) {
-                $query->where('reference', '=', $category);
+            $items->whereHas('attributeValues', function ($query) use ($categoryReference) {
+                $query->where('reference', '=', $categoryReference);
             });
         }
 

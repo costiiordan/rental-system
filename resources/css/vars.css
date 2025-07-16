@@ -27,9 +27,9 @@
     --success-color: #43a047; /*green 600*/
     --error-color: #e53935; /*red 600*/
 
-    --border-radius-sm: 0.4rem;
-    --border-radius-md: 0.7rem;
-    --border-radius-lg: 1rem;
+    --border-radius-sm: 0.2rem;
+    --border-radius-md: 0.4rem;
+    --border-radius-lg: 0.6rem;
 
     --button-box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     --input-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;

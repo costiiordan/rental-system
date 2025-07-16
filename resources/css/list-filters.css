@@ -1,0 +1,42 @@
+.list-filters {
+    margin-top: .5rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    flex-wrap: nowrap;
+}
+
+.list-filter-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .3rem;
+}
+
+.list-filter-label {
+    font-size: 0.9rem;
+    color: var(--text-color-gray-dark);
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.list-filter-value {
+
+}
+
+.list-filter-remove-button {
+    border: none;
+    border-radius: var(--border-radius-sm);
+    padding: .2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    text-decoration: none;
+
+    .material-symbols-outlined {
+        font-size: 1.3rem;
+        color: var(--text-color);
+    }
+}

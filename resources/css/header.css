@@ -223,7 +223,7 @@ h1.site-title {
     position: absolute;
     top: 4.5rem;
     right: 0;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #fff;
     border-radius: var(--border-radius-sm);
     box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px;
     z-index: 3;

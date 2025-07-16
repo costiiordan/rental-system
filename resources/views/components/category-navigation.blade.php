@@ -2,7 +2,7 @@
     <ul>
         @foreach($categories as $category)
             <li>
-                <a href="{{ route('category', ['category' => $category->reference]) }}" class="category-bk-{{$category->reference}} @if($currentCategoryReference === $category->reference) active @endif">
+                <a href="{{ route('home', ['category' => $category->reference] + $intervalParams) }}" class="category-bk-{{$category->reference}}">
                     {{ $category->value }}
                 </a>
             </li>

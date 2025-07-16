@@ -27,7 +27,6 @@ Route::group(
     ],
     function() {
         Route::get('/', HomeController::class)->name('home');
-        Route::get('/category/{category}', HomeController::class)->name('category');
 
         Route::post('/add-to-cart', [CartController::class, 'addItem'])->name('add-to-cart');
         Route::post('/remove-from-cart', [CartController::class, 'removeItem'])->name('remove-from-cart');

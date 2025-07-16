@@ -18,6 +18,7 @@ class GoogleIconImport extends Component
         'location_on',
         'mail',
         'menu',
+        'close',
     ];
 
     public function render(): View

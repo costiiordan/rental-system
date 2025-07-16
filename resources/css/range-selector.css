@@ -1,11 +1,39 @@
+.range-selector-container {
+    @media (min-width: 1250px) {
+        padding-top: 2rem;
+        background-color: rgba(0,0,0,0.7);
+    }
+}
+
+.range-selector {
+    padding: 1rem;
+    background-color: #fff;
+    width: clamp(320px, 100%, 1000px);
+    margin: 0 auto;
+
+    @media (min-width: 1250px) {
+        border-radius: var(--border-radius-md);
+    }
+}
+
+.interval-select-text {
+    text-align: center;
+
+    @media (min-width: 600px) {
+        font-size: 1.3rem;
+    }
+
+    @media (min-width: 1250px) {
+        margin-top: 0;
+    }
+}
+
 .interval-form {
-    padding: 0.6rem;
-    background-color: #64b5f6; /* blue 300 */
-    border-radius: var(--border-radius-md);
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
     flex-wrap: wrap;
+
 
     @media (min-width: 420px) {
         flex-wrap: nowrap;
@@ -28,7 +56,7 @@
     input,
     select {
         border-radius: var(--border-radius-sm);
-        border: 1px solid #fff;
+        border: 1px solid var(--divider-color);
         background-color: #fff;
         padding: 0.25rem 0.5rem;
         box-shadow: var(--button-box-shadow);
@@ -62,7 +90,7 @@
 }
 
 .interval-form-date-label {
-    color: #fff;
+    color: var(--text-color-gray-dark);
 }
 
 .interval-form-submit {
@@ -77,15 +105,15 @@
     }
 
     button {
-        background-color: var(--button-accent-background-color);
+        background-color: var(--button-primary-background-color);
         box-shadow: var(--button-box-shadow);
         border: none;
         border-radius: var(--border-radius-sm);
-        color: var(--text-color-inverse);
+        color: var(--text-color);
         flex-grow: 1;
 
         &:hover {
-            background-color: var(--button-accent-hover-background-color);
+            background-color: var(--button-primary-hover-background-color);
         }
 
         span {

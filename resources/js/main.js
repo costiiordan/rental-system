@@ -3,6 +3,7 @@
 import { initMobileMenu } from './mobile-menu.js';
 import { initCookieConsent } from './cookie-consent.js';
 import { initLanguageSwitcher } from './language-switcher.js';
+import { initCartPreview } from './cart.js';
 
 (function () {
     const pageContainer = document.querySelector('[data-role="page-container"]');
@@ -10,6 +11,7 @@ import { initLanguageSwitcher } from './language-switcher.js';
     initMobileMenu();
     initLanguageSwitcher();
     initCookieConsent();
+    initCartPreview();
 
     if (!pageContainer) {
         return;

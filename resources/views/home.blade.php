@@ -1,27 +1,35 @@
-@extends('layout.default')
+@extends('layout.home')
 
 @section('content')
-    <p class="interval-select-text">@lang('În ce perioadă vrei să închiriezi?')</p>
-
     <x-range-selector />
 
-    @if(!$interval)
-        <p class="select-interval-text">@lang('Acestea sunt toate bicicletele noastre. Selecteaza intervalul pentru a vedea ce avem disponibil.')</p>
-    @endif
+    <main>
+        <div class="page-wrapper" data-role="page-container" data-route="{{request()->route()->getName()}}">
 
-    @if (session('error'))
-        <div class="error-message">
-            {{ session('error') }}
+            @if (session('error'))
+                <div class="error-message">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            <h2 class="section-heading">@lang('Categorii de produse')</h2>
+            <x-category-navigation />
+
+            <h2 class="section-heading section-heading-products">
+                @if ($category)
+                    @lang('Produse din categoria') <span class="category-name">{{$category->value}}</span>
+                @else
+                    @lang('Toate produsele noastre')
+                @endif
+            </h2>
+            <x-list-filters />
+            <ul class="bike-list">
+            @foreach($bikes as $bike)
+                <x-list-item :item="$bike" />
+            @endforeach
+            </ul>
         </div>
-    @endif
-
-    <x-category-navigation />
-
-    <ul class="bike-list">
-    @foreach($bikes as $bike)
-        <x-list-item :item="$bike" />
-    @endforeach
-    </ul>
+    </main>
 
     <dialog class="add-to-cart-dialog" data-role="add-to-cart-dialog">
         <p>@lang('Produsul a fost adaugat in cos.')</p>

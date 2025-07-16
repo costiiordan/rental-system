@@ -34,11 +34,13 @@ button {
 }
 
 main {
+    margin-top: 1rem;
     flex-grow: 1;
 
     @media (min-width: 1250px) {
         background-color: rgba(0,0,0,0.7);
         padding-bottom: 2rem;
+        margin-top: 0;
     }
 }
 
@@ -53,7 +55,7 @@ main {
 
     @media (min-width: 1250px) {
         border: 0.0625rem solid var(--divider-color);
-        border-radius: .5rem;
+        border-radius: var(--border-radius-lg);
         margin-top: 2rem;
         padding: 2rem;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

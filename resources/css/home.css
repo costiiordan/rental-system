@@ -1,11 +1,12 @@
-.interval-select-text {
-    @media (min-width: 600px) {
-        font-size: 1.1rem;
-    }
+.section-heading {
+    margin: 0;
+    padding: 0;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
 
-    @media (min-width: 1250px) {
-        margin-top: 0;
-    }
+.section-heading-products {
+    margin-top: 1.5rem;
 }
 
 .bike-list {
@@ -144,7 +145,6 @@
     color: var(--text-color-gray-light);
 }
 
-.select-interval-text,
 .bike-select-interval-notice {
     padding: 0.7rem 1rem;
     background-color: var(--background-color-section);
@@ -155,26 +155,23 @@
     font-size: 0.9em;
     margin: 0.5rem 0 0 0;
 }
-.select-interval-text {
-    margin: 1rem 0 0 0;
-}
 
 .add-to-cart-container {
     margin-top: 1rem;
 
     button {
-        background-color: var(--button-accent-background-color);
+        background-color: var(--button-primary-background-color);
         box-shadow: var(--button-box-shadow);
         border: none;
         border-radius: var(--border-radius-sm);
-        color: var(--text-color-inverse);
+        color: var(--text-color);
         padding: 0.4rem 1rem;
         font-size: 1.1rem;
         display: block;
         width: 100%;
 
         &:hover {
-            background-color: var(--button-accent-hover-background-color);
+            background-color: var(--button-primary-hover-background-color);
         }
 
         @media (min-width: 460px) {
@@ -185,7 +182,7 @@
 }
 
 .add-to-cart-dialog {
-    border-radius: var(--border-radius-lg);
+    border-radius: var(--border-radius-md);
     border: 0.0625rem solid var(--divider-color);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 1rem;
@@ -329,8 +326,8 @@
 .category-badge {
     span {
         display: inline-block;
-        padding: 0.2rem 0.5rem;
-        font-size: 0.9rem;
+        padding: 0.1rem 0.5rem;
+        font-size: 0.8rem;
         border-radius: var(--border-radius-sm);
         text-transform: uppercase;
     }

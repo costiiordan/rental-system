@@ -5,6 +5,7 @@ namespace App\View\Components;
 use App\Models\AttributeValues;
 use App\Models\Constants\AttributeReference;
 use App\Models\Constants\CategoryReference;
+use App\Services\DateIntervalService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\Component;
@@ -23,6 +24,10 @@ class CategoryNavigation extends Component
         CategoryReference::ACCESORIES,
     ];
 
+    public function __construct(
+        private DateIntervalService $dateIntervalService,
+    ) { }
+
     public function render(): View
     {
         $categories = AttributeValues::query()
@@ -35,7 +40,7 @@ class CategoryNavigation extends Component
 
         return view('components.category-navigation')->with([
             'categories' => $categories,
-            'currentCategoryReference' => request()->route('category') ?? null,
+            'intervalParams' => $this->getIntervalParams(),
         ]);
     }
 
@@ -53,5 +58,21 @@ class CategoryNavigation extends Component
         }
 
         return $sortedCategories;
+    }
+
+    private function getIntervalParams(): array
+    {
+        $interval = $this->dateIntervalService->getInterval();
+
+        if ($interval === null) {
+            return [];
+        }
+
+        return [
+            'from_date' => $interval->from->format('Y-m-d'),
+            'from_time' => $interval->from->format('H:i'),
+            'to_date' => $interval->to->format('Y-m-d'),
+            'to_time' => $interval->to->format('H:i'),
+        ];
     }
 }

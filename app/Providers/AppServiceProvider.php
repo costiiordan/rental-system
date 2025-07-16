@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\CategoryFilterService;
 use App\Services\DateIntervalService;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
@@ -15,6 +16,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(DateIntervalService::class, function (Application $app) {
             return new DateIntervalService($app['request']);
+        });
+
+        $this->app->singleton(CategoryFilterService::class, function (Application $app) {
+            return new CategoryFilterService($app['request']);
         });
     }
 
