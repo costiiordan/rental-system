@@ -19,6 +19,7 @@ class GoogleIconImport extends Component
         'mail',
         'menu',
         'close',
+        'sentiment_dissatisfied',
     ];
 
     public function render(): View

@@ -2,6 +2,7 @@
     "Nu sunt produse în coșul de cumpărături.": "Empty cart.",
     "Urmatoarele produse nu sunt disponibile in intervalul selectat: :products": "The following products are not available in the selected range: :products",
     "Confirmare rezervare #:order_id": "Reservation confirmation #:order_id",
+    "Rezervare noua": "New reservation",
     "zile": "days",
     "zi": "day",
     "ore": "hours",
@@ -97,6 +98,8 @@
     "Categorii de produse": "Product categories",
     "Produse din categoria": "Products from",
     "Toate produsele noastre": "All our products",
+    "Nu avem nici un produs disponibil în peroada selectată.": "There are no products available in the selected period.",
+    "Iți reamintim că în zilele de <strong>marți<\/strong> și <strong>miercuri<\/strong> centrul nostru este <strong>închis<\/strong>.": "Please note that our center is <strong>closed<\/strong> on <strong>Tuesday<\/strong> and <strong>Wednesday<\/strong>.",
     "Produsul a fost adaugat in cos.": "The product has been added to the cart.",
     "Rezerva si alte produse": "Book other products"
 }

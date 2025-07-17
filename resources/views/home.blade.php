@@ -23,11 +23,24 @@
                 @endif
             </h2>
             <x-list-filters />
-            <ul class="bike-list">
-            @foreach($bikes as $bike)
-                <x-list-item :item="$bike" />
-            @endforeach
-            </ul>
+            @if(!$bikes->isEmpty())
+                <ul class="bike-list">
+                    @foreach($bikes as $bike)
+                        <x-list-item :item="$bike" />
+                    @endforeach
+                </ul>
+            @endif
+            @if($bikes->isEmpty() && $interval !== null)
+                <div class="no-availability-msg">
+                    <div class="no-availability-msg-icon">
+                        <span class="material-symbols-outlined">sentiment_dissatisfied</span>
+                    </div>
+                    <div class="no-availability-msg-text">
+                        <p>@lang('Nu avem nici un produs disponibil în peroada selectată.')</p>
+                        <p>@lang('Iți reamintim că în zilele de <strong>marți</strong> și <strong>miercuri</strong> centrul nostru este <strong>închis</strong>.')</p>
+                    </div>
+                </div>
+            @endif
         </div>
     </main>
 

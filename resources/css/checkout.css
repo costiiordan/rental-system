@@ -24,6 +24,8 @@
 
     &:hover {
         background-color: var(--button-secondary-hover-background-color);
+        color: var(--text-color);
+        text-decoration: none;
     }
 }
 
