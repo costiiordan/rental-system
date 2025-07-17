@@ -22,25 +22,25 @@
         </ul>
         <ul class="footer-social-media">
             <li>
-                <a href="https://www.facebook.com/PlayBikeGo" title="@lang('Facebook')">
+                <a href="https://www.facebook.com/PlayBikeGo" title="@lang('Facebook')" target="_blank">
                     @include('layout.svg.facebook-icon')
                     Facebook
                 </a>
             </li>
             <li>
-                <a href="https://www.instagram.com/playbike.ro" title="@lang('Instagram')">
+                <a href="https://www.instagram.com/playbike.ro" title="@lang('Instagram')" target="_blank">
                     @include('layout.svg.instagram-icon')
                     Instagram
                 </a>
             </li>
             <li>
-                <a href="https://www.youtube.com/channel/UCbk602a0YNap-HZITm6LzjQ" title="@lang('Youtube')">
+                <a href="https://www.youtube.com/channel/UCbk602a0YNap-HZITm6LzjQ" title="@lang('Youtube')" target="_blank">
                     @include('layout.svg.youtube-icon')
                     Youtube
                 </a>
             </li>
             <li>
-                <a href="https://www.tiktok.com/@playbike.ro" title="@lang('TickTok')">
+                <a href="https://www.tiktok.com/@playbike.ro" title="@lang('TickTok')" target="_blank">
                     @include('layout.svg.ticktock-icon')
                     TickTok
                 </a>

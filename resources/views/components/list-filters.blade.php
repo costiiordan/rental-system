@@ -15,7 +15,7 @@
                 <span class="list-filter-value">
                 {{$interval->from->format('d.m H:i')}}
                 -
-                {{$interval->from->format('d.m H:i')}}
+                {{$interval->to->format('d.m H:i')}}
                 (<x-duration :from="$interval->from" :to="$interval->to"/>)
             </span>
                 <a class="list-filter-remove-button" href="{{$removeIntervalUrl}}">

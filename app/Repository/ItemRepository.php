@@ -16,8 +16,8 @@ class ItemRepository
 
     public function getAvailableItems(?Carbon $fromDate, ?Carbon $toDate, ?string $categoryReference): Collection
     {
-        $isIntervalInLockedDays = LockedDay::where('date', '=', $fromDate)
-            ->orWhere('date', '=', $toDate)
+        $isIntervalInLockedDays = LockedDay::where('date', '=', $fromDate?->format('Y-m-d'))
+            ->orWhere('date', '=', $toDate?->format('Y-m-d'))
             ->exists();
 
         if ($isIntervalInLockedDays) {
