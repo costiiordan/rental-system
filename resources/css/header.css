@@ -11,6 +11,7 @@
 .top-bar-container {
     @media (min-width: 1250px) {
         background-color: rgba(255,255,255,0.85);
+        backdrop-filter: blur(8px);
     }
 }
 
@@ -95,6 +96,7 @@
 
 .header-container {
     background-color: rgba(255, 167, 38, 0.85);
+    backdrop-filter: blur(8px);
 
     &>div {
         width: clamp(320px, 100%, 1400px);

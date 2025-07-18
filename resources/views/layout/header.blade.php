@@ -12,7 +12,7 @@
                 <a href="https://www.youtube.com/channel/UCbk602a0YNap-HZITm6LzjQ" title="@lang('Youtube')" class="social-media-icon" target="_blank">
                     @include('layout.svg.youtube-icon')
                 </a>
-                <a href="https://www.tiktok.com/@playbike.ro" title="@lang('TickTok')" class="social-media-icon" target="_blank">
+                <a href="https://www.tiktok.com/@playbike.ro" title="@lang('TikTok')" class="social-media-icon" target="_blank">
                     @include('layout.svg.ticktock-icon')
                 </a>
             </div>

@@ -40,9 +40,9 @@
                 </a>
             </li>
             <li>
-                <a href="https://www.tiktok.com/@playbike.ro" title="@lang('TickTok')" target="_blank">
+                <a href="https://www.tiktok.com/@playbike.ro" title="@lang('TikTok')" target="_blank">
                     @include('layout.svg.ticktock-icon')
-                    TickTok
+                    TikTok
                 </a>
             </li>
         </ul>
