@@ -58,9 +58,15 @@
             </li>
         </ul>
         <p class="footer-copyright">
-            &copy; {{ date('Y') }}
-            <a href="{{LaravelLocalization::localizeUrl(route('home'))}}" title="@lang('Închiriază biciclete în Poiana Brașov')">@lang('Rent a bike Brașov.')</a>
-            @lang('Toate drepturile rezervate.')
+            <span>
+                &copy; {{ date('Y') }}
+                <a href="{{LaravelLocalization::localizeUrl(route('home'))}}" title="@lang('Închiriază biciclete în Poiana Brașov')">@lang('Rent a bike Brașov.')</a>
+                @lang('Toate drepturile rezervate.')
+            </span>
+            <span>
+                Made with <span class="material-symbols-outlined">favorite</span> by
+                <a href="https://www.linkedin.com/in/constantiniordan/" target="_blank">Constantin Iordan</a>
+            </span>
         </p>
     </div>
 </footer>

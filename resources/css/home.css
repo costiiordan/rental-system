@@ -94,6 +94,10 @@
     flex-shrink: 0;
     color: var(--text-color-gray-light);
     font-size: 0.9rem;
+
+    @container list-item (width >= 400px) {
+        width: 9rem;
+    }
 }
 
 .bike-description {

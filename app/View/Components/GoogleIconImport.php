@@ -21,6 +21,7 @@ class GoogleIconImport extends Component
         'close',
         'sentiment_dissatisfied',
         'schedule',
+        'favorite',
     ];
 
     public function render(): View

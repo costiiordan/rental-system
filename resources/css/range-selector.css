@@ -70,6 +70,7 @@
         padding: 1rem;
         font-size: 0.9rem;
         transition: border-color 0.3s ease;
+        text-align: left;
 
         &:focus {
             border-color: var(--primary-color);
