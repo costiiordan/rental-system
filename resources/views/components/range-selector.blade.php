@@ -28,7 +28,7 @@
                 <div class="interval-form-date">
                     <span class="interval-form-date-label">@lang('Până la:')</span>
                     <div class="interval-form-date-fields">
-                        <input type="date" name="to_date" value="{{$toDate}}" />
+                        <input type="date" name="to_date"  value="{{$toDate}}" />
                         <select name="to_time">
                             <option value="10:00" @selected($toTime == '10:00')>10:00</option>
                             <option value="11:00" @selected($toTime == '11:00')>11:00</option>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="interval-form-submit">
-                    <button type="submit">
+                    <button class="btn-golden" type="submit">
                         <span class="material-symbols-outlined">search</span>
                     </button>
                 </div>

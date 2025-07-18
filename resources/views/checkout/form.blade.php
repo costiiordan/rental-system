@@ -86,7 +86,7 @@
     @csrf
 
     <div>
-        <button type="submit" class="checkout-submit-button">
+        <button type="submit" class="btn-golden checkout-submit-button">
             @lang('Salvează rezervarea')
         </button>
     </div>

@@ -1,29 +1,38 @@
 .range-selector-container {
+    background-color: #f8fafc;
+
+    @media (min-width: 600px) {
+        padding: 2rem;
+    }
+
     @media (min-width: 1250px) {
-        padding-top: 2rem;
         background-color: rgba(0,0,0,0.7);
     }
 }
 
 .range-selector {
     padding: 1rem;
-    background-color: #fff;
-    width: clamp(320px, 100%, 1000px);
+    width: clamp(320px, 100%, 600px);
     margin: 0 auto;
 
+    @media (min-width: 600px) {
+        border-radius: 1.25rem;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+
     @media (min-width: 1250px) {
-        border-radius: var(--border-radius-md);
+        border-radius: 20px;
+        width: 900px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 }
 
 .interval-select-text {
-    text-align: center;
+    font-size: 1.3rem;
 
     @media (min-width: 600px) {
-        font-size: 1.3rem;
-    }
-
-    @media (min-width: 1250px) {
         margin-top: 0;
     }
 }
@@ -31,11 +40,11 @@
 .interval-form {
     display: flex;
     flex-direction: row;
-    gap: 0.5rem;
+    gap: 1rem;
     flex-wrap: wrap;
 
 
-    @media (min-width: 420px) {
+    @media (min-width: 1250px) {
         flex-wrap: nowrap;
     }
 
@@ -55,26 +64,30 @@
 
     input,
     select {
-        border-radius: var(--border-radius-sm);
-        border: 1px solid var(--divider-color);
+        border-radius: 0.625rem;
+        border: 0.125rem solid var(--divider-color);
         background-color: #fff;
-        padding: 0.25rem 0.5rem;
-        box-shadow: var(--button-box-shadow);
+        padding: 1rem;
         font-size: 0.9rem;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
 
         @media (min-width: 600px) {
-            height: 2.6rem;
             font-size: 1rem;
         }
     }
 
-    @media (min-width: 600px) {
+    @media (min-width: 1250px) {
         input {
-            width: clamp(10rem, 50%, 30rem);
+            width: clamp(10rem, 55%, 30rem);
         }
 
         select {
-            width: clamp(5rem, 30%, 15rem);
+            width: clamp(5rem, 35%, 15rem);
         }
     }
 }
@@ -84,7 +97,7 @@
     flex-direction: column;
     gap: 0.4rem;
 
-    @media (min-width: 600px) {
+    @media (min-width: 1250px) {
         flex-direction: row;
     }
 }
@@ -98,25 +111,16 @@
     flex-grow: 1;
     width: 100%;
 
-    @media (min-width: 420px) {
+    @media (min-width: 1250px) {
         padding-top: 1.8rem;
         flex-grow: 0;
-        max-width: 5rem;
+        max-width: 6rem;
     }
 
-    button {
-        background-color: var(--button-primary-background-color);
-        box-shadow: var(--button-box-shadow);
-        border: none;
-        border-radius: var(--border-radius-sm);
-        color: var(--text-color);
-        flex-grow: 1;
+    .btn-golden {
+        width: 100%;
 
-        &:hover {
-            background-color: var(--button-primary-hover-background-color);
-        }
-
-        span {
+        .material-symbols-outlined {
             font-size: 2rem;
         }
     }

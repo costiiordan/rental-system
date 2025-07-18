@@ -65,40 +65,46 @@
                         </li>
                     </ul>
                 </div>
-                <button class="cart-preview-button" data-action="toggle-cart-preview">
-                    <span class="material-symbols-outlined">shopping_cart</span>
-                    <span class="cart-preview-count" data-role="cart-items-count"></span>
-                </button>
-                <button class="language-switcher-button" data-action="toggle-language-switcher">
-                    <span class="material-symbols-outlined">language</span>
-                    <span class="current-language-flag">
-                        @if (LaravelLocalization::getCurrentLocale() === 'ro')
-                            @include('layout.svg.ro-flag')
-                        @endif
-                        @if (LaravelLocalization::getCurrentLocale() === 'en')
-                            @include('layout.svg.en-flag')
-                        @endif
-                    </span>
-                </button>
-                <div class="language-switcher-dropdown" data-role="language-switcher-dropdown">
-                    <ul>
-                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                            <li>
-                                <a rel="alternate" hreflang="{{ $localeCode }}"
-                                   href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                    @if($properties['regional'] === 'en_GB')
-                                        @include('layout.svg.en-flag')
-                                    @endif
-                                    @if($properties['regional'] === 'ro_RO')
-                                        @include('layout.svg.ro-flag')
-                                    @endif
-                                    {{$properties['native']}}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
+                @if (!request()->routeIs('checkout.index'))
+                    <div>
+                        <button class="cart-preview-button" data-action="toggle-cart-preview">
+                            <span class="material-symbols-outlined">shopping_cart</span>
+                            <span class="cart-preview-count" data-role="cart-items-count"></span>
+                        </button>
+                    </div>
+                    <x-cart-preview />
+                @endif
+                <div>
+                    <button class="language-switcher-button" data-action="toggle-language-switcher">
+                        <span class="material-symbols-outlined">language</span>
+                        <span class="current-language-flag">
+                            @if (LaravelLocalization::getCurrentLocale() === 'ro')
+                                @include('layout.svg.ro-flag')
+                            @endif
+                            @if (LaravelLocalization::getCurrentLocale() === 'en')
+                                @include('layout.svg.en-flag')
+                            @endif
+                        </span>
+                    </button>
+                    <div class="language-switcher-dropdown" data-role="language-switcher-dropdown">
+                        <ul>
+                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                <li>
+                                    <a rel="alternate" hreflang="{{ $localeCode }}"
+                                       href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                        @if($properties['regional'] === 'en_GB')
+                                            @include('layout.svg.en-flag')
+                                        @endif
+                                        @if($properties['regional'] === 'ro_RO')
+                                            @include('layout.svg.ro-flag')
+                                        @endif
+                                        {{$properties['native']}}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
-                <x-cart-preview />
             </div>
         </div>
     </div>

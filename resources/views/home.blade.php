@@ -5,7 +5,6 @@
 
     <main>
         <div class="page-wrapper" data-role="page-container" data-route="{{request()->route()->getName()}}">
-
             @if (session('error'))
                 <div class="error-message">
                     {{ session('error') }}
@@ -13,6 +12,7 @@
             @endif
 
             <h2 class="section-heading">@lang('Categorii de produse')</h2>
+
             <x-category-navigation />
 
             <h2 class="section-heading section-heading-products">
@@ -22,7 +22,9 @@
                     @lang('Toate produsele noastre')
                 @endif
             </h2>
+
             <x-list-filters />
+
             @if(!$bikes->isEmpty())
                 <ul class="bike-list">
                     @foreach($bikes as $bike)
@@ -48,8 +50,8 @@
         <p>@lang('Produsul a fost adaugat in cos.')</p>
 
         <div class="add-to-cart-dialog-actions">
-            <button class="add-to-cart-dialog-continue-btn" data-action="close-dialog">@lang('Rezerva si alte produse')</button>
-            <a href="{{route('checkout.index')}}" class="add-to-cart-dialog-checkout-btn">@lang('Finalizează comanda')</a>
+            <button class="btn-secondary" data-action="close-dialog">@lang('Rezerva si alte produse')</button>
+            <a href="{{route('checkout.index')}}" class="btn-golden">@lang('Finalizează comanda')</a>
         </div>
     </dialog>
 @endsection

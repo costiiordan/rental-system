@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="checkout-top-bar">
-        <a class="checkout-top-bar-btn checkout-back-button" href="{{route('home')}}">
+        <a class="btn-secondary checkout-top-bar-btn checkout-back-button" href="{{route('home')}}">
             <span class="material-symbols-outlined">chevron_backward</span>
             <span>@lang('Înapoi')</span>
         </a>
 
-        <button class="checkout-top-bar-btn checkout-view-cart-button" data-action="toggle-cart-preview">
+        <button class="btn-secondary checkout-top-bar-btn checkout-view-cart-button" data-action="toggle-cart-preview">
             <span class="material-symbols-outlined">stat_1</span>
             <span>@lang('Vezi coșul')</span>
         </button>

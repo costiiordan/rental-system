@@ -1,6 +1,6 @@
 .list-filters {
     margin-top: .5rem;
-    padding: 0.5rem;
+    padding: 0.5rem 0;
     display: flex;
     flex-direction: row;
     gap: 1rem;
@@ -10,8 +10,12 @@
 .list-filter-item {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     gap: .3rem;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 0.2rem 0.5rem 0.2rem 1rem;
+    border-radius: 1rem;
 }
 
 .list-filter-label {

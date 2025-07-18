@@ -5,33 +5,38 @@
 
     <div class="contact-page">
         <div class="contact-details">
-{{--            <div class="contact-row">--}}
-{{--                <span class="contact-label">@lang('Telefon'):</span>--}}
-{{--                <span class="contact-value">@lang('0723.123.456')</span>--}}
-{{--            </div>--}}
-            <div class="contact-row">
-                <span class="contact-label">@lang('Email'):</span>
-                <span class="contact-value">
+            <div class="contact-item">
+                <span class="material-symbols-outlined">mail</span>
+                <div class="contact-item-info">
+                    <span class="contact-label">@lang('Email'):</span>
+                    <span class="contact-value">
                     <a href="mailto:contact@rentabikebrasov.ro">contact@rentabikebrasov.ro</a>
                 </span>
+                </div>
             </div>
-            <div class="contact-row">
-                <span class="contact-label">@lang('Adresă'):</span>
-                <span class="contact-value">
-                    @lang('Drumul Sulinar nr 1, Poiana Brasov, Romanaia')
+            <div class="contact-item">
+                <span class="material-symbols-outlined">location_on</span>
+                <div class="contact-item-info">
+                    <span class="contact-label">@lang('Adresă'):</span>
+                    <span class="contact-value">
+                    @lang('Drumul Sulinar nr 1, Poiana Brasov, Romania')
                 </span>
+                </div>
             </div>
-            <div class="contact-row">
-                <span class="contact-label">@lang('Program de lucru'):</span>
-                <span class="contact-value">
-                    @lang('Luni: 09:00 - 17:00')<br>
-                    @lang('Marți: ÎNCHIS')<br>
-                    @lang('Miercuri: ÎNCHIS')<br>
-                    @lang('Joi: 09:00 - 17:00')<br>
-                    @lang('Vineri: 09:00 - 17:00')<br>
-                    @lang('Sâmbătă: 09:00 - 17:00')<br>
-                    @lang('Duminică: 09:00 - 17:00')
-                </span>
+            <div class="contact-item">
+                <span class="material-symbols-outlined">schedule</span>
+                <div class="contact-item-info">
+                    <span class="contact-label">@lang('Program de lucru'):</span>
+                    <span class="contact-value">
+                        <span class="wh-label">@lang('Luni')</span><span class="wh-value">@lang('09:00 - 17:00')</span><br>
+                        <span class="wh-label">@lang('Marți')</span><span class="wh-value">@lang('ÎNCHIS')</span><br>
+                        <span class="wh-label">@lang('Miercuri')</span><span class="wh-value">@lang('ÎNCHIS')</span><br>
+                        <span class="wh-label">@lang('Joi')</span><span class="wh-value">@lang('09:00 - 17:00')</span><br>
+                        <span class="wh-label">@lang('Vineri')</span><span class="wh-value">@lang('09:00 - 17:00')</span><br>
+                        <span class="wh-label">@lang('Sâmbătă')</span><span class="wh-value">@lang('09:00 - 17:00')</span><br>
+                        <span class="wh-label">@lang('Duminică')</span><span class="wh-value">@lang('09:00 - 17:00')</span>
+                    </span>
+                </div>
             </div>
         </div>
         <div class="contact-map">

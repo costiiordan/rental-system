@@ -3,6 +3,11 @@ import { getCsrfToken, getLang } from './common.js';
 
 export function initCartPreview() {
     const cartPreviewContainer = document.querySelector('[data-role="cart-preview"]');
+
+    if (!cartPreviewContainer) {
+        return;
+    }
+
     const listContainer = cartPreviewContainer.querySelector('[data-role="cart-items-list-container"]');
     const toggleCartPreviewButton = document.querySelector('[data-action="toggle-cart-preview"]');
 

@@ -13,27 +13,36 @@
     padding: 0;
     margin: 1.5rem 0 0 0;
     list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    @media (min-width: 600px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    @media (min-width: 900px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 .bike-list-item {
+    container-name: list-item;
+    container-type: inline-size;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
-    gap: 0.5rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    opacity: 1;
+    transform: scale(1);
 
-    @media (min-width: 460px) {
-        flex-direction: row;
-        align-items: flex-start;
-    }
-
-    @media (min-width: 600px) {
-        gap: 1rem;
-    }
-
-    &:not(:first-child) {
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 0.0625rem solid var(--divider-color);
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
 }
 
@@ -42,11 +51,6 @@
     height: auto;
     object-fit: contain;
     aspect-ratio: 4 / 3;
-    border-radius: var(--border-radius-sm);
-
-    @media (min-width: 460px) {
-        width: clamp(175px, 40%, 400px);
-    }
 }
 
 .bike-item-details {
@@ -54,6 +58,8 @@
     flex-direction: column;
     flex-grow: 1;
     container-type: inline-size;
+    background-color: #fff;
+    padding: 1rem;
 
     h2 {
         margin: .5rem 0 0 0;
@@ -68,17 +74,6 @@
     padding: 0;
     list-style: none;
 
-    @container (width > 500px) {
-        display: flex;
-        flex-wrap: wrap;
-
-        li {
-            flex-grow: 1;
-            flex-basis: calc(50% - 0.5rem);
-            padding-right: 1rem;
-        }
-    }
-
     li {
         display: flex;
         flex-wrap: nowrap;
@@ -90,12 +85,6 @@
         &:not(:first-child) {
             border-top: 1px solid var(--divider-color);
         }
-
-        &:nth-child(2) {
-            @container (width > 500px) {
-                border-top: none;
-            }
-        }
     }
 }
 
@@ -105,10 +94,6 @@
     flex-shrink: 0;
     color: var(--text-color-gray-light);
     font-size: 0.9rem;
-
-    @media (min-width: 1250px) {
-        width: 10rem;
-    }
 }
 
 .bike-description {
@@ -118,26 +103,36 @@
     font-size: 0.9em;
 }
 
+.bike-price-container {
+    flex-grow: 1;
+    margin-top: 1rem;
+}
+
 .bike-prices {
-    margin: 0.7rem 0 0 0;
-    padding: 0.4rem 1rem;
+    margin: 0;
+    padding: 0;
     list-style: none;
-    background-color: var(--background-color-section);
-    border-radius: var(--border-radius-sm);
-    width: 10rem;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    gap: 1rem;
+    flex-wrap: wrap;
 
     li {
         display: flex;
         flex-wrap: nowrap;
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
+        background-color: #F5F5F5;
+        height: 4rem;
+        padding: 1rem;
+        border-radius: 1rem;
     }
 }
 
 .bike-price-duration {
-    flex-grow: 0;
-    width: 3.5rem;
+    text-align: center;
     color: var(--text-color-gray-light);
 }
 
@@ -154,43 +149,24 @@
     padding: 0.7rem 1rem;
     background-color: var(--background-color-section);
     line-height: 1.1rem;
-    border-radius: var(--border-radius-sm);
-}
-.bike-select-interval-notice {
+    border-radius: 1.3rem;
     font-size: 0.9em;
-    margin: 0.5rem 0 0 0;
+    margin: 1rem 0 0 0;
 }
 
 .add-to-cart-container {
     margin-top: 1rem;
 
     button {
-        background-color: var(--button-primary-background-color);
-        box-shadow: var(--button-box-shadow);
-        border: none;
-        border-radius: var(--border-radius-sm);
-        color: var(--text-color);
-        padding: 0.4rem 1rem;
-        font-size: 1.1rem;
-        display: block;
         width: 100%;
-
-        &:hover {
-            background-color: var(--button-primary-hover-background-color);
-        }
-
-        @media (min-width: 460px) {
-            width: 100%;
-            max-width: 20rem;
-        }
     }
 }
 
 .add-to-cart-dialog {
-    border-radius: var(--border-radius-md);
+    border-radius: 2rem;
     border: 0.0625rem solid var(--divider-color);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    padding: 1rem;
+    padding: 2rem;
     width: clamp(300px, 90%, 600px);
 
     &::backdrop {
@@ -200,167 +176,100 @@
     p {
         padding: 1rem 0;
         text-align: center;
-        font-size: 1.1rem;
+        font-size: 1.4rem;
     }
 
     .add-to-cart-dialog-actions {
+        margin-top: 2rem;
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;
 
         @media (min-width: 480px) {
             flex-direction: row;
             justify-content: space-between;
         }
     }
-
-    .add-to-cart-dialog-checkout-btn {
-        border-radius: var(--border-radius-sm);
-        background-color: var(--button-primary-background-color);
-        color: var(--text-color);
-        padding: 0.4rem 1rem;
-        text-decoration: none;
-        text-align: center;
-        box-shadow: var(--button-box-shadow);
-        font-size: 1.1rem;
-
-        &:hover {
-            background-color: var(--button-primary-hover-background-color);
-        }
-    }
-
-    .add-to-cart-dialog-continue-btn {
-        border: none;
-        border-radius: var(--border-radius-sm);
-        background-color: var(--button-secondary-background-color);
-        color: var(--text-color);
-        padding: 0.6rem 1rem;
-        text-decoration: none;
-        text-align: center;
-        box-shadow: var(--button-box-shadow);
-        font-size: 1rem;
-
-        &:hover {
-            background-color: var(--button-secondary-hover-background-color);
-        }
-    }
 }
 
 .error-message {
-    border-radius: var(--border-radius-sm);
+    border-radius: 1.5rem;
     background-color: var(--error-color);
     color: var(--text-color-inverse);
     font-size: 1.1rem;
-    padding: 0.5rem 1rem;
-    margin-top: 1rem;
+    padding: 1rem 1.5rem;
 }
 
 .category-bk-kids {
-    background-color: #FFEB3B; /* yellow 500 */
+    background: linear-gradient(135deg,rgba(255, 245, 157, 1) 0%, rgba(253, 216, 53, 1) 100%);
     color: var(--text-color);
 
     &:hover {
         color: var(--text-color);
-    }
-
-    &:is(a):hover {
-        background-color: #FDD835; /* yellow 600 */
     }
 }
 .category-bk-enduro-kids {
-    background-color: #FF5722; /* deep orange 500 */
+    background: linear-gradient(135deg,rgba(255, 138, 101, 1) 0%, rgba(230, 74, 25, 1) 100%);
     color: var(--text-color-inverse);
 
     &:hover {
         color: var(--text-color-inverse);
-    }
-
-    &:is(a):hover {
-        background-color: #F4511E; /* deep orange 600 */
     }
 }
 .category-bk-super-enduro-bike-park {
-    background-color: #E91E63; /* pink 500 */
+    background: linear-gradient(135deg,rgba(240, 98, 146, 1) 0%, rgba(194, 24, 91, 1) 100%);
     color: var(--text-color-inverse);
 
     &:hover {
         color: var(--text-color-inverse);
-    }
-
-    &:is(a):hover {
-        background-color: #D81B60; /* pink 600 */
     }
 }
 .category-bk-downhill {
-    background-color: #616161; /* gray 700 */
+    background: linear-gradient(135deg,rgba(158, 158, 158, 1) 0%, rgba(33, 33, 33, 1) 100%);
     color: var(--text-color-inverse);
 
     &:hover {
         color: var(--text-color-inverse);
-    }
-
-    &:is(a):hover {
-        background-color: #424242; /* gray 800 */
     }
 }
 .category-bk-electric-mountain-bike {
-    background-color: #2196F3; /* blue 500 */
+    background: linear-gradient(135deg,rgba(100, 181, 246, 1) 0%, rgba(25, 118, 210, 1) 100%);
     color: var(--text-color-inverse);
 
     &:hover {
         color: var(--text-color-inverse);
     }
-
-    &:is(a):hover {
-        background-color: #1E88E5; /* blue 600 */
-    }
 }
 .category-bk-accessories {
-    background-color: #EEEEEE; /* gray 200 */
+    background: linear-gradient(135deg,rgba(250, 250, 250, 1) 0%, rgba(189, 189, 189, 1) 100%);
     color: var(--text-color);
 
     &:hover {
         color: var(--text-color);
     }
-
-    &:is(a):hover {
-        background-color: #E0E0E0; /* gray 300 */
-    }
 }
 .category-bk-electric-enduro {
-    background-color: #4CAF50; /* green 500 */
+    background: linear-gradient(135deg,rgba(129, 199, 132, 1) 0%, rgba(56, 142, 60, 1) 100%);
     color: var(--text-color-inverse);
 
     &:hover {
         color: var(--text-color-inverse);
-    }
-
-    &:is(a):hover {
-        background-color: #43A047; /* green 600 */
     }
 }
 .category-bk-road-gravel {
-    background-color: #795548; /* brown 500 */
+    background: linear-gradient(135deg,rgba(161, 136, 127, 1) 0%, rgba(93, 64, 55, 1) 100%);
     color: var(--text-color-inverse);
 
     &:hover {
         color: var(--text-color-inverse);
-    }
-
-    &:is(a):hover {
-        background-color: #6D4C41; /* brown 600 */
     }
 }
 .category-bk-guide {
-    background-color: #F44336; /* red 500 */
+    background: linear-gradient(135deg,rgba(229, 115, 115, 1) 0%, rgba(211, 47, 47, 1) 100%);
     color: var(--text-color-inverse);
 
     &:hover {
         color: var(--text-color-inverse);
-    }
-
-    &:is(a):hover {
-        background-color: #E53935; /* red 600 */
     }
 }
 
@@ -369,13 +278,18 @@
         display: inline-block;
         padding: 0.1rem 0.5rem;
         font-size: 0.8rem;
-        border-radius: var(--border-radius-sm);
+        border-radius: 1.1rem;
         text-transform: uppercase;
+        margin-top: .5rem;
     }
 }
 
 .category-navigation {
-    margin-top: 1rem;
+    padding-top: 2rem;
+
+    @media (min-width: 600px) {
+        padding-top: 1rem;
+    }
 
     ul {
         margin: 0;
@@ -407,9 +321,15 @@
         text-align: center;
         cursor: pointer;
         padding: 0 0.5rem;
-        border-radius: var(--border-radius-sm);
-        box-shadow: var(--button-box-shadow);
+        border-radius: 1.5rem;
         text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgb(171 171 171 / 48%);
+
+        &:hover {
+            transform: translateY(-3px);
+            text-decoration: none;
+        }
     }
 }
 

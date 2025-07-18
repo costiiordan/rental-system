@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="cart-preview-footer" data-role="cart-preview-footer">
-        <a href="{{ LaravelLocalization::localizeUrl(route('checkout.index')) }}" class="go-to-checkout-button">
+        <a href="{{ LaravelLocalization::localizeUrl(route('checkout.index')) }}" class="btn-golden go-to-checkout-button">
             @lang('Finalizează comanda')
         </a>
     </div>
@@ -31,7 +31,7 @@
                 -
                 <span class="cart-preview-item-to-date">{toDate}</span>
             </div>
-            <button data-action="remove-cart-item" data-id="{id}" class="remove-selected-item-button">@lang('Elimină')</button>
+            <button data-action="remove-cart-item" data-id="{id}" class="btn-secondary remove-selected-item-button">@lang('Elimină')</button>
         </div>
         <div class="cart-preview-item-price">
             <span class="cart-preview-item-price">{price} <span class="cart-preview-item-price-currency">RON</span></span>

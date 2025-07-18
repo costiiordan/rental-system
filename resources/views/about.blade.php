@@ -18,11 +18,14 @@
         </a>
     </div>
 
-    <p>@lang('about_line_1')</p>
+    <div class="about-text">
+        <p>@lang('about_line_1')</p>
 
-    <p>@lang('about_line_2')</p>
+        <p>@lang('about_line_2')</p>
 
-    <p>@lang('about_line_3')</p>
+        <p>@lang('about_line_3')</p>
 
-    <p>@lang('about_line_4')</p>
+        <p>@lang('about_line_4')</p>
+    </div>
+
 @endsection

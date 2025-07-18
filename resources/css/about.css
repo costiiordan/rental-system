@@ -1,12 +1,11 @@
 .about-partners-logos {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 2rem;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding-bottom: 1rem;
-    border-bottom: 0.0625rem solid #9E9E9E;
 
     @media (min-width: 600px) {
         flex-wrap: nowrap;
@@ -15,6 +14,10 @@
     img {
         width: 100%;
         height: auto;
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 
     a {
@@ -24,5 +27,14 @@
         @media (min-width: 600px) {
             width: auto;
         }
+    }
+}
+
+.about-text {
+    p {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 800px;
+        line-height: 1.7rem;
     }
 }
