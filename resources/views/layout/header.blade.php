@@ -17,10 +17,10 @@
                 </a>
             </div>
             <div class="contact-info">
-{{--                <a href="tel:0723123456" class="contact-phone" title="@lang('Contactați-ne')">--}}
-{{--                    <span class="material-symbols-outlined">phone_enabled</span>--}}
-{{--                    0723.123.456--}}
-{{--                </a>--}}
+                <a href="tel:0734533091" class="contact-phone" title="@lang('Contactați-ne')">
+                    <span class="material-symbols-outlined">phone_enabled</span>
+                    0734.533.091
+                </a>
                 <a href="mailto:contact@rentabikebrasov.ro" class="contact-email">
                     <span class="material-symbols-outlined">mail</span>
                     contact@rentabikebrasov.ro

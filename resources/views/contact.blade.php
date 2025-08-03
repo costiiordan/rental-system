@@ -6,6 +6,15 @@
     <div class="contact-page">
         <div class="contact-details">
             <div class="contact-item">
+                <span class="material-symbols-outlined">phone_enabled</span>
+                <div class="contact-item-info">
+                    <span class="contact-label">@lang('Telefon'):</span>
+                    <span class="contact-value">
+                        0734.533.091
+                    </span>
+                </div>
+            </div>
+            <div class="contact-item">
                 <span class="material-symbols-outlined">mail</span>
                 <div class="contact-item-info">
                     <span class="contact-label">@lang('Email'):</span>
