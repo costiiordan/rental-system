@@ -22,6 +22,7 @@ class GoogleIconImport extends Component
         'sentiment_dissatisfied',
         'schedule',
         'favorite',
+        'calendar_month',
     ];
 
     public function render(): View

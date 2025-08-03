@@ -64,13 +64,15 @@
 
     input,
     select {
+        appearance: none;
         border-radius: 0.625rem;
         border: 0.125rem solid var(--divider-color);
         background-color: #fff;
         padding: 1rem;
-        font-size: 0.9rem;
+        font-size: 1rem;
         transition: border-color 0.3s ease;
         text-align: left;
+        color: var(--text-color);
 
         &:focus {
             border-color: var(--primary-color);
@@ -80,6 +82,10 @@
         @media (min-width: 600px) {
             font-size: 1rem;
         }
+    }
+
+    input::-webkit-date-and-time-value {
+        text-align: left;
     }
 
     @media (min-width: 1250px) {

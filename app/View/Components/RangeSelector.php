@@ -14,21 +14,18 @@ class RangeSelector extends Component
         private CategoryFilterService $categoryFilterService,
     ) { }
 
-    public function render(): View
+    public function render(): View|string
     {
         $interval = $this->dateIntervalRepository->getInterval();
 
         if ($interval) {
-            $fromDate = $interval->from->format('Y-m-d');
-            $fromTime = $interval->from->format('H:i');
-            $toDate = $interval->to->format('Y-m-d');
-            $toTime = $interval->to->format('H:i');
-        } else {
-            $fromDate = now()->format('Y-m-d');
-            $fromTime = '09:00';
-            $toDate = now()->addDay()->format('Y-m-d');
-            $toTime = '18:00';
+            return '';
         }
+
+        $fromDate = now()->format('Y-m-d');
+        $fromTime = '09:00';
+        $toDate = now()->addDay()->format('Y-m-d');
+        $toTime = '17:00';
 
         return view('components.range-selector')->with([
             'fromDate' => $fromDate,

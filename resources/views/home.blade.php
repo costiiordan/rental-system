@@ -10,18 +10,16 @@
                     {{ session('error') }}
                 </div>
             @endif
-
-            <h2 class="section-heading">@lang('Categorii de produse')</h2>
-
-            <x-category-navigation />
-
-            <h2 class="section-heading section-heading-products">
-                @if ($category)
-                    @lang('Produse din categoria') <span class="category-name">{{$category->value}}</span>
-                @else
-                    @lang('Toate produsele noastre')
-                @endif
-            </h2>
+            @if($category === null)
+                <h2 class="section-heading">@lang('Categorii de produse')</h2>
+                <x-category-navigation />
+                <h2 class="section-heading">@lang('Toate produsele noastre')</h2>
+            @else
+                <h2 class="section-heading">
+                    @lang('Produse din categoria')
+                    <span class="category-name">{{$category->value}}</span>
+                </h2>
+            @endif
 
             <x-list-filters />
 

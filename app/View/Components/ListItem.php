@@ -23,6 +23,11 @@ class ListItem extends Component
     {
         $interval = $this->dateIntervalRepository->getInterval();
 
+        $this->item->prices = $this->item->prices->sortBy([
+            ['duration_unit', 'desc'],
+            ['duration', 'asc'],
+        ]);
+
         return view('components.list-item')->with([
             'bike' => $this->item,
             'attributeValues' => $this->parseItemAttributesValues($this->item),
