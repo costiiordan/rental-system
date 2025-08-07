@@ -9,5 +9,6 @@
 
     @include('layout.cookie-consent')
 
+    <x-js-data/>
     @vite(['resources/js/main.js'])
 @endsection

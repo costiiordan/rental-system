@@ -1,4 +1,4 @@
-<li class="bike-list-item">
+<li class="bike-list-item" data-role="bike-list-item" data-id="{{$bike->id}}">
     <img src="{{asset('storage/'.$bike->image_path)}}" alt="{{$bike->name}}" class="bike-item-image" data-action="zoom" loading="lazy">
     <div class="bike-item-details">
         <h2>{{$bike->name}}</h2>
@@ -32,9 +32,12 @@
             </ul>
         </div>
         @if($interval)
-            <div class="add-to-cart-container">
+            <div class="add-to-cart-container" data-role="add-to-cart-container" data-item-id="{{$bike->id}}">
                 <button data-from="{{$interval->from->format('Y-m-d H:i')}}" data-to="{{$interval->to->format('Y-m-d H:i')}}" data-item-id="{{$bike->id}}" data-action="add-to-cart" class="btn-golden rent-bike-button">
                     @lang('Închiriază') <x-duration :from="$interval->from" :to="$interval->to"/> @lang('cu') {{$intervalPrice}} RON
+                </button>
+                <button data-action="remove-from-cart" data-role="remove-from-cart" class="btn-secondary remove-from-cart-button" data-cart-item-id="">
+                    @lang('Renunță la închiriere')
                 </button>
             </div>
         @else

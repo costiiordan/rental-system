@@ -6,20 +6,18 @@ import { initLanguageSwitcher } from './language-switcher.js';
 import { initCartPreview } from './cart.js';
 
 (function () {
-    const pageContainer = document.querySelector('[data-role="page-container"]');
-
     initMobileMenu();
     initLanguageSwitcher();
     initCookieConsent();
     initCartPreview();
 
-    if (!pageContainer) {
+    const route = window.rental?.routeName;
+
+    if (!route) {
         return;
     }
 
-    const route = pageContainer.dataset.route;
-
-    if (route === 'home' || route === 'category') {
+    if (route === 'home') {
         import('./home-page.js').then((module) => {
             module.initHomePage();
         });

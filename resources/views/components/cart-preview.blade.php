@@ -1,4 +1,4 @@
-<div class="cart-preview" data-role="cart-preview" data-cart="{{json_encode($cart->toArray())}}">
+<div class="cart-preview" data-role="cart-preview">
     <div class="cart-preview-body" data-role="cart-preview-body">
         <ul class="cart-preview-item-list" data-role="cart-items-list-container"></ul>
         <div class="cart-preview-discounts" data-role="cart-discounts"></div>

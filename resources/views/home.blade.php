@@ -4,7 +4,7 @@
     <x-range-selector />
 
     <main>
-        <div class="page-wrapper" data-role="page-container" data-route="{{request()->route()->getName()}}">
+        <div class="page-wrapper">
             @if (session('error'))
                 <div class="error-message">
                     {{ session('error') }}

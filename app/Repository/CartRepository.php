@@ -16,7 +16,7 @@ class CartRepository
     public function __construct(private ItemRepository $itemRepository)
     { }
 
-    public function addItem(array $data): void
+    public function addItem(array $data): ?string
     {
         $cartItems = session(self::CART_ITEMS_SESSION_KEY, []);
 
@@ -35,17 +35,21 @@ class CartRepository
         });
 
         if ($itemIsAlreadyInCart) {
-            return;
+            return null;
         }
 
+        $cartItemId = uniqid();
+
         $cartItems[] = [
-            'id' => uniqid(),
+            'id' => $cartItemId,
             'itemId' => $data['itemId'],
             'fromDate' => $data['fromDate'],
             'toDate' => $data['toDate'],
         ];
 
         session(['cartItems' => $cartItems]);
+
+        return $cartItemId;
     }
 
     public function getCart(): CartDto

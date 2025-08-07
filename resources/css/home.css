@@ -41,7 +41,6 @@
     transform: scale(1);
 
     &:hover {
-        transform: translateY(-10px);
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
 }
@@ -162,9 +161,30 @@
 
 .add-to-cart-container {
     margin-top: 1rem;
+    height: 2.35rem;
 
     button {
         width: 100%;
+    }
+
+    .rent-bike-button {
+        display: none;
+    }
+
+    .remove-from-cart-button {
+        display: none;
+    }
+
+    &.show-add-to-cart {
+        .rent-bike-button {
+            display: block;
+        }
+    }
+
+    &.show-remove-from-cart {
+        .remove-from-cart-button {
+            display: block;
+        }
     }
 }
 

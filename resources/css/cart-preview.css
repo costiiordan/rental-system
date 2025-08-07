@@ -8,6 +8,8 @@
     z-index: 3;
     display: none;
     padding: 1.5rem;
+    width: 100%;
+    max-width: 600px;
 
     &.is-open {
         display: block;
@@ -29,6 +31,18 @@
     container-type: inline-size;
     padding: 0;
     margin: 0;
+    max-height: calc(100vh - 17rem);
+    overflow-y: auto;
+
+    @media (min-width: 1250px) {
+        max-height: calc(100vh - 20rem);
+
+    }
+}
+.checkout-cart-container {
+    .cart-preview-item-list {
+        max-height: initial;
+    }
 }
 
 .cart-preview-item {

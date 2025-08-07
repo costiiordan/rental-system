@@ -23,12 +23,18 @@ export function initCartPreview() {
         cartPreviewContainer.classList.toggle('is-open')
     });
 
-    const cart = JSON.parse(cartPreviewContainer.dataset.cart);
+    updateCartPreview();
 
-    updateCartPreview(cart);
+    document.addEventListener('cartUpdated', (event) => {
+        updateCartPreview();
+
+        if (event.detail.action === 'add') {
+            document.querySelector('[data-role="add-to-cart-dialog"]').showModal();
+        }
+    });
 }
 
-export function addToCart(itemId, fromDate, toDate) {
+export async function addToCart(itemId, fromDate, toDate) {
     const request = new Request('/add-to-cart', {
         method: 'POST',
         headers: new Headers({
@@ -43,18 +49,27 @@ export function addToCart(itemId, fromDate, toDate) {
         }),
     });
 
-    fetch(request)
-        .then((resp) =>
-            resp.json().then((data) => {
-                updateCartPreview(data.cart);
+    const resp = await fetch(request);
+    const respJson = await resp.json();
 
-                document.querySelector('[data-role="add-to-cart-dialog"]').showModal();
-            }),
-        )
-        .catch((error) => console.log('Error:', error));
+    window.rental.cart = respJson.cart;
+
+    const event = new CustomEvent('cartUpdated', {
+        detail: {
+            action: 'add',
+            itemId: itemId,
+            cartItemId: respJson.cartItemId,
+            cart: respJson.cart,
+        },
+    });
+    document.dispatchEvent(event);
+
+    return respJson;
 }
 
-function removeFromCart(id) {
+export async function removeFromCart(id) {
+    const itemId = window.rental.cart.items.find(cartItem => cartItem.id === id)?.item.id;
+
     const request = new Request('/remove-from-cart', {
         method: 'POST',
         headers: new Headers({
@@ -65,12 +80,32 @@ function removeFromCart(id) {
         body: JSON.stringify({ id }),
     });
 
-    fetch(request)
-        .then((resp) => resp.json().then((data) => updateCartPreview(data.cart)))
-        .catch((error) => console.log('Error:', error));
+    const resp = await fetch(request);
+    const respJson = await resp.json();
+
+    window.rental.cart = respJson.cart;
+
+    const event = new CustomEvent('cartUpdated', {
+        detail: {
+            action: 'remove',
+            itemId: itemId,
+            cartItemId: id,
+            cart: respJson.cart,
+        },
+    });
+    document.dispatchEvent(event);
+
+    return respJson;
 }
 
-function updateCartPreview(cart) {
+function updateCartPreview() {
+    const cart = window.rental?.cart;
+
+    if (!cart) {
+        console.warn('Cart data is not available.');
+        return;
+    }
+
     const cartPreviewContainer = document.querySelector('[data-role="cart-preview"]');
     const listContainer = cartPreviewContainer.querySelector('[data-role="cart-items-list-container"]');
     const discountsContainer = cartPreviewContainer.querySelector('[data-role="cart-discounts"]');

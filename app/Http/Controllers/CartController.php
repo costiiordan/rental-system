@@ -13,10 +13,11 @@ class CartController extends Controller
     {
         $validated = $request->validated();
 
-        $cartRepository->addItem($validated);
+        $cartItemId = $cartRepository->addItem($validated);
 
         return response()->json([
             'cart' => $cartRepository->getCart()->toArray(),
+            'cartItemId' => $cartItemId,
         ]);
     }
 

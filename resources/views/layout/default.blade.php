@@ -4,7 +4,7 @@
     @include('layout.header')
 
     <main>
-        <div class="page-wrapper" data-role="page-container" data-route="{{request()->route()->getName()}}">
+        <div class="page-wrapper">
             @yield('content')
         </div>
     </main>
@@ -13,5 +13,6 @@
 
     @include('layout.cookie-consent')
 
+    <x-js-data/>
     @vite(['resources/js/main.js'])
 @endsection
