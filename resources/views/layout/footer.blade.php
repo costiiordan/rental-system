@@ -37,13 +37,13 @@
         </ul>
         <ul class="footer-social-media">
             <li>
-                <a href="https://www.facebook.com/PlayBikeGo" title="@lang('Facebook')" target="_blank">
+                <a href="https://www.facebook.com/profile.php?id=61579025440006" title="@lang('Facebook')" target="_blank">
                     @include('layout.svg.facebook-icon')
                     Facebook
                 </a>
             </li>
             <li>
-                <a href="https://www.instagram.com/playbike.ro" title="@lang('Instagram')" target="_blank">
+                <a href="https://www.instagram.com/rentabikebrasov/" title="@lang('Instagram')" target="_blank">
                     @include('layout.svg.instagram-icon')
                     Instagram
                 </a>
@@ -55,7 +55,7 @@
                 </a>
             </li>
             <li>
-                <a href="https://www.tiktok.com/@playbike.ro" title="@lang('TikTok')" target="_blank">
+                <a href="https://www.tiktok.com/@rentabikebrasov.ro" title="@lang('TikTok')" target="_blank">
                     @include('layout.svg.ticktock-icon')
                     TikTok
                 </a>

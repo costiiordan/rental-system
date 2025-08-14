@@ -3,16 +3,16 @@
         <div class="top-bar">
             <div class="social-media-links">
                 <span class="social-media-text">@lang('Social media:')</span>
-                <a href="https://www.facebook.com/PlayBikeGo" class="social-media-icon" title="@lang('Facebook')" target="_blank">
+                <a href="https://www.facebook.com/profile.php?id=61579025440006" class="social-media-icon" title="@lang('Facebook')" target="_blank">
                     @include('layout.svg.facebook-icon')
                 </a>
-                <a href="https://www.instagram.com/playbike.ro" title="@lang('Instagram')" class="social-media-icon" target="_blank">
+                <a href="https://www.instagram.com/rentabikebrasov/" title="@lang('Instagram')" class="social-media-icon" target="_blank">
                     @include('layout.svg.instagram-icon')
                 </a>
                 <a href="https://www.youtube.com/channel/UCbk602a0YNap-HZITm6LzjQ" title="@lang('Youtube')" class="social-media-icon" target="_blank">
                     @include('layout.svg.youtube-icon')
                 </a>
-                <a href="https://www.tiktok.com/@playbike.ro" title="@lang('TikTok')" class="social-media-icon" target="_blank">
+                <a href="https://www.tiktok.com/@rentabikebrasov" title="@lang('TikTok')" class="social-media-icon" target="_blank">
                     @include('layout.svg.ticktock-icon')
                 </a>
             </div>
