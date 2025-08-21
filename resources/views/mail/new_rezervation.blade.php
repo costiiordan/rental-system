@@ -24,7 +24,7 @@ Data ridicării: {{$pickupDate->format('d.m.Y H:i')}}<br>
     $toDate = Carbon::createFromFormat('Y-m-d H:i:s', $orderItem->itemBooking->to_date);
 @endphp
 @if($orderItem->item_id !== null)
-| {{$orderItem->item->name}} - <x-duration :from="$fromDate" :to="$toDate" /> @lang('între') {{$fromDate->format('d.m H:i')}} - {{$toDate->format('m.d H:i')}} | {{$orderItem->price}} RON |
+| {{$orderItem->item->name}} - <x-duration :from="$fromDate" :to="$toDate" /> @lang('între') {{$fromDate->format('d.m H:i')}} - {{$toDate->format('d.m H:i')}} | {{$orderItem->price}} RON |
 @else
 | {{$orderItem->name}} | | -{{$orderItem->price}} RON |
 @endif
