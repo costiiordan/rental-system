@@ -61,7 +61,7 @@ class CartRepository
         ]);
 
         $cartDto->items = $this->getCartItems();
-        $cartDto->discounts = $this->applyDiscounts($cartDto);
+        // $cartDto->discounts = $this->applyDiscounts($cartDto);
         $cartDto->total = $this->calculateCartTotal($cartDto);
 
         return $cartDto;
