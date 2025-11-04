@@ -39,7 +39,7 @@
                     <span class="contact-value">
                         <span class="wh-label">@lang('Luni')</span><span class="wh-value">@lang('09:00 - 17:00')</span><br>
                         <span class="wh-label">@lang('Marți')</span><span class="wh-value">@lang('ÎNCHIS')</span><br>
-                        <span class="wh-label">@lang('Miercuri')</span><span class="wh-value">@lang('ÎNCHIS')</span><br>
+                        <span class="wh-label">@lang('Miercuri')</span><span class="wh-value">@lang('09:00 - 17:00')</span><br>
                         <span class="wh-label">@lang('Joi')</span><span class="wh-value">@lang('09:00 - 17:00')</span><br>
                         <span class="wh-label">@lang('Vineri')</span><span class="wh-value">@lang('09:00 - 17:00')</span><br>
                         <span class="wh-label">@lang('Sâmbătă')</span><span class="wh-value">@lang('09:00 - 17:00')</span><br>
