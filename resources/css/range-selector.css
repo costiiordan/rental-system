@@ -20,12 +20,26 @@
         padding: 2rem;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         background-color: #fff;
+        overflow: hidden;
     }
 
     @media (min-width: 1250px) {
         border-radius: 20px;
         width: 900px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.season-closed-message {
+    left: 0;
+    background: var(--warning-background-color);
+    color: var(--text-color-inverse);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-lg);
+
+    @media (min-width: 600px) {
+        border-radius: 0;
+        margin: -2rem -2rem 1rem -2rem;
     }
 }
 

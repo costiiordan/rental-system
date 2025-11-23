@@ -30,6 +30,8 @@
     --success-color: #43a047; /*green 600*/
     --error-color: #e53935; /*red 600*/
 
+    --warning-background-color: #F44336; /*red 500*/
+
     --border-radius-sm: 0.2rem;
     --border-radius-md: 0.4rem;
     --border-radius-lg: 1.25rem;

@@ -37,7 +37,7 @@
                     </div>
                     <div class="no-availability-msg-text">
                         <p>@lang('Nu avem nici un produs disponibil în peroada selectată.')</p>
-                        <p>@lang('Iți reamintim că în zilele de <strong>marți</strong> și <strong>miercuri</strong> centrul nostru este <strong>închis</strong>.')</p>
+                        <p>@lang('Iți reamintim că în sezonul 2025 s-a încheiat și facem rezervări începând cu 11 aprilie 2026.')</p>
                     </div>
                 </div>
             @endif

@@ -13,6 +13,10 @@ return new class extends Migration
     {
         $categoryAttributeId = \App\Models\Attribute::where('reference', AttributeReference::CATEGORY)->value('id');
 
+        if (!$categoryAttributeId) {
+            return;
+        }
+
         $this->updateReference($categoryAttributeId, str_replace('-', '_', CategoryReference::KIDS), CategoryReference::KIDS);
         $this->updateReference($categoryAttributeId, str_replace('-', '_', CategoryReference::ENDURO_KIDS), CategoryReference::ENDURO_KIDS);
         $this->updateReference($categoryAttributeId, str_replace('-', '_', CategoryReference::SUPER_ENDURO_BIKE_PARK), CategoryReference::SUPER_ENDURO_BIKE_PARK);
