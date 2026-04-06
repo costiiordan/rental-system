@@ -6,7 +6,7 @@
         <div class="range-selector" data-role="range-selector">
             <div class="season-closed-message">
                 <strong>@lang('Sezonul 2025 s-a încheiat!')</strong><br>
-                @lang('Rezervările sunt descise pentru sezonul 2026 începând cu 11 aprilie 2026.')
+                @lang('Rezervările sunt descise pentru sezonul 2026 începând cu 18 aprilie 2026.')
             </div>
 
             <p class="interval-select-text">@lang('În ce perioadă vrei să închiriezi?')</p>
