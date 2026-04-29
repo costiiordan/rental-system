@@ -4,10 +4,10 @@
 @endphp
 <div class="range-selector-container">
         <div class="range-selector" data-role="range-selector">
-            <div class="season-closed-message">
-                <strong>@lang('Sezonul 2025 s-a încheiat!')</strong><br>
-                @lang('Rezervările sunt descise pentru sezonul 2026 începând cu 18 aprilie 2026.')
-            </div>
+{{--            <div class="season-closed-message">--}}
+{{--                <strong>@lang('Sezonul 2025 s-a încheiat!')</strong><br>--}}
+{{--                @lang('Rezervările sunt descise pentru sezonul 2026 începând cu 18 aprilie 2026.')--}}
+{{--            </div>--}}
 
             <p class="interval-select-text">@lang('În ce perioadă vrei să închiriezi?')</p>
             <form method="GET" action="{{$formAction}}" class="interval-form" data-role="range-selector-form">
