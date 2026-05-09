@@ -115,4 +115,12 @@ class ItemRepository
 
         return $prices;
     }
+
+    public function getAllItemsForPriceList(): Collection
+    {
+        return Item::with(['attributeValues.attribute', 'prices'])
+            ->whereIn('status', [ItemStatus::ACTIVE, ItemStatus::INACTIVE])
+            ->orderBy('order', 'asc')
+            ->get();
+    }
 }

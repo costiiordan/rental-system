@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PriceListController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter;
@@ -36,6 +37,8 @@ Route::group(
         Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
         Route::post('/checkout/save-order', [CheckoutController::class, 'saveOrder'])->name('checkout.save-order');
         Route::get('/checkout/success/{orderId}/{hash}', [CheckoutController::class, 'success'])->name('checkout.success');
+
+        Route::get('/price-list', PriceListController::class)->name('price-list');
 
         Route::get('/about', fn () => view('about'))->name('about');
         Route::get('/contact', fn () => view('contact'))->name('contact');
