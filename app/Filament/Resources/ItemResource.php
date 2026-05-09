@@ -132,7 +132,7 @@ class ItemResource extends Resource
 
                 TextInput::make('order')
                     ->numeric()
-                    ->name('Ordine (0-primul, 99-ultimul)'),
+                    ->label('Ordine (0-primul, 99-ultimul)'),
             ]);
 
         return $form;

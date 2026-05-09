@@ -50,8 +50,12 @@ class OrderRepository
         $date = null;
 
         foreach ($order->orderItems as $item) {
+            if ($item->itemBooking === null) {
+                continue;
+            }
+
             $itemDate = Carbon::createFromFormat('Y-m-d H:i:s', $item->itemBooking->from_date);
-            if ($date ===null || $itemDate->isBefore($date)) {
+            if ($date === null || $itemDate->isBefore($date)) {
                 $date = $itemDate;
             }
         }

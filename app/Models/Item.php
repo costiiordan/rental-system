@@ -14,7 +14,7 @@ class Item extends Model
 
     public array $translatable = ['name', 'description'];
 
-    protected $fillable = ['name', 'category_id', 'description', 'sku', 'status', 'image_path'];
+    protected $fillable = ['name', 'category_id', 'description', 'sku', 'status', 'image_path', 'order'];
 
     public function attributeValues(): BelongsToMany
     {

@@ -81,6 +81,7 @@ class OrderResource extends Resource
             ->actions([
                 ViewAction::make(),
             ])
+            ->defaultSort('id', 'desc')
             ->paginationPageOptions([20]);
     }
 
