@@ -2,6 +2,9 @@
     <img src="{{asset('storage/'.$bike->image_path)}}" alt="{{$bike->name}}" class="bike-item-image" data-action="zoom" loading="lazy">
     <div class="bike-item-details">
         <h2>{{$bike->name}}</h2>
+        @if($bike->sku)
+            <span class="bike-sku">{{$bike->sku}}</span>
+        @endif
         @if($category)
             <div class="category-badge">
                 <span class="category-bk-{{$category->reference}}">{{$category->value}}</span>

@@ -68,6 +68,13 @@
     }
 }
 
+.bike-sku {
+    display: block;
+    font-size: 0.75rem;
+    color: #999;
+    margin-top: 0.25rem;
+}
+
 .bike-attributes {
     margin: 1rem 0 0 0;
     padding: 0;
