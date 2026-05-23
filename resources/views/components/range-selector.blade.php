@@ -35,6 +35,7 @@
                     <div class="interval-form-date-fields">
                         <input type="date" name="to_date"  value="{{$toDate}}" />
                         <select name="to_time">
+                            <option value="10:00" @selected($toTime == '09:00')>09:00</option>
                             <option value="10:00" @selected($toTime == '10:00')>10:00</option>
                             <option value="11:00" @selected($toTime == '11:00')>11:00</option>
                             <option value="12:00" @selected($toTime == '12:00')>12:00</option>

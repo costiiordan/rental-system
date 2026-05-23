@@ -58,6 +58,12 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{route('price-list')}}" title="@lang('Listă de prețuri')"
+                               class="{{ request()->routeIs('price-list') ? 'is-active' : '' }}">
+                                @lang('Listă de prețuri')
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{route('contact')}}" title="@lang('Contact')"
                                class="{{ request()->routeIs('contact') ? 'is-active' : '' }}">
                                 @lang('Contact')
@@ -126,6 +132,11 @@
         <li>
             <a href="{{route('about')}}" title="@lang('Despre noi')">
                 @lang('Despre noi')
+            </a>
+        </li>
+        <li>
+            <a href="{{route('price-list')}}" title="@lang('Listă de prețuri')">
+                @lang('Listă de prețuri')
             </a>
         </li>
         <li>

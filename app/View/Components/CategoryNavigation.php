@@ -26,6 +26,7 @@ class CategoryNavigation extends Component
 
     public function __construct(
         private DateIntervalService $dateIntervalService,
+        public string $route = 'home',
     ) { }
 
     public function render(): View
@@ -41,6 +42,7 @@ class CategoryNavigation extends Component
         return view('components.category-navigation')->with([
             'categories' => $categories,
             'intervalParams' => $this->getIntervalParams(),
+            'route' => $this->route,
         ]);
     }
 

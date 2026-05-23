@@ -1,4 +1,4 @@
-@if ($category !== null || $interval !== null)
+@if ($category !== null || ($showInterval && $interval !== null))
     <div class="list-filters">
         @if($category !== null)
             <div class="list-filter-item">
@@ -9,7 +9,7 @@
                 </a>
             </div>
         @endif
-        @if ($interval !== null)
+        @if ($showInterval && $interval !== null)
             <div class="list-filter-item">
                 <span class="list-filter-label">@lang('Interval:')</span>
                 <span class="list-filter-value">

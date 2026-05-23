@@ -69,6 +69,9 @@
                 <a href="{{LaravelLocalization::localizeUrl(route('about'))}}" title="@lang('Despre noi')">@lang('Despre noi')</a>
             </li>
             <li>
+                <a href="{{LaravelLocalization::localizeUrl(route('price-list'))}}" title="@lang('Listă de prețuri')">@lang('Listă de prețuri')</a>
+            </li>
+            <li>
                 <a href="{{LaravelLocalization::localizeUrl(route('contact'))}}" title="@lang('Contact')">@lang('Contact')</a>
             </li>
         </ul>

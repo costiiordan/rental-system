@@ -21,7 +21,7 @@ class HomeController extends Controller
         $bikes = $itemRepository->getAvailableItems(
             $interval->from ?? null,
             $interval->to ?? null,
-                $category?->reference,
+            $category?->reference,
         );
 
         $prices = [];
