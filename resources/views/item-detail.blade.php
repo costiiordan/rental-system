@@ -15,7 +15,7 @@
                         alt="{{ $item->name }}"
                         class="item-detail__image"
                         data-action="zoom"
-                        loading="lazy"
+                        fetchpriority="high"
                     >
                 </div>
 
