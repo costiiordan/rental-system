@@ -1,6 +1,12 @@
 @props(['prices'])
+@php
+    $sortedPrices = collect($prices)->sortBy([
+        ['duration_unit', 'desc'],
+        ['duration', 'asc'],
+    ]);
+@endphp
 <ul {{ $attributes->merge(['class' => 'bike-prices']) }}>
-    @foreach($prices as $price)
+    @foreach($sortedPrices as $price)
         <li>
             <span class="bike-price-duration">
                 {{$price->duration}} <x-duration-unit :duration="$price->duration" :duration-unit="$price->duration_unit" />

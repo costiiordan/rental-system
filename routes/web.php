@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ItemDetailController;
 use App\Http\Controllers\PriceListController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -30,6 +31,8 @@ Route::group(
     ],
     function() {
         Route::get('/', HomeController::class)->name('home');
+
+        Route::get('/item/{item:sku}', ItemDetailController::class)->name('item.show');
 
         Route::post('/add-to-cart', [CartController::class, 'addItem'])->name('add-to-cart');
         Route::post('/remove-from-cart', [CartController::class, 'removeItem'])->name('remove-from-cart');

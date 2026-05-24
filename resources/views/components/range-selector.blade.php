@@ -1,5 +1,5 @@
 @php
-    $formAction = route('home');
+    $formAction = route($route, $routeParams);
     $formAction = LaravelLocalization::localizeUrl($formAction);
 @endphp
 <div class="range-selector-container">

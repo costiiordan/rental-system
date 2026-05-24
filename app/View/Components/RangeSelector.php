@@ -12,20 +12,23 @@ class RangeSelector extends Component
     public function __construct(
         private DateIntervalService $dateIntervalRepository,
         private CategoryFilterService $categoryFilterService,
+        public string $route = 'home',
+        public array $routeParams = [],
+        public bool $alwaysRender = false,
     ) { }
 
     public function render(): View|string
     {
         $interval = $this->dateIntervalRepository->getInterval();
 
-        if ($interval) {
+        if ($interval && !$this->alwaysRender) {
             return '';
         }
 
-        $fromDate = now()->format('Y-m-d');
-        $fromTime = '09:00';
-        $toDate = now()->addDay()->format('Y-m-d');
-        $toTime = '17:00';
+        $fromDate = $interval?->from->format('Y-m-d') ?? now()->format('Y-m-d');
+        $fromTime = $interval?->from->format('H:i') ?? '09:00';
+        $toDate = $interval?->to->format('Y-m-d') ?? now()->addDay()->format('Y-m-d');
+        $toTime = $interval?->to->format('H:i') ?? '17:00';
 
         return view('components.range-selector')->with([
             'fromDate' => $fromDate,
@@ -33,6 +36,8 @@ class RangeSelector extends Component
             'toDate' => $toDate,
             'toTime' => $toTime,
             'category' => $this->categoryFilterService->getCategory(),
+            'route' => $this->route,
+            'routeParams' => $this->routeParams,
         ]);
     }
 }

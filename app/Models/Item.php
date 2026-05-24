@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Constants\AttributeReference;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -16,6 +17,11 @@ class Item extends Model
 
     protected $fillable = ['name', 'category_id', 'description', 'sku', 'status', 'image_path', 'order'];
 
+    public function getRouteKeyName(): string
+    {
+        return 'sku';
+    }
+
     public function attributeValues(): BelongsToMany
     {
         return $this->belongsToMany(AttributeValues::class, 'item_attribute_value', 'item_id', 'attribute_value_id');
@@ -29,6 +35,35 @@ class Item extends Model
     public function bookings(): HasMany
     {
         return $this->hasMany(ItemBooking::class);
+    }
+
+    public function category(): ?AttributeValues
+    {
+        foreach ($this->attributeValues as $attributeValue) {
+            if ($attributeValue->attribute->reference === AttributeReference::CATEGORY) {
+                return $attributeValue;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @return AttributeValues[]
+     */
+    public function nonCategoryAttributeValues(): array
+    {
+        $attributes = [];
+
+        foreach ($this->attributeValues as $attributeValue) {
+            if ($attributeValue->attribute->reference === AttributeReference::CATEGORY) {
+                continue;
+            }
+
+            $attributes[] = $attributeValue;
+        }
+
+        return $attributes;
     }
 
     public function isAvailableInInterval(Carbon $fromDate, Carbon $toDate): bool

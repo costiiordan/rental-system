@@ -2,7 +2,7 @@
 
 import { initAddToCartButtons, initAddToCartContainer, initAddToCartDialog } from './cart-buttons.js';
 
-export function initHomePage() {
+export function initItemDetailPage() {
     initAddToCartButtons();
     initAddToCartDialog();
     initAddToCartContainer();

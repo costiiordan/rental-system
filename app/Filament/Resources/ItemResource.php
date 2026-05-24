@@ -48,6 +48,7 @@ class ItemResource extends Resource
                 TextInput::make('sku')
                     ->required()
                     ->unique(ignoreRecord: true)
+                    ->alphaDash()
                     ->maxLength(255),
                 Textarea::make('description.ro')
                     ->label('Descriere (RO)')
@@ -152,6 +153,11 @@ class ItemResource extends Resource
             ])
             ->paginated(false)
             ->defaultSort('order', 'asc');
+    }
+
+    public static function getRecordRouteKeyName(): ?string
+    {
+        return 'id';
     }
 
     public static function getRelations(): array

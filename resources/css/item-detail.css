@@ -1,0 +1,123 @@
+.item-detail {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    overflow: hidden;
+
+    @media (min-width: 800px) {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+}
+
+.item-detail__image-col {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.item-detail__image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    aspect-ratio: 4 / 3;
+    cursor: zoom-in;
+}
+
+.item-detail__info-col {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @media (min-width: 800px) {
+        padding: 2rem 2rem 2rem 0;
+    }
+}
+
+.item-detail__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.item-detail__name {
+    margin: 0;
+    font-size: 2rem;
+    line-height: 1.15;
+    font-weight: normal;
+}
+
+.item-detail__sku {
+    color: var(--text-color-gray-light);
+    font-size: 0.85rem;
+}
+
+.item-detail__section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.item-detail__section-heading {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: normal;
+    color: var(--text-color-gray-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.item-detail__attributes {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    border-top: 1px solid var(--divider-color);
+
+    li {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 1rem;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid var(--divider-color);
+        line-height: 1.2rem;
+    }
+}
+
+.item-detail__attribute-label {
+    flex: 0 0 9rem;
+    color: var(--text-color-gray-light);
+    font-size: 0.9rem;
+}
+
+.item-detail__attribute-value {
+    flex: 1 1 auto;
+}
+
+.item-detail__description {
+    margin: 0;
+    color: var(--text-color-gray-dark);
+    line-height: 1.4;
+    white-space: pre-line;
+}
+
+.item-detail__prices {
+    justify-content: flex-start;
+}
+
+.item-detail__booking {
+    margin-top: 0.5rem;
+}
+
+.item-detail__unavailable {
+    padding: 0.7rem 1rem;
+    background-color: var(--background-color-section);
+    line-height: 1.2;
+    border-radius: 1.3rem;
+    font-size: 0.95em;
+    margin: 0;
+}

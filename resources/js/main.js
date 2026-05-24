@@ -1,9 +1,10 @@
 'use strict';
 
-import { initMobileMenu } from './mobile-menu.js';
+import 'zoom-vanilla.js/dist/zoom-vanilla.min.js';
+import { initCartPreview } from './cart.js';
 import { initCookieConsent } from './cookie-consent.js';
 import { initLanguageSwitcher } from './language-switcher.js';
-import { initCartPreview } from './cart.js';
+import { initMobileMenu } from './mobile-menu.js';
 
 (function () {
     initMobileMenu();
@@ -20,6 +21,12 @@ import { initCartPreview } from './cart.js';
     if (route === 'home') {
         import('./home-page.js').then((module) => {
             module.initHomePage();
+        });
+    }
+
+    if (route === 'item.show') {
+        import('./item-detail-page.js').then((module) => {
+            module.initItemDetailPage();
         });
     }
 
