@@ -110,7 +110,9 @@ class ItemResource extends Resource
                             ->selectablePlaceholder(false),
                     ])
                     ->addActionLabel('Adauga pret')
-                    ->defaultItems(1),
+                    ->defaultItems(1)
+                    ->minItems(1)
+                    ->required(),
 
                 FileUpload::make('image_path')
                     ->label('Imagine (format 4:3, recomandat 1024x768px)')
