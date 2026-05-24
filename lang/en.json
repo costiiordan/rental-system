@@ -74,6 +74,8 @@
     "Închiriază": "Rent",
     "cu": "for",
     "Renunță la închiriere": "Cancel rental",
+    "Renunță la închirierea existentă": "Cancel the existing rental",
+    "Ai deja acest produs în coș pentru :interval.": "You already have this product in your cart for :interval.",
     "Produsul nu este disponibil în perioada selectată.": "This product is not available in the selected period.",
     "Rezervare confirmată!": "Reservation confirmed!",
     "Numărul rezervării este <b>:orderId<\/b>.": "Reservation number is <b>:orderId<\/b>.",

@@ -62,6 +62,10 @@ export function initAddToCartContainer() {
         const action = isIntervalOverlapping ? 'showRemoveFromCart' : 'showAddToCart';
 
         toggleAddRemoveCartButton(action, cartItem.item.id, cartItem.id);
+
+        if (action === 'showRemoveFromCart' && !(selectedFromDate.isSame(cartItemFromDate) && selectedToDate.isSame(cartItemToDate))) {
+            showExistingIntervalNotice(cartItem.item.id, cartItemFromDate, cartItemToDate);
+        }
     });
 
     document.querySelectorAll('[data-role="add-to-cart-container"]:not(.show-remove-from-cart)').forEach((container) => {
@@ -119,5 +123,41 @@ function toggleAddRemoveCartButton(action, itemId, cartItemId) {
         addToCartContainer.classList.remove('show-add-to-cart');
         addToCartContainer.classList.add('show-remove-from-cart');
         addToCartContainer.querySelector('[data-role="remove-from-cart"]').dataset.cartItemId = cartItemId;
+        resetExistingIntervalNotice(addToCartContainer);
+    }
+}
+
+function resetExistingIntervalNotice(container) {
+    const notice = container.querySelector('[data-role="existing-interval-notice"]');
+    const removeLabel = container.querySelector('[data-role="remove-label"]');
+    const removeButton = container.querySelector('[data-role="remove-from-cart"]');
+
+    if (notice) {
+        notice.textContent = '';
+    }
+
+    if (removeLabel && removeButton?.dataset.defaultLabel) {
+        removeLabel.textContent = removeButton.dataset.defaultLabel;
+    }
+}
+
+function showExistingIntervalNotice(itemId, cartItemFromDate, cartItemToDate) {
+    const container = document.querySelector(`[data-role="add-to-cart-container"][data-item-id="${itemId}"]`);
+
+    if (!container) {
+        return;
+    }
+
+    const notice = container.querySelector('[data-role="existing-interval-notice"]');
+    const removeLabel = container.querySelector('[data-role="remove-label"]');
+
+    const intervalText = `${cartItemFromDate.format('D MMM, HH:mm')} - ${cartItemToDate.format('D MMM, HH:mm')}`;
+
+    if (notice?.dataset.template) {
+        notice.textContent = notice.dataset.template.replace(':interval', intervalText);
+    }
+
+    if (removeLabel && container.dataset.existingRentalLabel) {
+        removeLabel.textContent = container.dataset.existingRentalLabel;
     }
 }

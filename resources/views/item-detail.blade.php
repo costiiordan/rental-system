@@ -64,7 +64,12 @@
                         @if(!$interval)
                             <p class="bike-select-interval-notice">@lang('Selecteaza intervalul pentru a vedea disponibilitatea.')</p>
                         @elseif($isAvailable)
-                            <div class="add-to-cart-container" data-role="add-to-cart-container" data-item-id="{{ $item->id }}">
+                            <div
+                                class="add-to-cart-container"
+                                data-role="add-to-cart-container"
+                                data-item-id="{{ $item->id }}"
+                                data-existing-rental-label="@lang('Renunță la închirierea existentă')"
+                            >
                                 <button
                                     data-from="{{ $interval->from->format('Y-m-d H:i') }}"
                                     data-to="{{ $interval->to->format('Y-m-d H:i') }}"
@@ -79,9 +84,15 @@
                                     data-role="remove-from-cart"
                                     class="btn-secondary remove-from-cart-button"
                                     data-cart-item-id=""
+                                    data-default-label="@lang('Renunță la închiriere')"
                                 >
-                                    @lang('Renunță la închiriere')
+                                    <span data-role="remove-label">@lang('Renunță la închiriere')</span>
                                 </button>
+                                <small
+                                    class="item-detail__existing-interval-notice"
+                                    data-role="existing-interval-notice"
+                                    data-template="@lang('Ai deja acest produs în coș pentru :interval.')"
+                                ></small>
                             </div>
                         @else
                             <div class="no-availability-msg">

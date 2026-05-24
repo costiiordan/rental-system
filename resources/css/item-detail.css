@@ -249,4 +249,20 @@
     .no-availability-msg {
         margin-top: 0;
     }
+
+    .remove-from-cart-button {
+        background: #fff;
+    }
+}
+
+.item-detail__existing-interval-notice {
+    display: none;
+    font-size: 0.85rem;
+    color: var(--text-color-gray-dark);
+    line-height: 1.3;
+}
+
+.add-to-cart-container.show-remove-from-cart .item-detail__existing-interval-notice:not(:empty) {
+    display: block;
+    margin-top: 0.5rem;
 }
