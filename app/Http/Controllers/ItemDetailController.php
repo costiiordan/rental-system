@@ -26,10 +26,6 @@ class ItemDetailController extends Controller
         $interval = $dateIntervalRepository->getInterval();
         $intervalError = $dateIntervalRepository->getValidationError();
 
-        $intervalPrice = $interval
-            ? $itemRepository->calculatePriceForItem($item, $interval->from, $interval->to)
-            : null;
-
         $isAvailable = $interval && $item->isAvailableInInterval($interval->from, $interval->to);
 
         $lockedDayHit = $interval && LockedDay::whereIn('date', [
@@ -40,6 +36,10 @@ class ItemDetailController extends Controller
         if ($lockedDayHit) {
             $isAvailable = false;
         }
+
+        $intervalPrice = $interval && $isAvailable
+            ? $itemRepository->calculatePriceForItem($item, $interval->from, $interval->to)
+            : null;
 
         return view('item-detail', compact('item', 'interval', 'intervalError', 'intervalPrice', 'isAvailable'));
     }
