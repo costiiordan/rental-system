@@ -244,6 +244,8 @@
 
     .add-to-cart-container {
         margin-top: 0;
+        height: auto;
+        min-height: 2.35rem;
     }
 
     .no-availability-msg {
