@@ -19,7 +19,7 @@ class Item extends Model
 
     public function getRouteKeyName(): string
     {
-        return 'sku';
+        return 'id';
     }
 
     public function attributeValues(): BelongsToMany
