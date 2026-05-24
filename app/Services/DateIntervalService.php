@@ -8,7 +8,8 @@ use Illuminate\Support\Carbon;
 
 class DateIntervalService
 {
-    protected ?IntervalDto $interval;
+    protected ?IntervalDto $interval = null;
+    protected ?string $validationError = null;
 
     public function __construct(Request $request)
     {
@@ -20,10 +21,13 @@ class DateIntervalService
         return $this->interval;
     }
 
+    public function getValidationError(): ?string
+    {
+        return $this->validationError;
+    }
+
     private function initInterval(Request $request): void
     {
-        $this->interval = null;
-
         $from = $this->getDateTime($request->get('from_date'), $request->get('from_time'));
         $to = $this->getDateTime($request->get('to_date'), $request->get('to_time'));
 
@@ -34,10 +38,14 @@ class DateIntervalService
         $fromCarbon = Carbon::createFromFormat('Y-m-d H:i', $from);
         $toCarbon = Carbon::createFromFormat('Y-m-d H:i', $to);
 
-        if ($fromCarbon->greaterThanOrEqualTo($toCarbon)) {
-            $temp = $fromCarbon;
-            $fromCarbon = $toCarbon;
-            $toCarbon = $temp;
+        if ($fromCarbon->greaterThan($toCarbon)) {
+            [$fromCarbon, $toCarbon] = [$toCarbon, $fromCarbon];
+        }
+
+        if ($fromCarbon->equalTo($toCarbon)) {
+            $this->validationError = __('Selectați un interval mai mare de zero.');
+
+            return;
         }
 
         $this->interval = new IntervalDto([

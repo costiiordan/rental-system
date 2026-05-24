@@ -1,4 +1,4 @@
-@props(['item', 'interval' => null])
+@props(['item', 'interval' => null, 'intervalError' => null])
 
 @if($interval)
     <div class="item-range-selected">
@@ -34,6 +34,10 @@
         data-role="range-selector-form"
     >
         <p class="item-range-selector__heading">@lang('Alege perioada')</p>
+
+        @if(!empty($intervalError))
+            <p class="interval-error">{{ $intervalError }}</p>
+        @endif
 
         <div class="item-range-selector__fields">
             <label class="item-range-selector__field">

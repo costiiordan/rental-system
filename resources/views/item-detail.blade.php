@@ -57,7 +57,7 @@
                     </section>
 
                     <section class="item-detail__section">
-                        <x-item-range-selector :item="$item" :interval="$interval" />
+                        <x-item-range-selector :item="$item" :interval="$interval" :interval-error="$intervalError" />
                     </section>
 
                     <section class="item-detail__section item-detail__booking">

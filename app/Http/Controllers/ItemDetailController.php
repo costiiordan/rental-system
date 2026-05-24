@@ -24,6 +24,7 @@ class ItemDetailController extends Controller
         $item->load('prices', 'attributeValues.attribute');
 
         $interval = $dateIntervalRepository->getInterval();
+        $intervalError = $dateIntervalRepository->getValidationError();
 
         $intervalPrice = $interval
             ? $itemRepository->calculatePriceForItem($item, $interval->from, $interval->to)
@@ -40,6 +41,6 @@ class ItemDetailController extends Controller
             $isAvailable = false;
         }
 
-        return view('item-detail', compact('item', 'interval', 'intervalPrice', 'isAvailable'));
+        return view('item-detail', compact('item', 'interval', 'intervalError', 'intervalPrice', 'isAvailable'));
     }
 }

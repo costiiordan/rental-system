@@ -242,6 +242,15 @@
     padding: 1rem 1.5rem;
 }
 
+.interval-error {
+    margin: 0;
+    padding: 0.6rem 0.9rem;
+    border-radius: 0.5rem;
+    background-color: var(--error-color);
+    color: var(--text-color-inverse);
+    font-size: 0.9rem;
+}
+
 .category-bk-kids {
     background: linear-gradient(135deg, rgba(255, 245, 157, 1) 0%, rgba(253, 216, 53, 1) 100%);
     color: var(--text-color);

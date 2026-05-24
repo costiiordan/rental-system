@@ -33,6 +33,7 @@ class RangeSelector extends Component
             'toDate' => $toDate,
             'toTime' => $toTime,
             'category' => $this->categoryFilterService->getCategory(),
+            'intervalError' => $this->dateIntervalRepository->getValidationError(),
         ]);
     }
 }

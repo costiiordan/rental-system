@@ -10,7 +10,7 @@ class AddToCartRequest extends FormRequest
     {
         return [
             'fromDate' => 'required|date_format:Y-m-d H:i',
-            'toDate' => 'required|date_format:Y-m-d H:i|after:from',
+            'toDate' => 'required|date_format:Y-m-d H:i|after:fromDate',
             'itemId' => 'required|exists:items,id',
         ];
     }
