@@ -29,7 +29,10 @@ export function initCartPreview() {
         updateCartPreview();
 
         if (event.detail.action === 'add') {
-            document.querySelector('[data-role="add-to-cart-dialog"]').showModal();
+            const dialog = document.querySelector('[data-role="add-to-cart-dialog"]');
+            if (dialog) {
+                dialog.showModal();
+            }
         }
     });
 }
