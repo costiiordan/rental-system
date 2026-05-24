@@ -112,5 +112,9 @@
     "Specificații": "Specifications",
     "Descriere": "Description",
     "Tarife": "Rates",
-    "Produsul nu este disponibil în perioada selectată.": "This product is not available in the selected period."
+    "Produsul nu este disponibil în perioada selectată.": "This product is not available in the selected period.",
+    "Alege perioada": "Pick the period",
+    "Vezi disponibilitatea": "Check availability",
+    "Perioada selectată:": "Selected period:",
+    "Alege alt interval": "Pick another interval"
 }

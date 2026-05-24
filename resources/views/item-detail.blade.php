@@ -1,8 +1,6 @@
 @extends('layout.home')
 
 @section('content')
-    <x-range-selector route="item.show" :route-params="['item' => $item->sku]" :always-render="true" />
-
     <main>
         <div class="page-wrapper">
             @php
@@ -58,19 +56,13 @@
                         <x-bike-prices :prices="$item->prices" class="item-detail__prices" />
                     </section>
 
+                    <section class="item-detail__section">
+                        <x-item-range-selector :item="$item" :interval="$interval" />
+                    </section>
+
                     <section class="item-detail__section item-detail__booking">
                         @if(!$interval)
                             <p class="bike-select-interval-notice">@lang('Selecteaza intervalul pentru a vedea disponibilitatea.')</p>
-                        @elseif($lockedDayHit)
-                            <div class="no-availability-msg">
-                                <div class="no-availability-msg-icon">
-                                    <span class="material-symbols-outlined">sentiment_dissatisfied</span>
-                                </div>
-                                <div class="no-availability-msg-text">
-                                    <p>@lang('Nu avem nici un produs disponibil în peroada selectată.')</p>
-                                    <p>@lang('Iți reamintim că în sezonul 2025 s-a încheiat și facem rezervări începând cu 18 aprilie 2026.')</p>
-                                </div>
-                            </div>
                         @elseif($isAvailable)
                             <div class="add-to-cart-container" data-role="add-to-cart-container" data-item-id="{{ $item->id }}">
                                 <button
@@ -92,7 +84,14 @@
                                 </button>
                             </div>
                         @else
-                            <p class="item-detail__unavailable">@lang('Produsul nu este disponibil în perioada selectată.')</p>
+                            <div class="no-availability-msg">
+                                <div class="no-availability-msg-icon">
+                                    <span class="material-symbols-outlined">sentiment_dissatisfied</span>
+                                </div>
+                                <div class="no-availability-msg-text">
+                                    <p>@lang('Produsul nu este disponibil în perioada selectată.')</p>
+                                </div>
+                            </div>
                         @endif
                     </section>
                 </div>

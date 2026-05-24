@@ -29,17 +29,17 @@ class ItemDetailController extends Controller
             ? $itemRepository->calculatePriceForItem($item, $interval->from, $interval->to)
             : null;
 
-        $isAvailable = $interval
-            ? $item->isAvailableInInterval($interval->from, $interval->to)
-            : null;
+        $isAvailable = $interval && $item->isAvailableInInterval($interval->from, $interval->to);
 
-        $lockedDayHit = $interval
-            ? LockedDay::whereIn('date', [
+        $lockedDayHit = $interval && LockedDay::whereIn('date', [
                 $interval->from->format('Y-m-d'),
                 $interval->to->format('Y-m-d'),
-            ])->exists()
-            : false;
+            ])->exists();
 
-        return view('item-detail', compact('item', 'interval', 'intervalPrice', 'isAvailable', 'lockedDayHit'));
+        if ($lockedDayHit) {
+            $isAvailable = false;
+        }
+
+        return view('item-detail', compact('item', 'interval', 'intervalPrice', 'isAvailable'));
     }
 }

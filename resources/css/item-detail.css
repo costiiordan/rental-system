@@ -110,7 +110,122 @@
 }
 
 .item-detail__booking {
-    margin-top: 0.5rem;
+}
+
+.item-range-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--background-color-section);
+    border-radius: 0.75rem;
+}
+
+.item-range-selector__heading {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-color-gray-dark);
+}
+
+.item-range-selector__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    @media (min-width: 480px) {
+        flex-direction: row;
+        gap: 1rem;
+    }
+}
+
+.item-range-selector__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.item-range-selector__label {
+    font-size: 0.85rem;
+    color: var(--text-color-gray-dark);
+}
+
+.item-range-selector__inputs {
+    display: flex;
+    flex-direction: row;
+    gap: 0.4rem;
+
+    input,
+    select {
+        appearance: none;
+        flex: 1 1 0;
+        min-width: 0;
+        border-radius: 0.5rem;
+        border: 0.0625rem solid var(--input-border-color);
+        background-color: #fff;
+        padding: 0.6rem 0.7rem;
+        font-size: 0.95rem;
+        color: var(--text-color);
+        transition: border-color 0.2s ease;
+
+        &:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+    }
+
+    select {
+        flex: 0 0 5.5rem;
+    }
+}
+
+.item-range-selector__submit {
+    align-self: stretch;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    .material-symbols-outlined {
+        font-size: 1.25rem;
+    }
+}
+
+.item-range-selected {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 0.85rem 1rem;
+    background-color: var(--background-color-section);
+    border-radius: 0.75rem;
+}
+
+.item-range-selected__label {
+    font-size: 0.85rem;
+    color: var(--text-color-gray-dark);
+}
+
+.item-range-selected__value {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.item-range-selected__arrow {
+    color: var(--text-color-gray-light);
+}
+
+.item-range-selected__reset {
+    align-self: flex-start;
+    margin-top: 0.25rem;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    text-decoration: none;
+    background-color: #fff;
 }
 
 .item-detail__unavailable {
@@ -120,4 +235,18 @@
     border-radius: 1.3rem;
     font-size: 0.95em;
     margin: 0;
+}
+
+.item-detail {
+    .bike-select-interval-notice {
+        margin-top: 0;
+    }
+
+    .add-to-cart-container {
+        margin-top: 0;
+    }
+
+    .no-availability-msg {
+        margin-top: 0;
+    }
 }
