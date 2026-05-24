@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Constants\ItemStatus;
 use App\Models\Item;
-use App\Models\LockedDay;
 use App\Repository\ItemRepository;
 use App\Services\DateIntervalService;
 use Illuminate\View\View;
@@ -27,15 +26,6 @@ class ItemDetailController extends Controller
         $intervalError = $dateIntervalRepository->getValidationError();
 
         $isAvailable = $interval && $item->isAvailableInInterval($interval->from, $interval->to);
-
-        $lockedDayHit = $interval && LockedDay::whereIn('date', [
-                $interval->from->format('Y-m-d'),
-                $interval->to->format('Y-m-d'),
-            ])->exists();
-
-        if ($lockedDayHit) {
-            $isAvailable = false;
-        }
 
         $intervalPrice = $interval && $isAvailable
             ? $itemRepository->calculatePriceForItem($item, $interval->from, $interval->to)

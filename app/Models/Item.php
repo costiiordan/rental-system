@@ -68,9 +68,10 @@ class Item extends Model
 
     public function isAvailableInInterval(Carbon $fromDate, Carbon $toDate): bool
     {
-        $isIntervalInLockedDays = LockedDay::where('date', '=', $fromDate)
-            ->orWhere('date', '=', $toDate)
-            ->exists();
+        $isIntervalInLockedDays = LockedDay::whereIn('date', [
+                $fromDate->format('Y-m-d'),
+                $toDate->format('Y-m-d'),
+            ])->exists();
 
         if ($isIntervalInLockedDays) {
             return false;
