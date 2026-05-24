@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Dto\IntervalDto;
+use Carbon\Exceptions\InvalidFormatException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -35,8 +36,12 @@ class DateIntervalService
             return;
         }
 
-        $fromCarbon = Carbon::createFromFormat('Y-m-d H:i', $from);
-        $toCarbon = Carbon::createFromFormat('Y-m-d H:i', $to);
+        try {
+            $fromCarbon = Carbon::createFromFormat('Y-m-d H:i', $from);
+            $toCarbon = Carbon::createFromFormat('Y-m-d H:i', $to);
+        } catch (InvalidFormatException) {
+            return;
+        }
 
         if ($fromCarbon->greaterThan($toCarbon)) {
             [$fromCarbon, $toCarbon] = [$toCarbon, $fromCarbon];
