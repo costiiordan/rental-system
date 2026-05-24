@@ -10,16 +10,18 @@ use Illuminate\View\Component;
 
 class ListItem extends Component
 {
+    use IntervalParams;
+
     public function __construct(
         public Item                   $item,
         public ?int                   $price = null,
-        protected DateIntervalService $dateIntervalRepository,
+        protected DateIntervalService $dateIntervalService,
         protected ItemRepository      $itemRepository,
     ) { }
 
     public function render(): View
     {
-        $interval = $this->dateIntervalRepository->getInterval();
+        $interval = $this->dateIntervalService->getInterval();
 
         return view('components.list-item')->with([
             'bike' => $this->item,
@@ -27,6 +29,7 @@ class ListItem extends Component
             'category' => $this->item->category(),
             'interval' => $interval,
             'intervalPrice' => $interval ? $this->itemRepository->calculatePriceForItem($this->item, $interval->from, $interval->to): null,
+            'intervalParams' => $this->getIntervalParams(),
         ]);
     }
 }

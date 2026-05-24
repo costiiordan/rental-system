@@ -1,7 +1,11 @@
 <li class="bike-list-item" data-role="bike-list-item" data-id="{{$bike->id}}">
     <img src="{{asset('storage/'.$bike->image_path)}}" alt="{{$bike->name}}" class="bike-item-image" data-action="zoom" loading="lazy">
     <div class="bike-item-details">
-        <h2><a href="{{ route('item.show', ['item' => $bike->sku]) }}" class="bike-item-name-link" title="{{$bike->name}}">{{$bike->name}}</a></h2>
+        <h2>
+            <a href="{{ route('item.show', ['item' => $bike->sku] + $intervalParams) }}" class="bike-item-name-link" title="{{$bike->name}}">
+                {{$bike->name}}
+            </a>
+        </h2>
         @if($bike->sku)
             <span class="bike-sku">{{$bike->sku}}</span>
         @endif

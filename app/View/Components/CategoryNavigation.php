@@ -12,6 +12,8 @@ use Illuminate\View\Component;
 
 class CategoryNavigation extends Component
 {
+    use IntervalParams;
+
     private const array CATEGORY_ORDER = [
         CategoryReference::KIDS,
         CategoryReference::ENDURO_KIDS,
@@ -25,7 +27,7 @@ class CategoryNavigation extends Component
     ];
 
     public function __construct(
-        private DateIntervalService $dateIntervalService,
+        protected DateIntervalService $dateIntervalService,
         public string $route = 'home',
     ) { }
 
@@ -60,21 +62,5 @@ class CategoryNavigation extends Component
         }
 
         return $sortedCategories;
-    }
-
-    private function getIntervalParams(): array
-    {
-        $interval = $this->dateIntervalService->getInterval();
-
-        if ($interval === null) {
-            return [];
-        }
-
-        return [
-            'from_date' => $interval->from->format('Y-m-d'),
-            'from_time' => $interval->from->format('H:i'),
-            'to_date' => $interval->to->format('Y-m-d'),
-            'to_time' => $interval->to->format('H:i'),
-        ];
     }
 }
