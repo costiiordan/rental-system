@@ -9,13 +9,6 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-
-    @media (min-width: 1250px) {
-        background-image: url('/resources/images/background.avif?v=1');
-        background-size: 3000px;
-        background-attachment: fixed;
-        background-position: top center;
-    }
 }
 
 h1 {

@@ -1,5 +1,8 @@
 @extends('layout.home')
 
+@section('title', __('Listă de prețuri - Închiriere biciclete în Poiana Brașov'))
+@section('description', __('Descoperă lista de prețuri pentru închirierea bicicletelor noastre în Poiana Brașov. Alege bicicleta potrivită pentru tine și bucură-te de o experiență de neuitat în natură!'))
+
 @section('content')
     <main>
         <div class="page-wrapper">

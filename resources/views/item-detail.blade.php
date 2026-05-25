@@ -1,5 +1,9 @@
 @extends('layout.home')
 
+@section('title', __('Închiriaza :name în Poiana Brașov - Rentabikebrasov.ro', ['name' => $item->name]))
+@section('description', __('Închiriază :name în Poiana Brașov la cele mai bune prețuri. Descoperă frumusețea naturii pe două roți!', ['name' => $item->name]))
+
+
 @section('content')
     <main>
         <div class="page-wrapper">
