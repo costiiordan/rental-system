@@ -12,7 +12,7 @@ use Illuminate\Support\Carbon;
 
 class ItemRepository
 {
-    private const DAY_IN_HOURS = 8;
+    private const int DAY_IN_HOURS = 24;
 
     public function getAvailableItems(?Carbon $fromDate, ?Carbon $toDate, ?string $categoryReference): Collection
     {
