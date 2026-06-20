@@ -15,7 +15,7 @@ class Duration extends Component
         $durationInDays = $this->from->diffInDays($this->to);
         $durationInHours = (int) ceil($this->from->diffInHours($this->to));
 
-        if ($durationInDays < 1 && $durationInHours < 8) {
+        if ($durationInDays < 1) {
             return $durationInHours . ($durationInHours > 1 ? ' '.__('ore') : ' '.__('oră'));
         }
 
