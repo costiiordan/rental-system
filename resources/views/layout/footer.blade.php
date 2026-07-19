@@ -66,6 +66,9 @@
                 <a href="{{LaravelLocalization::localizeUrl(route('cookie-policy'))}}" title="@lang('Politica de utilizare a cookie-urilor')">@lang('Politica de utilizare a cookie-urilor')</a>
             </li>
             <li>
+                <a href="{{LaravelLocalization::localizeUrl(route('terms-and-conditions'))}}" title="@lang('Termeni și condiții')">@lang('Termeni și condiții')</a>
+            </li>
+            <li>
                 <a href="{{LaravelLocalization::localizeUrl(route('about'))}}" title="@lang('Despre noi')">@lang('Despre noi')</a>
             </li>
             <li>

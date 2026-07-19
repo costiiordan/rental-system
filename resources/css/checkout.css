@@ -110,17 +110,25 @@
     label {
         margin-bottom: 0.3rem;
 
-        &:has(input[type='radio']) {
+        &:has(input[type='radio']),
+        &:has(input[type='checkbox']) {
             display: flex;
             align-items: center;
             margin-top: 0.2rem;
         }
 
-        input[type='radio'] {
+        input[type='radio'],
+        input[type='checkbox'] {
             margin-right: 0.5rem;
             width: auto;
             height: auto;
+            padding: 0;
         }
+    }
+
+    &.form-control-checkbox a {
+        color: var(--primary-color);
+        text-decoration: underline;
     }
 
     input,

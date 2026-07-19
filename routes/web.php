@@ -46,6 +46,7 @@ Route::group(
         Route::get('/about', fn () => view('about'))->name('about');
         Route::get('/contact', fn () => view('contact'))->name('contact');
         Route::get('/cookie-policy', fn () => localizedView('cookie-policy'))->name('cookie-policy');
+        Route::get('/terms-and-conditions', fn () => localizedView('terms-and-conditions'))->name('terms-and-conditions');
 
 //        Route::get('test', function () {
 //            $order = \App\Models\Order::where('id', 1)->firstOrFail();

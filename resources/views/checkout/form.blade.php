@@ -1,6 +1,6 @@
 <form action="{{ LaravelLocalization::localizeUrl(route('checkout.save-order')) }}" method="POST">
     <h2 class="checkout-section-title">@lang('Finalizează comanda')</h2>
-    <h3>@lang('Date client')</h3>
+    <h3>@lang('Date client')rrrrr</h3>
     <div class="form-control">
         <label for="name_input">@lang('Nume')*</label>
         <input type="text" id="name_input" name="name" value="{{ old('name') }}" required>
@@ -81,6 +81,17 @@
         <div class="form-control-note-example">
             @lang('Exemplu: Va rog să-mi reglați bicicleta pentru greutate de 80kg.')
         </div>
+    </div>
+
+    <div class="form-control form-control-checkbox">
+        <label for="terms_input">
+            <input type="checkbox" id="terms_input" name="terms" value="1" @checked(old('terms')) required>
+            <span>
+                @lang('Sunt de acord cu')
+                <a href="{{ LaravelLocalization::localizeUrl(route('terms-and-conditions')) }}" target="_blank">@lang('termenii și condițiile')</a>*
+            </span>
+        </label>
+        @error('terms')<div class="error-msg">{{$message}}</div>@enderror
     </div>
 
     @csrf

@@ -26,6 +26,14 @@ class SaveOrderRequest extends FormRequest
                 Rule::in(PaymentMethods::CASH, PaymentMethods::CARD, PaymentMethods::BANK_TRANSFER),
             ],
             'customer_note' => 'nullable|string|max:32000',
+            'terms' => 'accepted',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'terms.accepted' => __('Trebuie să accepți termenii și condițiile pentru a finaliza rezervarea.'),
         ];
     }
 }
