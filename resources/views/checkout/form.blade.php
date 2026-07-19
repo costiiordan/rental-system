@@ -1,6 +1,6 @@
 <form action="{{ LaravelLocalization::localizeUrl(route('checkout.save-order')) }}" method="POST">
     <h2 class="checkout-section-title">@lang('Finalizează comanda')</h2>
-    <h3>@lang('Date client')rrrrr</h3>
+    <h3>@lang('Date client')</h3>
     <div class="form-control">
         <label for="name_input">@lang('Nume')*</label>
         <input type="text" id="name_input" name="name" value="{{ old('name') }}" required>
@@ -23,7 +23,7 @@
 
     <h3>@lang('Date facturare')</h3>
     <div class="form-control">
-        <label for="billing_name_input">@lang('Nume pesoana/comapnie')*</label>
+        <label for="billing_name_input">@lang('Nume persoană/companie')*</label>
         <input type="text" id="billing_name_input" name="billing_name" value="{{ old('billing_name') }}">
         @error('billing_name')<div class="error-msg">{{$message}}</div>@enderror
     </div>
